@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zp.dao.OrderitemMapper">
+  <resultMap id="BaseResultMap" type="com.zp.entity.Orderitem">
+    <id column="oi_id" jdbcType="INTEGER" property="oiId" />
+    <result column="oi_price" jdbcType="REAL" property="oiPrice" />
+    <result column="oi_amount" jdbcType="INTEGER" property="oiAmount" />
+    <result column="b_id" jdbcType="INTEGER" property="bId" />
+    <result column="o_id" jdbcType="VARCHAR" property="oId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    oi_id, oi_price, oi_amount, b_id, o_id
+  </sql>
+  <select id="selectByExample" parameterType="com.zp.entity.OrderitemExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orderitem
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orderitem
+    where oi_id = #{oiId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orderitem
+    where oi_id = #{oiId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zp.entity.OrderitemExample">
+    delete from orderitem
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zp.entity.Orderitem">
+    insert into orderitem (oi_id, oi_price, oi_amount, 
+      b_id, o_id)
+    values (#{oiId,jdbcType=INTEGER}, #{oiPrice,jdbcType=REAL}, #{oiAmount,jdbcType=INTEGER}, 
+      #{bId,jdbcType=INTEGER}, #{oId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zp.entity.Orderitem">
+    insert into orderitem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oiId != null">
+        oi_id,
+      </if>
+      <if test="oiPrice != null">
+        oi_price,
+      </if>
+      <if test="oiAmount != null">
+        oi_amount,
+      </if>
+      <if test="bId != null">
+        b_id,
+      </if>
+      <if test="oId != null">
+        o_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oiId != null">
+        #{oiId,jdbcType=INTEGER},
+      </if>
+      <if test="oiPrice != null">
+        #{oiPrice,jdbcType=REAL},
+      </if>
+      <if test="oiAmount != null">
+        #{oiAmount,jdbcType=INTEGER},
+      </if>
+      <if test="bId != null">
+        #{bId,jdbcType=INTEGER},
+      </if>
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zp.entity.OrderitemExample" resultType="java.lang.Long">
+    select count(*) from orderitem
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update orderitem
+    <set>
+      <if test="record.oiId != null">
+        oi_id = #{record.oiId,jdbcType=INTEGER},
+      </if>
+      <if test="record.oiPrice != null">
+        oi_price = #{record.oiPrice,jdbcType=REAL},
+      </if>
+      <if test="record.oiAmount != null">
+        oi_amount = #{record.oiAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.bId != null">
+        b_id = #{record.bId,jdbcType=INTEGER},
+      </if>
+      <if test="record.oId != null">
+        o_id = #{record.oId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update orderitem
+    set oi_id = #{record.oiId,jdbcType=INTEGER},
+      oi_price = #{record.oiPrice,jdbcType=REAL},
+      oi_amount = #{record.oiAmount,jdbcType=INTEGER},
+      b_id = #{record.bId,jdbcType=INTEGER},
+      o_id = #{record.oId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zp.entity.Orderitem">
+    update orderitem
+    <set>
+      <if test="oiPrice != null">
+        oi_price = #{oiPrice,jdbcType=REAL},
+      </if>
+      <if test="oiAmount != null">
+        oi_amount = #{oiAmount,jdbcType=INTEGER},
+      </if>
+      <if test="bId != null">
+        b_id = #{bId,jdbcType=INTEGER},
+      </if>
+      <if test="oId != null">
+        o_id = #{oId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oi_id = #{oiId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zp.entity.Orderitem">
+    update orderitem
+    set oi_price = #{oiPrice,jdbcType=REAL},
+      oi_amount = #{oiAmount,jdbcType=INTEGER},
+      b_id = #{bId,jdbcType=INTEGER},
+      o_id = #{oId,jdbcType=VARCHAR}
+    where oi_id = #{oiId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zp.dao.BookMapper">
+  <resultMap id="BaseResultMap" type="com.zp.entity.Book">
+    <id column="b_id" jdbcType="INTEGER" property="bId" />
+    <result column="b_isbn" jdbcType="VARCHAR" property="bIsbn" />
+    <result column="b_name" jdbcType="VARCHAR" property="bName" />
+    <result column="b_author" jdbcType="VARCHAR" property="bAuthor" />
+    <result column="b_publisher" jdbcType="VARCHAR" property="bPublisher" />
+    <result column="b_cover" jdbcType="VARCHAR" property="bCover" />
+    <result column="b_image1" jdbcType="VARCHAR" property="bImage1" />
+    <result column="b_image2" jdbcType="VARCHAR" property="bImage2" />
+    <result column="b_price" jdbcType="REAL" property="bPrice" />
+    <result column="bt_id" jdbcType="INTEGER" property="btId" />
+    <result column="b_stock" jdbcType="INTEGER" property="bStock" />
+    <result column="b_mark" jdbcType="VARCHAR" property="bMark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    b_id, b_isbn, b_name, b_author, b_publisher, b_cover, b_image1, b_image2, b_price, 
+    bt_id, b_stock, b_mark
+  </sql>
+  <select id="selectByExample" parameterType="com.zp.entity.BookExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from book
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where b_id = #{bId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from book
+    where b_id = #{bId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zp.entity.BookExample">
+    delete from book
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zp.entity.Book">
+    insert into book (b_id, b_isbn, b_name, 
+      b_author, b_publisher, b_cover, 
+      b_image1, b_image2, b_price, 
+      bt_id, b_stock, b_mark
+      )
+    values (#{bId,jdbcType=INTEGER}, #{bIsbn,jdbcType=VARCHAR}, #{bName,jdbcType=VARCHAR}, 
+      #{bAuthor,jdbcType=VARCHAR}, #{bPublisher,jdbcType=VARCHAR}, #{bCover,jdbcType=VARCHAR}, 
+      #{bImage1,jdbcType=VARCHAR}, #{bImage2,jdbcType=VARCHAR}, #{bPrice,jdbcType=REAL}, 
+      #{btId,jdbcType=INTEGER}, #{bStock,jdbcType=INTEGER}, #{bMark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zp.entity.Book">
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bId != null">
+        b_id,
+      </if>
+      <if test="bIsbn != null">
+        b_isbn,
+      </if>
+      <if test="bName != null">
+        b_name,
+      </if>
+      <if test="bAuthor != null">
+        b_author,
+      </if>
+      <if test="bPublisher != null">
+        b_publisher,
+      </if>
+      <if test="bCover != null">
+        b_cover,
+      </if>
+      <if test="bImage1 != null">
+        b_image1,
+      </if>
+      <if test="bImage2 != null">
+        b_image2,
+      </if>
+      <if test="bPrice != null">
+        b_price,
+      </if>
+      <if test="btId != null">
+        bt_id,
+      </if>
+      <if test="bStock != null">
+        b_stock,
+      </if>
+      <if test="bMark != null">
+        b_mark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bId != null">
+        #{bId,jdbcType=INTEGER},
+      </if>
+      <if test="bIsbn != null">
+        #{bIsbn,jdbcType=VARCHAR},
+      </if>
+      <if test="bName != null">
+        #{bName,jdbcType=VARCHAR},
+      </if>
+      <if test="bAuthor != null">
+        #{bAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="bPublisher != null">
+        #{bPublisher,jdbcType=VARCHAR},
+      </if>
+      <if test="bCover != null">
+        #{bCover,jdbcType=VARCHAR},
+      </if>
+      <if test="bImage1 != null">
+        #{bImage1,jdbcType=VARCHAR},
+      </if>
+      <if test="bImage2 != null">
+        #{bImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="bPrice != null">
+        #{bPrice,jdbcType=REAL},
+      </if>
+      <if test="btId != null">
+        #{btId,jdbcType=INTEGER},
+      </if>
+      <if test="bStock != null">
+        #{bStock,jdbcType=INTEGER},
+      </if>
+      <if test="bMark != null">
+        #{bMark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zp.entity.BookExample" resultType="java.lang.Long">
+    select count(*) from book
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update book
+    <set>
+      <if test="record.bId != null">
+        b_id = #{record.bId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bIsbn != null">
+        b_isbn = #{record.bIsbn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bName != null">
+        b_name = #{record.bName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bAuthor != null">
+        b_author = #{record.bAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bPublisher != null">
+        b_publisher = #{record.bPublisher,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bCover != null">
+        b_cover = #{record.bCover,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bImage1 != null">
+        b_image1 = #{record.bImage1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bImage2 != null">
+        b_image2 = #{record.bImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bPrice != null">
+        b_price = #{record.bPrice,jdbcType=REAL},
+      </if>
+      <if test="record.btId != null">
+        bt_id = #{record.btId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bStock != null">
+        b_stock = #{record.bStock,jdbcType=INTEGER},
+      </if>
+      <if test="record.bMark != null">
+        b_mark = #{record.bMark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update book
+    set b_id = #{record.bId,jdbcType=INTEGER},
+      b_isbn = #{record.bIsbn,jdbcType=VARCHAR},
+      b_name = #{record.bName,jdbcType=VARCHAR},
+      b_author = #{record.bAuthor,jdbcType=VARCHAR},
+      b_publisher = #{record.bPublisher,jdbcType=VARCHAR},
+      b_cover = #{record.bCover,jdbcType=VARCHAR},
+      b_image1 = #{record.bImage1,jdbcType=VARCHAR},
+      b_image2 = #{record.bImage2,jdbcType=VARCHAR},
+      b_price = #{record.bPrice,jdbcType=REAL},
+      bt_id = #{record.btId,jdbcType=INTEGER},
+      b_stock = #{record.bStock,jdbcType=INTEGER},
+      b_mark = #{record.bMark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zp.entity.Book">
+    update book
+    <set>
+      <if test="bIsbn != null">
+        b_isbn = #{bIsbn,jdbcType=VARCHAR},
+      </if>
+      <if test="bName != null">
+        b_name = #{bName,jdbcType=VARCHAR},
+      </if>
+      <if test="bAuthor != null">
+        b_author = #{bAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="bPublisher != null">
+        b_publisher = #{bPublisher,jdbcType=VARCHAR},
+      </if>
+      <if test="bCover != null">
+        b_cover = #{bCover,jdbcType=VARCHAR},
+      </if>
+      <if test="bImage1 != null">
+        b_image1 = #{bImage1,jdbcType=VARCHAR},
+      </if>
+      <if test="bImage2 != null">
+        b_image2 = #{bImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="bPrice != null">
+        b_price = #{bPrice,jdbcType=REAL},
+      </if>
+      <if test="btId != null">
+        bt_id = #{btId,jdbcType=INTEGER},
+      </if>
+      <if test="bStock != null">
+        b_stock = #{bStock,jdbcType=INTEGER},
+      </if>
+      <if test="bMark != null">
+        b_mark = #{bMark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where b_id = #{bId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zp.entity.Book">
+    update book
+    set b_isbn = #{bIsbn,jdbcType=VARCHAR},
+      b_name = #{bName,jdbcType=VARCHAR},
+      b_author = #{bAuthor,jdbcType=VARCHAR},
+      b_publisher = #{bPublisher,jdbcType=VARCHAR},
+      b_cover = #{bCover,jdbcType=VARCHAR},
+      b_image1 = #{bImage1,jdbcType=VARCHAR},
+      b_image2 = #{bImage2,jdbcType=VARCHAR},
+      b_price = #{bPrice,jdbcType=REAL},
+      bt_id = #{btId,jdbcType=INTEGER},
+      b_stock = #{bStock,jdbcType=INTEGER},
+      b_mark = #{bMark,jdbcType=VARCHAR}
+    where b_id = #{bId,jdbcType=INTEGER}
+  </update>
+</mapper>
