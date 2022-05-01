@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: vili
+  User: vilicontentType: "application/json;charset=UTF-8"
   Date: 2019/8/28
   Time: 19:18
   To change this template use File | Settings | File Templates.
@@ -26,35 +26,35 @@
         <div class="alert alert-danger">${msg }</div>
     </c:if>
     <br><br>
-    <form class="form-horizontal" action="user_add.action" method="post">
+    <form class="form-horizontal" action="/admin/user_add" method="post">
         <div class="form-group">
-            <label for="input_name" class="col-sm-1 control-label">用户名</label>
+            <label for="input_name1" class="col-sm-1 control-label">用户名</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="uname" required="required" />
+                <input type="text" class="form-control" id="input_name1" name="uName" required="required" />
             </div>
         </div>
         <div class="form-group">
-            <label for="input_name" class="col-sm-1 control-label">真实姓名</label>
+            <label for="input_name2" class="col-sm-1 control-label">真实姓名</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="urealname" required="required"/>
+                <input type="text" class="form-control" id="input_name2" name="uRealname" required="required"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="input_name" class="col-sm-1 control-label">密码</label>
+            <label for="input_name3" class="col-sm-1 control-label">密码</label>
             <div class="col-sm-6">
-                <input type="password" class="form-control" id="input_name" name="upwd" required="required"/>
+                <input type="password" class="form-control" id="input_name3" name="uPwd" required="required"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="input_name" class="col-sm-1 control-label">电话</label>
+            <label for="input_name4" class="col-sm-1 control-label">电话</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="uphone" />
+                <input type="text" class="form-control" id="input_name4" name="uPhone" />
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">地址</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="uaddress"/>
+                <input type="text" class="form-control" id="input_name" name="uAddress"/>
             </div>
         </div>
         <div class="form-group">
