@@ -41,19 +41,19 @@
                 <h3>个人中心</h3>
                 <form action="change_phone_and_address.action" method="post">
                     <!-- 收货信息 start -->
-                    <input type="hidden" name="uid" value="${user.uid}"/>
+                    <input type="hidden" name="uid" value="${user.uId}"/>
                     <h4>收货信息</h4>
                     <div class="input">
                         <span>收货人<label></label></span>
-                        <input type="text" name="urealname" value="${user.urealname }" readonly="readonly" />
+                        <input type="text" name="urealname" value="${user.uRealname }" readonly="readonly" />
                     </div>
                     <div class="input">
                         <span>收货电话</span>
-                        <input type="text" name="uphone" value="${user.uphone }" placeholder="请输入收货电话">
+                        <input type="text" name="uphone" value="${user.uPhone }" placeholder="请输入收货电话">
                     </div>
                     <div class="input">
                         <span>收货地址</span>
-                        <input type="text" name="uaddress" value="${user.uaddress }" placeholder="请输入收货地址">
+                        <input type="text" name="uaddress" value="${user.uAddress }" placeholder="请输入收货地址">
                     </div>
                     <div class="register-but text-center">
                         <input type="submit" value="提交">
@@ -62,7 +62,7 @@
                 </form>
                 <hr>
                 <form action="change_password.action" method="post">
-                    <input type="hidden" name="uid" value="${user.uid}"/>
+                    <input type="hidden" name="uid" value="${user.uId}"/>
                     <h4>安全信息</h4>
                     <div class="input">
                         <span>原密码</span>
