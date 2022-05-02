@@ -2,10 +2,13 @@ package com.zp.service.impl;
 
 import com.zp.dao.UserMapper;
 import com.zp.entity.User;
+import com.zp.entity.UserExample;
 import com.zp.service.AdminService;
 import com.zp.util.JasyptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.SQLException;
 
 
 @Service
@@ -33,5 +36,28 @@ public class AdminServiceImpl implements AdminService {
             System.out.println("添加失败");
             return null;
         }
+    }
+
+    @Override
+    public User updatePwd(Integer uId, String uPwd) {
+        //设置更新所需条件
+        UserExample userExample = new UserExample();
+        userExample.createCriteria()
+                .andUIdEqualTo(uId);
+        //设置参数
+        User user = new User();
+        user.setuId(uId);
+        user.setuPwd(uPwd);
+        try {
+            int i = userMapper.updateByExampleSelective(user, userExample);
+            if(i>0){
+                User user1 = userMapper.selectByKey(uId);
+                return user1;
+            }
+        }catch ( Exception e){
+            System.out.println("修改失败,请联系管理员");
+        }
+
+        return null;
     }
 }

@@ -40,4 +40,39 @@ public class AdminController {
         //跳转操作
         return modelAndView;
     }
+    @RequestMapping("logout")
+    public ModelAndView logout(
+                              HttpSession session,
+                              HttpServletRequest request){
+        //销毁session
+        session.removeAttribute("user");
+        session.invalidate();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/index.action");
+        //跳转操作
+        return modelAndView;
+    }
+
+    /**
+     *修改密码
+     */
+    @RequestMapping("change_password")
+    public ModelAndView updatePassword(
+            HttpSession session,
+            HttpServletRequest request,
+            Integer uId,
+            String uPwd
+    ){
+        User user = adminService.updatePwd(uId, uPwd);
+        if(user!=null){
+            session.setAttribute("user",user);
+            request.setAttribute("msg","修改成功！");
+        }else {
+            request.setAttribute("failMsg","修改失败！");
+        }
+        //跳转操作
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:user_list.action?pageNumber=1");
+        return modelAndView;
+    }
 }

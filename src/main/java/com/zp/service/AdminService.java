@@ -6,4 +6,6 @@ import java.util.Map;
 
 public interface AdminService {
     String addUser(User user);
+
+    User updatePwd(Integer uId, String uPwd);
 }
