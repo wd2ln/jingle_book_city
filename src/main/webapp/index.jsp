@@ -30,12 +30,12 @@
 
 <div class="banner">
     <div class="container">
-        <h2 class="hdng"><a href="book_detail.action?bid=${scrollBook.bid}">${scrollBook.bname}</a><span></span></h2>
+        <h2 class="hdng"><a href="book_detail.action?bid=${scrollBook.bId}">${scrollBook.bName}</a><span></span></h2>
         <p>今日精选推荐</p>
-        <a class="banner_a" href="javascript:;" onclick="buy(${scrollBook.bid})">立刻购买</a>
+        <a class="banner_a" href="javascript:;" onclick="buy(${scrollBook.bId})">立刻购买</a>
         <div class="banner-text">
-            <a href="book_detail.action?bid=${scrollBook.bid}">
-                <img src="${scrollBook.bcover}" alt="${scrollBook.bname}" width="350" height="350">
+            <a href="book_detail.action?bid=${scrollBook.bId}">
+                <img src="${scrollBook.bCover}" alt="${scrollBook.bName}" width="350" height="350">
             </a>
         </div>
     </div>
@@ -50,22 +50,22 @@
         <div class="gallery-grids">
             <c:forEach items="${hotList}" var="book">
                 <div class="col-md-4 gallery-grid glry-two">
-                    <a href="book_detail.action?bid=${book.bid}">
-                        <img src="${book.bcover}" class="img-responsive" alt="${book.bname}" width="350" height="350"/>
+                    <a href="book_detail.action?bid=${book.bId}">
+                        <img src="${book.bCover}" class="img-responsive" alt="${book.bName}" width="350" height="350"/>
                     </a>
                     <div class="gallery-info galrr-info-two">
                         <p>
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            <a href="book_detail.action?bid=${book.bid}">查看详情</a>
+                            <a href="book_detail.action?bid=${book.bId}">查看详情</a>
                         </p>
-                        <a class="shop" href="javascript:;" onclick="buy(${book.bid})">立刻购买</a>
+                        <a class="shop" href="javascript:;" onclick="buy(${book.bId})">立刻购买</a>
                         <div class="clearfix"> </div>
                     </div>
                     <div class="galy-info">
-                        <p>${book.btname} > ${book.bname}</p>
+                        <p>${book.btName} > ${book.bName}</p>
                         <div class="galry">
                             <div class="prices">
-                                <h5 class="item_price">¥ ${book.bprice}</h5>
+                                <h5 class="item_price">¥ ${book.bPrice}</h5>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -78,22 +78,22 @@
         <div class="gallery-grids">
             <c:forEach items="${newList}" var="book">
                 <div class="col-md-3 gallery-grid ">
-                    <a href="book_detail.action?bid=${book.bid}">
-                        <img src="${book.bcover}" class="img-responsive" alt="${book.bname}"/>
+                    <a href="book_detail.action?bid=${book.bId}">
+                        <img src="${book.bCover}" class="img-responsive" alt="${book.bName}"/>
                     </a>
                     <div class="gallery-info">
                         <p>
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            <a href="book_detail.action?bid=${book.bid}">查看详情</a>
+                            <a href="book_detail.action?bid=${book.bId}">查看详情</a>
                         </p>
-                        <a class="shop" href="javascript:;" onclick="buy(${book.bid})">立刻购买</a>
+                        <a class="shop" href="javascript:;" onclick="buy(${book.bId})">立刻购买</a>
                         <div class="clearfix"> </div>
                     </div>
                     <div class="galy-info">
-                        <p>${book.btname} > ${book.bname}</p>
+                        <p>${book.btName} > ${book.bName}</p>
                         <div class="galry">
                             <div class="prices">
-                                <h5 class="item_price">¥ ${book.bprice}</h5>
+                                <h5 class="item_price">¥ ${book.bPrice}</h5>
                             </div>
                             <div class="clearfix"></div>
                         </div>

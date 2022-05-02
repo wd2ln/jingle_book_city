@@ -34,10 +34,10 @@
                                         <h4>商品分类</h4>
                                         <ul class="multi-column-dropdown">
 
-                                            <li><a class="list" href="booktypes_list.action?pageNumber=1&btid=-1">全部系列</a></li>
+                                            <li><a class="list" href="booktypes_list.action?pageNumber=1&btId=-1">全部系列</a></li>
 
                                             <c:forEach items="${bookTypes}" var="t">
-                                                <li><a class="list" href="booktypes_list.action?pageNumber=1&btid=${t.btid}">${t.btname}</a></li>
+                                                <li><a class="list" href="booktypes_list.action?pageNumber=1&btId=${t.btId}">${t.btName}</a></li>
                                             </c:forEach>
 
 
