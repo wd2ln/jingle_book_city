@@ -47,11 +47,11 @@
 
         <c:forEach items="${list }" var="t">
             <tr>
-                <td><p>${t.btid }</p></td>
-                <td><p>${t.btname }</p></td>
+                <td><p>${t.btId }</p></td>
+                <td><p>${t.btName }</p></td>
                 <td>
-                    <a class="btn btn-primary" href="type_edit.jsp?btid=${t.btid}&btname=${t.btname}">修改</a>
-                    <a class="btn btn-danger" href="type_delete.action?btid=${t.btid}">删除</a>
+                    <a class="btn btn-primary" href="type_edit.jsp?btid=${t.btId}&btname=${t.btName}">修改</a>
+                    <a class="btn btn-danger" href="type_delete.action?btid=${t.btId}">删除</a>
                 </td>
             </tr>
         </c:forEach>
