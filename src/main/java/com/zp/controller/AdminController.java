@@ -2,6 +2,7 @@ package com.zp.controller;
 
 import com.zp.entity.User;
 import com.zp.service.AdminService;
+import com.zp.vo.PageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @RequestMapping("admin")
@@ -73,6 +75,22 @@ public class AdminController {
         //跳转操作
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:user_list.action?pageNumber=1");
+        return modelAndView;
+    }
+    @RequestMapping("user_list")
+    public ModelAndView findAll(
+            Integer pageNumber,
+            HttpServletRequest request){
+        //判断传入的页数合法性
+        pageNumber=pageNumber>0 ? pageNumber : 1;
+
+        PageVo alls = adminService.findAlls(pageNumber);
+
+        //获取的数据放入request中
+        request.setAttribute("p",alls);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("forward:/admin/user_list.jsp");
+        //跳转操作
         return modelAndView;
     }
 }
