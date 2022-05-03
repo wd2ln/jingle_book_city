@@ -23,7 +23,7 @@
     <br>
 
     <div>
-        <form class="form-inline" method="post" action="type_add.action">
+        <form class="form-inline" method="post" action="/admin/type_add" enctype="multipart/form-data">
             <input type="text" class="form-control" id="input_name" name="btname" placeholder="输入类目名称" required="required" style="width: 500px">
             <input type="submit" class="btn btn-warning" value="添加类目"/>
         </form>
@@ -50,8 +50,8 @@
                 <td><p>${t.btId }</p></td>
                 <td><p>${t.btName }</p></td>
                 <td>
-                    <a class="btn btn-primary" href="type_edit.jsp?btid=${t.btId}&btname=${t.btName}">修改</a>
-                    <a class="btn btn-danger" href="type_delete.action?btid=${t.btId}">删除</a>
+                    <a class="btn btn-primary" href="type_edit.jsp?btId=${t.btId}&btname=${t.btName}">修改</a>
+                    <a class="btn btn-danger" href="type_delete?btid=${t.btId}">删除</a>
                 </td>
             </tr>
         </c:forEach>

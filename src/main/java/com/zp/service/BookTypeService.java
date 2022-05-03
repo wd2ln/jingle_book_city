@@ -9,5 +9,13 @@ import java.util.List;
 public interface BookTypeService {
     ResultVO typeList();
 
+
     List<Booktype> select();
+
+    ResultVO typeAdd(String tbname);
+
+    ResultVO typeDel(Integer btid);
+
+    ResultVO typeUpdate(Integer btid, String btname);
+
 }
