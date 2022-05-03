@@ -23,29 +23,29 @@
     <br><br>
 
     <form class="form-horizontal" action="user_update.action" method="post">
-        <input type="hidden" name="uid" value="${u.uid }">
+        <input type="hidden" name="uId" value="${u.uId }">
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">用户名</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" value="${u.uname }" readonly="readonly">
+                <input type="text" class="form-control" id="input_name" value="${u.uName }" readonly="readonly">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">真实姓名</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" value="${u.urealname }"  readonly="readonly">
+                <input type="text" class="form-control" id="input_name" value="${u.uRealname }"  readonly="readonly">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">电话</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="uphone" value="${u.uphone }">
+                <input type="text" class="form-control" id="input_name" name="uPhone" value="${u.uPhone }">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">地址</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="uaddress" value="${u.uaddress }">
+                <input type="text" class="form-control" id="input_name" name="uAddress" value="${u.uAddress }">
             </div>
         </div>
         <div class="form-group">

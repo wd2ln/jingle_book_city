@@ -49,15 +49,15 @@
 
         <c:forEach items="${p.list }" var="u">
             <tr>
-                <td><p>${u.uid }</p></td>
-                <td><p>${u.uname }</p></td>
-                <td><p>${u.urealname }</p></td>
-                <td><p>${u.uphone }</p></td>
-                <td><p>${u.uaddress }</p></td>
+                <td><p>${u.uId }</p></td>
+                <td><p>${u.uName }</p></td>
+                <td><p>${u.uRealname }</p></td>
+                <td><p>${u.uPhone }</p></td>
+                <td><p>${u.uAddress }</p></td>
                 <td>
-                    <a class="btn btn-info" href="user_reset.jsp?uid=${u.uid }&uname=${u.uname }&urealname=${u.urealname }">重置密码</a>
-                    <a class="btn btn-primary" href="user_edit_show.action?uid=${u.uid }">修改</a>
-                    <a class="btn btn-danger" href="user_delete.action?uid=${u.uid }">删除</a>
+                    <a class="btn btn-info" href="/admin/user_reset.jsp?uId=${u.uId }&uName=${u.uName }&uRealname=${u.uRealname }">重置密码</a>
+                    <a class="btn btn-primary" href="/admin/user_edit_show?uId=${u.uId }">修改</a>
+                    <a class="btn btn-danger" href="/admin/user_delete?uId=${u.uId }">删除</a>
                 </td>
             </tr>
         </c:forEach>

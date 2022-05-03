@@ -27,4 +27,6 @@ public interface BooktypeMapper {
     int updateByPrimaryKeySelective(Booktype record);
 
     int updateByPrimaryKey(Booktype record);
+
+    List<Booktype> select();
 }

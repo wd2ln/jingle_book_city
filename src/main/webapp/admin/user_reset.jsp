@@ -22,20 +22,20 @@
 
     <br><br>
 
-    <form class="form-horizontal" action="change_password.action" method="post">
-        <input type="hidden" name="uid" value="${param.uid }">
+    <form class="form-horizontal" action="/admin/change_password" method="post">
+        <input type="hidden" name="uId" value="${param.uId }">
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">用户名</label>
-            <div class="col-sm-5">${param.uname }</div>
+            <div class="col-sm-5">${param.uName }</div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">真实姓名</label>
-            <div class="col-sm-5">${param.urealname }</div>
+            <div class="col-sm-5">${param.uRealname }</div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">密码</label>
             <div class="col-sm-6">
-                <input type="password" class="form-control" id="input_name" name="upwd" value="" required="required">
+                <input type="password" class="form-control" id="input_name" name="uPwd" value="" required="required">
             </div>
         </div>
         <div class="form-group">
