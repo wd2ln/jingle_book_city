@@ -4,7 +4,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/bookshop?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    password: '021203'
+    password: asd
     username: root
   mvc:
     servlet:
