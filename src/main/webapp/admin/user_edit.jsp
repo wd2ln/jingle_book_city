@@ -22,7 +22,7 @@
 
     <br><br>
 
-    <form class="form-horizontal" action="user_update.action" method="post">
+    <form class="form-horizontal" action="/admin/user_update" method="post">
         <input type="hidden" name="uId" value="${u.uId }">
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">用户名</label>

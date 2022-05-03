@@ -4,6 +4,7 @@ import com.zp.entity.User;
 import com.zp.service.AdminService;
 import com.zp.util.JasyptUtil;
 import com.zp.vo.PageVo;
+import com.zp.vo.UpdateVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -121,6 +122,15 @@ public class AdminController {
             modelAndView.setViewName("redirect:user_list?pageNumber=1");
 
         }
+        //跳转操作user_update
+        return modelAndView;
+    }
+    @RequestMapping("user_update")
+    public ModelAndView update(
+            HttpSession session, User user){
+        ModelAndView modelAndView = new ModelAndView();
+        adminService.updateInfo(user);
+        modelAndView.setViewName("redirect:user_list?pageNumber=1");
         //跳转操作
         return modelAndView;
     }

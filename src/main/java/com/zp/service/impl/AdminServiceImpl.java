@@ -8,6 +8,7 @@ import com.zp.entity.UserExample;
 import com.zp.service.AdminService;
 import com.zp.util.JasyptUtil;
 import com.zp.vo.PageVo;
+import com.zp.vo.UpdateVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.LocaleResolver;
@@ -69,6 +70,24 @@ public class AdminServiceImpl implements AdminService {
             pageVo.setTotalPage(i1%pageSize==0?i1/pageSize:i1/pageSize+1);
         }
         return pageVo;
+    }
+
+    @Override
+    public Boolean updateInfo(User user) {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria()
+                .andUIdEqualTo(user.getuId());
+        try {
+            int i = userMapper.updateByExampleSelective(user, userExample);
+            if (i>0){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println("更新失败");
+            return false;
+        }
+
+        return false;
     }
 
     @Override

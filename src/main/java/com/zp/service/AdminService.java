@@ -2,6 +2,7 @@ package com.zp.service;
 
 import com.zp.entity.User;
 import com.zp.vo.PageVo;
+import com.zp.vo.UpdateVo;
 
 import java.util.List;
 import java.util.Map;
@@ -16,4 +17,6 @@ public interface AdminService {
     Boolean del(Integer uId);
 
     User show(Integer uId);
+
+    Boolean updateInfo(User user);
 }
