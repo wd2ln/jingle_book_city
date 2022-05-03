@@ -30,10 +30,16 @@ public class BookServiceImpl implements BookService {
         criteria.andBtIdEqualTo(rtype);
 
         List<Book> books = bookDao.selectByExample(example);
-       // String bid = books.get(0).getBid();
+        // String bid = books.get(0).getBid();
         //System.out.printf();
         PageInfo<Book> info = new PageInfo<>(books);
 
         return info.getList();
+    }
+
+    @Override
+    public Book selBookId(String bId) {
+
+        return null;
     }
 }

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface BookService {
     List<Book> sel(int rtype, Integer pageNumber, Integer pageSize);
+
+    Book selBookId(String bId);
 }
