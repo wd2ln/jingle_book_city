@@ -4,7 +4,9 @@ import com.zp.entity.Order;
 import com.zp.entity.OrderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface OrderMapper {
     long countByExample(OrderExample example);
 
