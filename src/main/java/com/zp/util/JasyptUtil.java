@@ -4,7 +4,7 @@ import org.jasypt.util.text.BasicTextEncryptor;
 
 public class JasyptUtil {
 
-    private static BasicTextEncryptor basicTextEncryptor;
+   private static BasicTextEncryptor basicTextEncryptor;
 
     static {
         //初始化
