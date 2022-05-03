@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zp.dao.BooktypeMapper">
+  <insert id="insertType" useGeneratedKeys="true" parameterType="String">
+    insert into booktype(bt_name) values (#{btname})
+  </insert>
   <resultMap id="BaseResultMap" type="com.zp.entity.Booktype">
     <id column="bt_id" jdbcType="INTEGER" property="btId" />
     <result column="bt_name" jdbcType="VARCHAR" property="btName" />

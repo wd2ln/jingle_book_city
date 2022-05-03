@@ -6,4 +6,6 @@ import com.zp.vo.ResultVO;
 
 public interface BookTypeService {
     ResultVO typeList();
+
+    ResultVO typeAdd(String tbname);
 }
