@@ -55,9 +55,9 @@
                 <td><p>${u.uPhone }</p></td>
                 <td><p>${u.uAddress }</p></td>
                 <td>
-                    <a class="btn btn-info" href="user_reset.jsp?uid=${u.uId }&uname=${u.uName }&urealname=${u.uRealname }">重置密码</a>
+                    <a class="btn btn-info" href="/admin/user_reset.jsp?uId=${u.uId }&uName=${u.uName }&uRealname=${u.uRealname }">重置密码</a>
                     <a class="btn btn-primary" href="user_edit_show.action?uid=${u.uId }">修改</a>
-                    <a class="btn btn-danger" href="user_delete.action?uid=${u.uId }">删除</a>
+                    <a class="btn btn-danger" href="/admin/user_delete?uId=${u.uId }">删除</a>
                 </td>
             </tr>
         </c:forEach>

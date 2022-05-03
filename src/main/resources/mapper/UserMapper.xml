@@ -100,6 +100,9 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  <delete id="deleteByUid" parameterType="java.lang.Integer">
+    delete from user where u_id=#{uId,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.zp.entity.User">
     insert into user (u_id, u_name, u_pwd, 
       u_realname, u_redgt, u_role, 

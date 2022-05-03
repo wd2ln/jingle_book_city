@@ -12,4 +12,6 @@ public interface AdminService {
     User updatePwd(Integer uId, String uPwd);
 
     PageVo findAlls(Integer pageNumber);
+
+    Boolean del(Integer uId);
 }

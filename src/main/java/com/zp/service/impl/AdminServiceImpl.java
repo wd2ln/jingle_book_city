@@ -33,7 +33,7 @@ public class AdminServiceImpl implements AdminService {
             i = userMapper.insertSelective(user);
             if (i>0){
                 System.out.println("添加成功");
-                return "redirect:user_list.action?pageNumber=1";
+                return "redirect:user_list?pageNumber=1";
             }else {
                 return null;
             }
@@ -61,14 +61,28 @@ public class AdminServiceImpl implements AdminService {
             pageVo.setTotalCount(users.size());
 
            // System.out.println(i);
-            System.out.println(userPageInfo.getTotal());
-            System.out.println(total);
-            System.out.println(i1);
+            //System.out.println(userPageInfo.getTotal());
+            //System.out.println(total);
+            //System.out.println(i1);
             //总页数
            // if ()
             pageVo.setTotalPage(i1%pageSize==0?i1/pageSize:i1/pageSize+1);
         }
         return pageVo;
+    }
+
+    @Override
+    public Boolean del(Integer uId) {
+        try {
+            int i = userMapper.deleteByUid(uId);
+            if (i>0){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println("删除失败");
+            return false;
+        }
+        return false;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.zp.controller;
 
 import com.zp.entity.User;
 import com.zp.service.AdminService;
+import com.zp.util.JasyptUtil;
 import com.zp.vo.PageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -50,7 +51,7 @@ public class AdminController {
         session.removeAttribute("user");
         session.invalidate();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/index.action");
+        modelAndView.setViewName("redirect:http://localhost:8080/index");
         //跳转操作
         return modelAndView;
     }
@@ -65,7 +66,8 @@ public class AdminController {
             Integer uId,
             String uPwd
     ){
-        User user = adminService.updatePwd(uId, uPwd);
+
+        User user = adminService.updatePwd(uId, JasyptUtil.jia(uPwd));
         if(user!=null){
             session.setAttribute("user",user);
             request.setAttribute("msg","修改成功！");
@@ -74,7 +76,7 @@ public class AdminController {
         }
         //跳转操作
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:user_list.action?pageNumber=1");
+        modelAndView.setViewName("redirect:user_list?pageNumber=1");
         return modelAndView;
     }
     @RequestMapping("user_list")
@@ -90,6 +92,15 @@ public class AdminController {
         request.setAttribute("p",alls);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("forward:/admin/user_list.jsp");
+        //跳转操作
+        return modelAndView;
+    }
+    @RequestMapping("user_delete")
+    public ModelAndView del(
+            Integer uId){
+        adminService.del(uId);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:user_list?pageNumber=1");
         //跳转操作
         return modelAndView;
     }

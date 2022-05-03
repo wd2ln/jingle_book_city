@@ -11,6 +11,7 @@ public interface UserMapper {
     long countByExample(UserExample example);
 
     int deleteByExample(UserExample example);
+    int deleteByUid(Integer uId);
 
     int insert(User record);
 
