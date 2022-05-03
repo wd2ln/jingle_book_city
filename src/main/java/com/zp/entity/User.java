@@ -21,6 +21,16 @@ public class User {
 
     private String uAddress;
 
+    public String getIsadmin() {
+        return isadmin;
+    }
+
+    public void setIsadmin(String isadmin) {
+        this.isadmin = isadmin;
+    }
+
+    private String isadmin;
+
     public Integer getuId() {
         return uId;
     }
