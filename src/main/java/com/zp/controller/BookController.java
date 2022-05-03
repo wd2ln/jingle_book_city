@@ -1,7 +1,9 @@
 package com.zp.controller;
 
 import com.zp.entity.Book;
+import com.zp.entity.Booktype;
 import com.zp.service.BookService;
+import com.zp.service.BookTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,15 +19,18 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+    @Autowired
+    private BookTypeService bookTypeService;
 
     @RequestMapping("/index")
     public ModelAndView index1(ModelAndView mv,
                               HttpServletRequest request){
 
+
         Integer pageNumber=1;
         Integer pageSize=8;
 
-        List<Book> list = new ArrayList<>();
+        List<Book> list ;
 
         for (int rtype=1;rtype<4;rtype++){
 
@@ -44,11 +49,11 @@ public class BookController {
             System.out.println("=====================");
         }
 
-            request.getServletContext().setAttribute("bookTypes",list);
-        if (true){
-           // return null;
-        }
-        mv.setViewName("forward:/index.jsp");
+            List<Booktype> booktypes= bookTypeService.select();
+
+            request.getServletContext().setAttribute("bookTypes",booktypes);
+
+            mv.setViewName("/index");
         return mv;
     }
 }
