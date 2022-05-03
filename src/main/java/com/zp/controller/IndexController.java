@@ -15,14 +15,14 @@ import java.util.List;
 
 @RestController
 //@RequestMapping("/")
-public class BookController {
+public class IndexController {
 
     @Autowired
     private BookService bookService;
     @Autowired
     private BookTypeService bookTypeService;
 
-    @RequestMapping("/index")
+    @RequestMapping("index")
     public ModelAndView index1(ModelAndView mv,
                               HttpServletRequest request){
 
@@ -53,7 +53,7 @@ public class BookController {
 
             request.getServletContext().setAttribute("bookTypes",booktypes);
 
-            mv.setViewName("/index");
+            mv.setViewName("index");
         return mv;
     }
 }

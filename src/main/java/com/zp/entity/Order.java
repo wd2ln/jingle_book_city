@@ -102,4 +102,9 @@ public class Order {
     public void setoAddress(String oAddress) {
         this.oAddress = oAddress == null ? null : oAddress.trim();
     }
+
+
+    public void addbooks(Book book) {
+
+    }
 }
