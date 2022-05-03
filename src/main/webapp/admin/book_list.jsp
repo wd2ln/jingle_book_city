@@ -52,9 +52,9 @@
 
         <c:forEach items="${p.list }" var="g">
             <tr>
-                <td><p>${g.bid }</p></td>
-                <td><p><a href="#" target="_blank"><img src="../${g.bcover}" width="100px" height="100px"></a></p></td>
-                <td><p><a href="#" target="_blank">${g.bname}</a></p></td>
+                <td><p>${g.bId }</p></td>
+                <td><p><a href="#" target="_blank"><img src="../${g.bCover}" width="100px" height="100px"></a></p></td>
+                <td><p><a href="#" target="_blank">${g.bName}</a></p></td>
                 <td><p>${g.bmark}</p></td>
                 <td><p>${g.bprice}</p></td>
                 <td><p>${g.btname}</p></td>
@@ -62,32 +62,32 @@
                     <p>
                         <c:choose>
                             <c:when test="${g.isScroll }">
-                                <a class="btn btn-info" href="book_change.action?bid=${g.bid}&rtype=1&method=remove&page=${rtype}">移出条幅</a>
+                                <a class="btn btn-info" href="book_change.action?bid=${g.bId}&rtype=1&method=remove&page=${rtype}">移出条幅</a>
                             </c:when>
                             <c:otherwise>
-                                <a class="btn btn-primary" href="book_change.action?bid=${g.bid}&rtype=1&method=add&page=${rtype}">加入条幅</a>
+                                <a class="btn btn-primary" href="book_change.action?bid=${g.bId}&rtype=1&method=add&page=${rtype}">加入条幅</a>
                             </c:otherwise>
                         </c:choose>
                         <c:choose>
                             <c:when test="${g.isHot }">
-                                <a class="btn btn-info" href="book_change.action?bid=${g.bid}&rtype=2&method=remove&page=${rtype}">移出热销</a>
+                                <a class="btn btn-info" href="book_change.action?bid=${g.bId}&rtype=2&method=remove&page=${rtype}">移出热销</a>
                             </c:when>
                             <c:otherwise>
-                                <a class="btn btn-primary" href="book_change.action?bid=${g.bid}&rtype=2&method=add&page=${rtype}">加入热销</a>
+                                <a class="btn btn-primary" href="book_change.action?bid=${g.bId}&rtype=2&method=add&page=${rtype}">加入热销</a>
                             </c:otherwise>
                         </c:choose>
                         <c:choose>
                             <c:when test="${g.isNew }">
-                                <a class="btn btn-info" href="book_change.action?bid=${g.bid}&rtype=3&method=remove&page=${rtype}">移出新品</a>
+                                <a class="btn btn-info" href="book_change.action?bid=${g.bId}&rtype=3&method=remove&page=${rtype}">移出新品</a>
                             </c:when>
                             <c:otherwise>
-                                <a class="btn btn-primary" href="book_change.action?bid=${g.bid}&rtype=3&method=add&page=${rtype}">加入新品</a>
+                                <a class="btn btn-primary" href="book_change.action?bid=${g.bId}&rtype=3&method=add&page=${rtype}">加入新品</a>
                             </c:otherwise>
                         </c:choose>
 
                     </p>
-                    <a class="btn btn-success" href="book_edit_show.action?bid=${g.bid }">修改</a>
-                    <a class="btn btn-danger" href="book_delete.action?bid=${g.bid}&rtype=${rtype}">删除</a>
+                    <a class="btn btn-success" href="book_edit_show.action?bid=${g.bId }">修改</a>
+                    <a class="btn btn-danger" href="book_delete.action?bid=${g.bId}&rtype=${rtype}">删除</a>
                 </td>
             </tr>
         </c:forEach>

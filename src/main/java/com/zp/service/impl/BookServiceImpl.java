@@ -16,23 +16,10 @@ public class BookServiceImpl implements BookService {
    @Autowired
    private BookMapper bookDao;
 
-    @Override
-    public List<Book> sel(int rtype, Integer pageNumber, Integer pageSize) {
+   @Override
+   public Object byId(Integer bId) {
+      Book g = bookDao.selectByPrimaryKey(bId);
 
-        PageHelper.startPage(pageNumber,pageSize);
-
-
-        BookExample example = new BookExample();
-
-        BookExample.Criteria criteria = example.createCriteria();
-
-        criteria.andBtIdEqualTo(rtype);
-
-        List<Book> books = bookDao.selectByExample(example);
-       // String bid = books.get(0).getBid();
-        //System.out.printf();
-        PageInfo<Book> info = new PageInfo<>(books);
-
-        return info.getList();
-    }
+      return g;
+   }
 }
