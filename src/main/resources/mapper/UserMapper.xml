@@ -92,7 +92,7 @@
     u_id, u_name, u_pwd,
       u_realname, u_redgt, u_role,
       u_mark, u_phone, u_address
-      from user where u_id=#{uId,jdbcType=INTEGER},
+      from user where u_id=#{uId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByExample" parameterType="com.zp.entity.UserExample">
     delete from user

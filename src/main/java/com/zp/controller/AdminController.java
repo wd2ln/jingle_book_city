@@ -104,4 +104,24 @@ public class AdminController {
         //跳转操作
         return modelAndView;
     }
+    @RequestMapping("user_edit_show")
+    public ModelAndView show(
+            HttpServletRequest request,
+            Integer uId){
+        ModelAndView modelAndView = new ModelAndView();
+        User user=adminService.show(uId);
+        System.out.println(user==null);
+        if (user!=null){
+            System.out.println("==========");
+            request.setAttribute("u",user);
+            modelAndView.setViewName("forward:/admin/user_edit.jsp");
+        }else {
+            System.out.println("------------");
+
+            modelAndView.setViewName("redirect:user_list?pageNumber=1");
+
+        }
+        //跳转操作
+        return modelAndView;
+    }
 }

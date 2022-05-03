@@ -72,6 +72,17 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public User show(Integer uId) {
+        try {
+            User user = userMapper.selectByKey(uId);
+            return user;
+        }catch (Exception e){
+            System.out.println("获取失败");
+            return null;
+        }
+    }
+
+    @Override
     public Boolean del(Integer uId) {
         try {
             int i = userMapper.deleteByUid(uId);

@@ -14,4 +14,6 @@ public interface AdminService {
     PageVo findAlls(Integer pageNumber);
 
     Boolean del(Integer uId);
+
+    User show(Integer uId);
 }
