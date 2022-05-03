@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 public class AdminController {
     @Autowired
     private AdminService adminService;
-//    @RequestMapping("user_add")
+    @RequestMapping("user_add")
     public ModelAndView add1( User user,
                             HttpServletResponse response,
                             HttpServletRequest request){

@@ -43,6 +43,20 @@ public class BookTypeController {
         return mv;
     }
 
+    @GetMapping("type_delete")
+    public ModelAndView type_delete(@RequestParam Integer btid,
+                                    ModelAndView mv,
+                                    HttpServletRequest request){
+        ResultVO vo=booktypeService.typeDel(btid);
+
+        request.setAttribute("bookTypes",vo.getData());
+
+        UpdateBookType(request);
+
+        mv.setViewName("redirect:type_list");
+        return mv;
+    }
+
     private void UpdateBookType(HttpServletRequest request) {
         //如果context域中没有数据，再次获取
         if (request.getServletContext().getAttribute("bookTypes")==null){

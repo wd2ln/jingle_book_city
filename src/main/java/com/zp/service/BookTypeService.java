@@ -8,4 +8,6 @@ public interface BookTypeService {
     ResultVO typeList();
 
     ResultVO typeAdd(String tbname);
+
+    ResultVO typeDel(Integer btid);
 }

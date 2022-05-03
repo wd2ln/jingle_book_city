@@ -45,4 +45,18 @@ public class BookTypeServiceImpl implements BookTypeService {
 
         return vo;
     }
+
+    @Override
+    public ResultVO typeDel(Integer btid) {
+        int i = bookTypeDao.deleteByPrimaryKey(btid);
+        ResultVO vo;
+
+        if (i<0){
+            vo =new ResultVO(400,"删除失败",false,null);
+        }else {
+            vo =new ResultVO(200,"删除成功",true, null);
+        }
+
+        return vo;
+    }
 }
