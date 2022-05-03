@@ -6,6 +6,7 @@ spring:
     url: jdbc:mysql://localhost:3306/bookshop?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: ssj123
+    password: asd
   mvc:
     servlet:
       load-on-startup: 1
