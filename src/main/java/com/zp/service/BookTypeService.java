@@ -10,4 +10,6 @@ public interface BookTypeService {
     ResultVO typeAdd(String tbname);
 
     ResultVO typeDel(Integer btid);
+
+    ResultVO typeUpdate(Integer btid, String btname);
 }

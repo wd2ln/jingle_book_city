@@ -24,12 +24,12 @@
 
     <br><br>
 
-    <form class="form-horizontal" action="type_update.action" method="post">
-        <input type="hidden" name="btid" value="${param.btid }">
+    <form class="form-horizontal" action="/admin/type_update" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="btId" value="${param.btId }">
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">类目名称</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="btname" value="${param.btname }" required="required">
+                <input type="text" class="form-control" id="input_name" name="btName" value="${param.btName }" required="required">
             </div>
         </div>
         <div class="form-group">

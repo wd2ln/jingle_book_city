@@ -31,4 +31,6 @@ public interface BooktypeMapper {
     int updateByPrimaryKey(Booktype record);
 
     int insertType(String tbname);
+
+    int updateType(Integer btid, String btname);
 }

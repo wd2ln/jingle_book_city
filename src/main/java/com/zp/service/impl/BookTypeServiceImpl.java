@@ -59,4 +59,19 @@ public class BookTypeServiceImpl implements BookTypeService {
 
         return vo;
     }
+
+    @Override
+    public ResultVO typeUpdate(Integer btid, String btname) {
+        int i=bookTypeDao.updateType(btid,btname);
+        ResultVO vo;
+
+        if (i<0){
+            vo =new ResultVO(400,"修改失败",false,null);
+        }else {
+            vo =new ResultVO(200,"修改成功",true, null);
+        }
+
+        return vo;
+
+    }
 }

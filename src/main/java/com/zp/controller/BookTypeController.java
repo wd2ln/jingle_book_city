@@ -57,6 +57,21 @@ public class BookTypeController {
         return mv;
     }
 
+    @RequestMapping("type_update")
+    public ModelAndView type_update(Integer btId,
+                                     String btName,
+                                    ModelAndView mv,
+                                    HttpServletRequest request){
+        ResultVO vo=booktypeService.typeUpdate(btId,btName);
+
+        request.setAttribute("bookTypes",vo.getData());
+
+        UpdateBookType(request);
+
+        mv.setViewName("redirect:type_list");
+        return mv;
+    }
+
     private void UpdateBookType(HttpServletRequest request) {
         //如果context域中没有数据，再次获取
         if (request.getServletContext().getAttribute("bookTypes")==null){

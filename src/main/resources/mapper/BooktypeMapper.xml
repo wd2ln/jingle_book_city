@@ -4,6 +4,10 @@
   <insert id="insertType" useGeneratedKeys="true" parameterType="String">
     insert into booktype(bt_name) values (#{btname})
   </insert>
+  <update id="updateType">
+    update booktype set bt_name=#{btname}
+        where bt_id=#{btid}
+  </update>
   <resultMap id="BaseResultMap" type="com.zp.entity.Booktype">
     <id column="bt_id" jdbcType="INTEGER" property="btId" />
     <result column="bt_name" jdbcType="VARCHAR" property="btName" />
