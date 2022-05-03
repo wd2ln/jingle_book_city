@@ -26,7 +26,7 @@ public class AdminServiceImpl implements AdminService {
         user.setuMark("普通用户");
         user.setuRole(1);
         //加密密码
-        user.setuPwd(JasyptUtil.jia(user.getuPwd()));
+        //user.setuPwd(JasyptUtil.jia(user.getuPwd()));
         //插入
         int i;
         try {
