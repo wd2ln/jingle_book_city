@@ -67,7 +67,7 @@
 
     <br>
     <jsp:include page="/page.jsp">
-        <jsp:param value="user_list.action" name="url"/>
+        <jsp:param value="user_list" name="url"/>
     </jsp:include>
     <br>
 </div>
