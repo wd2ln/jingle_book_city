@@ -57,7 +57,7 @@
 
                         </c:when>
                         <c:otherwise>
-                            <li><a href="order_list.action" <c:if test="${param.flag==5 }">class="active"</c:if>>我的订单</a></li>
+                            <li><a href="order_list" <c:if test="${param.flag==5 }">class="active"</c:if>>我的订单</a></li>
                             <li><a href="user_center.jsp" <c:if test="${param.flag==4 }">class="active"</c:if>>个人中心</a></li>
                             <li><a href="logout.action" >退出</a></li>
                             <c:if test="${user.isadmin}">

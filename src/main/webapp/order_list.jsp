@@ -60,24 +60,24 @@
             <c:forEach items="${orderList }" var="order">
 
                 <tr>
-                    <td><p>${order.oid }</p></td>
-                    <td><p>${order.ototal }</p></td>
+                    <td><p>${order.oId }</p></td>
+                    <td><p>${order.oTotal }</p></td>
                     <td>
                         <c:forEach items="${order.itemList }" var="item">
-                            <p>${item.book.bname }(${item.oiprice }) x ${item.oiamount }</p>
+                            <p>${item.book.bName }(${item.oiPrice }) x ${item.oiAmount }</p>
                         </c:forEach>
 
                     </td>
                     <td>
-                        <p>${order.orealname }</p>
-                        <p>${order.ophone }</p>
-                        <p>${order.oaddress }</p>
+                        <p>${order.oRealname }</p>
+                        <p>${order.oPhone }</p>
+                        <p>${order.oAddress }</p>
                     </td>
                     <td>
                         <p>
-                            <c:if test="${order.ostatus==2 }"><span style="color:red;">已付款</span></c:if>
-                            <c:if test="${order.ostatus==3 }"><span style="color:green;">已发货</span></c:if>
-                            <c:if test="${order.ostatus==4 }"><span style="color:black;">已完成</span></c:if>
+                            <c:if test="${order.oStatus==2 }"><span style="color:red;">已付款</span></c:if>
+                            <c:if test="${order.oStatus==3 }"><span style="color:green;">已发货</span></c:if>
+                            <c:if test="${order.oStatus==4 }"><span style="color:black;">已完成</span></c:if>
 
 
                         </p>
@@ -85,13 +85,13 @@
                     <td>
                         <p>
 
-                            <c:if test="${order.opaytype==1 }">微信</c:if>
-                            <c:if test="${order.opaytype==2 }">支付宝</c:if>
-                            <c:if test="${order.opaytype==3 }">货到付款</c:if>
+                            <c:if test="${order.oPaytype==1 }">微信</c:if>
+                            <c:if test="${order.oPaytype==2 }">支付宝</c:if>
+                            <c:if test="${order.oPaytype==3 }">货到付款</c:if>
 
                         </p>
                     </td>
-                    <td><p>${order.odatetime }</p></td>
+                    <td><p>${order.oDatetime }</p></td>
                 </tr>
 
             </c:forEach>
