@@ -1,6 +1,7 @@
 package com.zp;
 
 import com.zp.util.TowListIsOne;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,5 +33,8 @@ public class Tests {
         Boolean one = TowListIsOne.isOne(a, b);
         System.out.println(one);
     }
-
+@Test
+    public void te(){
+    System.out.println(1000076==1000076);
+}
 }

@@ -12,4 +12,8 @@ public interface BookService {
     Book selBookId(Integer bId, Order order);
 
     User getUserInfo(Integer user);
+
+    void insertOrder(Order order);
+
+    Book sell(Integer bId);
 }
