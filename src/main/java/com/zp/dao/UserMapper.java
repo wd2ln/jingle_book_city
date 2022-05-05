@@ -5,6 +5,7 @@ import com.zp.entity.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Repository
 public interface UserMapper {
@@ -21,4 +22,10 @@ public interface UserMapper {
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
     int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+
+    int find(@RequestParam("uName") String uName);
+
+    //void addUser(User user);
+
+
 }

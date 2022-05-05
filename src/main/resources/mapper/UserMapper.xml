@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zp.dao.UserMapper">
+  <select id="find" resultType="int" parameterType="String">
+    select count(*) from user where u_name=  #{uName,jdbcType=VARCHAR}
+  </select>
+<!--  <insert id="addUser" parameterType="User">-->
+<!--    insert into user (u_name, u_pwd, u_realname, u_redgt, u_role, u_mark, u_phone, u_address)-->
+<!--    values (#{uName},#{uPwd},#{uRealname},#{uRedgt},#{uRole},#{uMark},#{uPhone},#{uAddress});-->
+<!--  </insert>-->
+  <select id="updatePwd" resultType="String" parameterType="int">
+    select u_pwd from user where u_id=#{value}
+  </select>
   <resultMap id="BaseResultMap" type="com.zp.entity.User">
     <result column="u_id" jdbcType="INTEGER" property="uId" />
     <result column="u_name" jdbcType="VARCHAR" property="uName" />

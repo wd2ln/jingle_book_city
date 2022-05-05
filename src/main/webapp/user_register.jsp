@@ -37,28 +37,28 @@
             <c:if test="${!empty msg }">
                 <div class="alert alert-danger">${msg }</div>
             </c:if>
-            <form action="register.action" method="post">
+            <form action="register" method="post">
                 <div class="register-top-grid">
                     <h3>注册新用户</h3>
                     <div class="input">
                         <span>用户名 <label style="color:red;">*</label></span>
-                        <input type="text" name="uname" placeholder="请输入用户名" required="required">
+                        <input type="text" name="uName" placeholder="请输入用户名" required="required">
                     </div>
                     <div class="input">
                         <span>真实姓名 <label style="color:red;">*</label></span>
-                        <input type="text" name="urealname" placeholder="请输入真实姓名" required="required">
+                        <input type="text" name="uRealname" placeholder="请输入真实姓名" required="required">
                     </div>
                     <div class="input">
                         <span>密码 <label style="color:red;">*</label></span>
-                        <input type="password" name="upwd" placeholder="请输入密码" required="required">
+                        <input type="password" name="uPwd" placeholder="请输入密码" required="required">
                     </div>
                     <div class="input">
                         <span>收货电话<label></label></span>
-                        <input type="text" name="uphone" placeholder="请输入收货电话">
+                        <input type="text" name="uPhone" placeholder="请输入收货电话">
                     </div>
                     <div class="input">
                         <span>收货地址<label></label></span>
-                        <input type="text" name="uaddress" placeholder="请输入收货地址">
+                        <input type="text" name="uAddress" placeholder="请输入收货地址">
                     </div>
                     <div class="clearfix"> </div>
                 </div>
