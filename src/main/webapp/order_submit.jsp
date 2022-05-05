@@ -40,26 +40,26 @@
             <div class="row">
                 <label class="control-label col-md-1">收货人</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="name" value="${user.urealname }" style="height:auto;padding:10px;" readonly="readonly" required="required"><br>
+                    <input type="text" class="form-control" name="name" value="${user.uRealname }" style="height:auto;padding:10px;" readonly="readonly" required="required"><br>
                 </div>
             </div>
             <div class="row">
                 <label class="control-label col-md-1">收货电话</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="phone" value="${user.uphone }" style="height:auto;padding:10px;" readonly="readonly" required="required"><br>
+                    <input type="text" class="form-control" name="phone" value="${user.uPhone }" style="height:auto;padding:10px;" readonly="readonly" required="required"><br>
                 </div>
             </div>
             <div class="row">
                 <label class="control-label col-md-1">收货地址</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="address" value="${user.uaddress }" style="height:auto;padding:10px;" readonly="readonly" required="required"><br>
+                    <input type="text" class="form-control" name="address" value="${user.uAddress }" style="height:auto;padding:10px;" readonly="readonly" required="required"><br>
                 </div>
             </div>
 
             <br><hr><br>
 
             <h2>选择支付方式</h2>
-            <h3>支付金额: ${order.ototal }</h3><br><br>
+            <h3>支付金额: ${order.oTotal }</h3><br><br>
 
 
             <div class="col-sm-6 col-md-4 col-lg-3 ">
