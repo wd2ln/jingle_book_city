@@ -12,6 +12,8 @@ import com.zp.vo.BookVo;
 import com.zp.vo.PageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,39 @@ public class AdminOrderServiceImpl implements AdminOrderService {
     private OrderMapper orderMapper;
     @Autowired
     private BookMapper bookMapper;
+    @Override
+    public Boolean del(String oId) {
+        try {
+            int del = orderitemMapper.del(oId);
+            if (del>0?true:false){
+                int i = orderMapper.deleteByPrimaryKey(oId);
+                if (i>0){
+                    return true;
+                }
+                return false;
+            }
+
+        }catch (Exception e){
+            return false;
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean updateStatus(String oId, Integer oStatus) {
+
+        try {
+
+            int i = orderMapper.updateByZi(oId, oStatus);
+            if (i>0){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
     @Override
     public PageVo orderLists(Integer pageNumber, Integer oStatus) {
         //设置参数

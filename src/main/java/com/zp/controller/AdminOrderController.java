@@ -28,4 +28,24 @@ public class AdminOrderController {
         //跳转操作order_list
         return modelAndView;
     }
+    @RequestMapping("order_status_change")
+    public ModelAndView orderStatus(
+            String oId, Integer oStatus	){
+
+        ModelAndView modelAndView = new ModelAndView();
+        adminOrderService.updateStatus(oId,oStatus);
+        modelAndView.setViewName("forward:order_list?pageNumber=1&ostatus="+oStatus);
+        //跳转操作order_list
+        return modelAndView;
+    }
+    @RequestMapping("order_delete")
+    public ModelAndView orderDelete(
+            String oId	){
+
+        ModelAndView modelAndView = new ModelAndView();
+        adminOrderService.del(oId);
+        modelAndView.setViewName("forward:order_list?pageNumber=1&oStatus=1");
+        //跳转操作order_list
+        return modelAndView;
+    }
 }

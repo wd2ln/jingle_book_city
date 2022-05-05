@@ -13,6 +13,7 @@ public interface OrderitemMapper {
     int deleteByExample(OrderitemExample example);
 
     int deleteByPrimaryKey(Integer oiId);
+    int del(String oId);
 
     int insert(Orderitem record);
 

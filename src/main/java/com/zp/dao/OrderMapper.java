@@ -30,4 +30,5 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+    int updateByZi(String oId, Integer oStatus);
 }

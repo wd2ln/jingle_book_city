@@ -85,7 +85,7 @@
                     <c:if test="${order.oStatus==3 }">
                         <a class="btn btn-warning" href="order_status_change?oId=${order.oId}&oStatus=4">完成</a>
                     </c:if>
-                    <a class="btn btn-danger" href="order_delete?oId=${order.oId}&oStatus=${oStatus}">删除</a>
+                    <a class="btn btn-danger" href="order_delete?oId=${order.oId}">删除</a>
                 </td>
             </tr>
         </c:forEach>
