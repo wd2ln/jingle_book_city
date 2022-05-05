@@ -13,7 +13,7 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li ><a href="order_list.action?pageNumber=1&ostatus=1">订单管理</a></li>
+                <li ><a href="/admin/order_list?pageNumber=1&oStatus=2">订单管理</a></li>
                 <li ><a href="/admin/user_list?pageNumber=1">客户管理</a></li>
                 <li ><a href="book_list.action?pageNumber=1&rtype=0">商品管理</a></li>
                 <li ><a href="/admin/type_list">类目管理</a></li>

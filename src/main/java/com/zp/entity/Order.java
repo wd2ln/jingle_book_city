@@ -1,15 +1,54 @@
 package com.zp.entity;
 
 import java.util.ArrayList;
+import com.zp.vo.BookVo;
+
 import java.util.Date;
 import java.util.List;
 
 public class Order {
     private String oId;
+    private List<String> bName;
+
+    public List<String>  getbName() {
+        return bName;
+    }
+
+    public void setbName(List<String>  bName) {
+        this.bName = bName;
+    }
 
     private Float oTotal;
 
     private Integer oAmount;
+//    private List<String> btName;
+    private List<Orderitem> itemList;
+
+    public List<Orderitem> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Orderitem> itemList) {
+        this.itemList = itemList;
+    }
+
+//    public List<String>  getBtName() {
+//        return btName;
+//    }
+//
+//    public void setBtName(List<String>  btName) {
+//        this.btName = btName;
+//    }
+
+    public Float getOiPrice() {
+        return oiPrice;
+    }
+
+    public void setOiPrice(Float oiPrice) {
+        this.oiPrice = oiPrice;
+    }
+
+    private Float oiPrice;
 
     private Integer oStatus;
 

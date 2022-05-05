@@ -72,6 +72,7 @@ public class AdminServiceImpl implements AdminService {
         return pageVo;
     }
 
+
     @Override
     public Boolean updateInfo(User user) {
         UserExample userExample = new UserExample();

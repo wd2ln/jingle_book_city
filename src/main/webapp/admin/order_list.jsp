@@ -21,11 +21,11 @@
 
     <br>
     <ul role="tablist" class="nav nav-tabs">
-        <li <c:if test="${ostatus==1 }">class="active"</c:if> role="presentation"><a href="order_list.action?pageNumber=1&ostatus=1">全部订单</a></li>
-        <li <c:if test="${ostatus==5 }">class="active"</c:if> role="presentation"><a href="order_list.action?pageNumber=1&ostatus=5">未付款</a></li>
-        <li <c:if test="${ostatus==2 }">class="active"</c:if> role="presentation"><a href="order_list.action?pageNumber=1&ostatus=2">已付款</a></li>
-        <li <c:if test="${ostatus==3 }">class="active"</c:if> role="presentation"><a href="order_list.action?pageNumber=1&ostatus=3">配送中</a></li>
-        <li <c:if test="${ostatus==4 }">class="active"</c:if> role="presentation"><a href="order_list.action?pageNumber=1&ostatus=4">已完成</a></li>
+        <li <c:if test="${oStatus==1 }">class="active"</c:if> role="presentation"><a href="order_list?pageNumber=1&oStatus=1">全部订单</a></li>
+        <li <c:if test="${oStatus==5 }">class="active"</c:if> role="presentation"><a href="order_list?pageNumber=1&oStatus=5">未付款</a></li>
+        <li <c:if test="${oStatus==2 }">class="active"</c:if> role="presentation"><a href="order_list?pageNumber=1&oStatus=2">已付款</a></li>
+        <li <c:if test="${oStatus==3 }">class="active"</c:if> role="presentation"><a href="order_list?pageNumber=1&oStatus=3">配送中</a></li>
+        <li <c:if test="${oStatus==4 }">class="active"</c:if> role="presentation"><a href="order_list?pageNumber=1&oStatus=4">已完成</a></li>
     </ul>
 
     <br>
@@ -45,46 +45,47 @@
         </tr>
 
         <c:forEach items="${p.list }" var="order">
+
             <tr>
-                <td><p>${order.oid }</p></td>
-                <td><p>${order.ototal }</p></td>
+                <td><p>${order.oId }</p></td>
+              <td><p>${order.oTotal }</p></td>
                 <td>
                     <c:forEach items="${order.itemList }" var="item">
-                        <p>${item.book.bname }(${item.oiprice }) x ${item.oiamount}</p>
+                        <p>${item.book.bName }(${item.oiPrice }) x ${item.oiAmount}</p>
                     </c:forEach>
                 </td>
                 <td>
-                    <p>${order.orealname }</p>
-                    <p>${order.ophone }</p>
-                    <p>${order.oaddress }</p>
+                    <p>${order.oRealname }</p>
+                    <p>${order.oPhone }</p>
+                    <p>${order.oAddress }</p>
                 </td>
                 <td>
                     <p>
-                        <c:if test="${order.ostatus==2 }"><span style="color:red;">已付款</span></c:if>
-                        <c:if test="${order.ostatus==3 }"><span style="color:green;">已发货</span></c:if>
-                        <c:if test="${order.ostatus==4 }"><span style="color:black;">已完成</span></c:if>
+                        <c:if test="${order.oStatus==2 }"><span style="color:red;">已付款</span></c:if>
+                        <c:if test="${order.oStatus==3 }"><span style="color:green;">已发货</span></c:if>
+                        <c:if test="${order.oStatus==4 }"><span style="color:black;">已完成</span></c:if>
 
                     </p>
                 </td>
                 <td>
                     <p>
 
-                        <c:if test="${order.opaytype==1 }">微信</c:if>
-                        <c:if test="${order.opaytype==2 }">支付宝</c:if>
-                        <c:if test="${order.opaytype==3 }">货到付款</c:if>
+                        <c:if test="${order.oPaytype==1 }">微信</c:if>
+                        <c:if test="${order.oPaytype==2 }">支付宝</c:if>
+                        <c:if test="${order.oPaytype==3 }">货到付款</c:if>
 
                     </p>
                 </td>
-                <td><p>${order.orealname }</p></td>
-                <td><p>${order.odatetime }</p></td>
+                <td><p>${order.oRealname }</p></td>
+                <td><p>${order.oDatetime }</p></td>
                 <td>
-                    <c:if test="${order.ostatus==2 }">
-                        <a class="btn btn-success" href="order_status_change.action?oid=${order.oid}&ostatus=3">发货</a>
+                    <c:if test="${order.oStatus==2 }">
+                        <a class="btn btn-success" href="order_status_change?oId=${order.oId}&oStatus=3">发货</a>
                     </c:if>
-                    <c:if test="${order.ostatus==3 }">
-                        <a class="btn btn-warning" href="order_status_change.action?oid=${order.oid}&ostatus=4">完成</a>
+                    <c:if test="${order.oStatus==3 }">
+                        <a class="btn btn-warning" href="order_status_change?oId=${order.oId}&oStatus=4">完成</a>
                     </c:if>
-                    <a class="btn btn-danger" href="order_delete.action?oid=${order.oid}&ostatus=${ostatus}">删除</a>
+                    <a class="btn btn-danger" href="order_delete?oId=${order.oId}">删除</a>
                 </td>
             </tr>
         </c:forEach>
@@ -94,8 +95,8 @@
 
     <br>
     <jsp:include page="/page.jsp">
-        <jsp:param value="/admin/order_list.action" name="url"/>
-        <jsp:param value="&ostatus=${ostatus}" name="param"/>
+        <jsp:param value="/admin/order_list" name="url"/>
+        <jsp:param value="&oStatus=${oStatus}" name="param"/>
     </jsp:include>
     <br>
 </div>

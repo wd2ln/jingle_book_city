@@ -131,7 +131,8 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         adminService.updateInfo(user);
         modelAndView.setViewName("redirect:user_list?pageNumber=1");
-        //跳转操作
+        //跳转操
         return modelAndView;
     }
+
 }

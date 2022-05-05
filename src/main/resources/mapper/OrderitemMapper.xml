@@ -83,6 +83,14 @@
       order by ${orderByClause}
     </if>
   </select>
+<!--  查找指定oid-->
+  <select id="selectByOid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    * from orderitem
+    where o_id=#{oId,jdbcType=VARCHAR}
+
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -98,6 +106,10 @@
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
+  </delete>
+  <delete id="del" parameterType="java.lang.String">
+    delete from orderitem
+    where o_id=#{oId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.zp.entity.Orderitem">
     insert into orderitem (oi_id, oi_price, oi_amount, 

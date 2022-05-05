@@ -1,13 +1,26 @@
 package com.zp.entity;
 
+import java.util.List;
+
 public class Orderitem {
     private Integer oiId;
 
     private Float oiPrice;
 
     private Integer oiAmount;
+    private Book book;
+
+
 
     private Integer bId;
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
     private String oId;
 

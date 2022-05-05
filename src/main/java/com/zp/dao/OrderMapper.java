@@ -1,5 +1,6 @@
 package com.zp.dao;
 
+import com.zp.entity.BookOrderOrderitem;
 import com.zp.entity.Order;
 import com.zp.entity.OrderExample;
 import java.util.List;
@@ -23,7 +24,7 @@ public interface OrderMapper {
     List<Order> selectByExample(OrderExample example);
 
     Order selectByPrimaryKey(String oId);
-
+    List<Order> selectByStatus(Integer ostatus);
     int updateByExampleSelective(@Param("record") Order record, @Param("example") OrderExample example);
 
     int updateByExample(@Param("record") Order record, @Param("example") OrderExample example);
@@ -35,4 +36,5 @@ public interface OrderMapper {
     List<Order> queryordersByuId(Integer uId);
 
     List<Orderitem> queryOrderItemByUidAndOid(String getoId);
+    int updateByZi(String oId, Integer oStatus);
 }
