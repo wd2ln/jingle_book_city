@@ -7,5 +7,8 @@ public interface UserService {
 
     boolean register(User user);
 
+    boolean updatePwd(int uId, String olduPwd, String uPwd);
+
+    boolean updatePhoneandAddress(int uId, String uPhone, String uAddress);
 
 }

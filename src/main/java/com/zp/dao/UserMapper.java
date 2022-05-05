@@ -25,7 +25,9 @@ public interface UserMapper {
 
     int find(@RequestParam("uName") String uName);
 
-    //void addUser(User user);
+    String updatePwd(int uId);
 
+    void updatePassword(int uId,String uPwd);
 
+    void updatePhoneAndAddress(@Param("uId") int uId,@Param("uPhone") String uPhone,@Param("uAddress") String uAddress);
 }

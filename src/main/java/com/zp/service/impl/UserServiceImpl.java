@@ -55,5 +55,28 @@ public class UserServiceImpl implements UserService {
         return false;
 }
 
-
+    @Override
+    public boolean updatePwd(int uId, String olduPwd, String uPwd) {
+        try {
+            String s = userMapper.updatePwd(uId);
+            if (!s.equals(JasyptUtil.jia(uPwd))){
+            userMapper.updatePassword(uId,JasyptUtil.jia(uPwd));
+            return true;
+        }else {
+            return false;
+        }
+        }catch (Exception e){
+            return false;
+        }
+    }
+    @Override
+    public boolean updatePhoneandAddress(int uId, String uPhone, String uAddress) {
+        try {
+            userMapper.updatePhoneAndAddress(uId,uPhone,uAddress);
+            return true;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
