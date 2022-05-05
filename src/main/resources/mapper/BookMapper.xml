@@ -15,6 +15,33 @@
     <result column="b_stock" jdbcType="INTEGER" property="bStock" />
     <result column="b_mark" jdbcType="VARCHAR" property="bMark" />
   </resultMap>
+  <resultMap id="BaseResultMap1" type="com.zp.entity.BookOrderOrderitem">
+    <id column="oi_id" jdbcType="INTEGER" property="oiId" />
+    <result column="oi_price" jdbcType="REAL" property="oiPrice" />
+    <result column="oi_amount" jdbcType="INTEGER" property="oiAmount" />
+    <result column="b_id" jdbcType="INTEGER" property="bId" />
+    <result column="o_id" jdbcType="VARCHAR" property="oId" />
+    <result column="b_isbn" jdbcType="VARCHAR" property="bIsbn" />
+    <result column="b_name" jdbcType="VARCHAR" property="bName" />
+    <result column="b_author" jdbcType="VARCHAR" property="bAuthor" />
+    <result column="b_publisher" jdbcType="VARCHAR" property="bPublisher" />
+    <result column="b_cover" jdbcType="VARCHAR" property="bCover" />
+    <result column="b_image1" jdbcType="VARCHAR" property="bImage1" />
+    <result column="b_image2" jdbcType="VARCHAR" property="bImage2" />
+    <result column="b_price" jdbcType="REAL" property="bPrice" />
+    <result column="bt_id" jdbcType="INTEGER" property="btId" />
+    <result column="b_stock" jdbcType="INTEGER" property="bStock" />
+    <result column="b_mark" jdbcType="VARCHAR" property="bMark" />
+    <result column="o_total" jdbcType="REAL" property="oTotal" />
+    <result column="o_amount" jdbcType="INTEGER" property="oAmount" />
+    <result column="o_status" jdbcType="INTEGER" property="oStatus" />
+    <result column="o_paytype" jdbcType="INTEGER" property="oPaytype" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="o_datetime" jdbcType="TIMESTAMP" property="oDatetime" />
+    <result column="o_realname" jdbcType="VARCHAR" property="oRealname" />
+    <result column="o_phone" jdbcType="VARCHAR" property="oPhone" />
+    <result column="o_address" jdbcType="VARCHAR" property="oAddress" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -74,9 +101,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    b_id, b_isbn, b_name, b_author, b_publisher, b_cover, b_image1, b_image2, b_price, 
+    b_id, b_isbn, b_name, b_author, b_publisher, b_cover, b_image1, b_image2, b_price,
     bt_id, b_stock, b_mark
   </sql>
+<!--  管理员查询所有订单-->
+  <select id="selectByStatus" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
+    SELECT * FROM `order` o
+    INNER JOIN orderitem oi
+     ON o.o_id=oi.o_id
+     <if test="oStatus != 1">
+       AND o.o_status= #{oStatus,jdbcType=INTEGER}
+     </if>
+
+     INNER JOIN book b ON oi.b_id=b.b_id
+  </select>
+<!--  查询指定订单书名-->
+  <select id="selectByBname" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from book
+    where b_id=#{bId,jdbcType=INTEGER}
+  </select>
   <select id="selectByExample" parameterType="com.zp.entity.BookExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

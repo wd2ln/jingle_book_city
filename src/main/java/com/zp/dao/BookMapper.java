@@ -3,6 +3,8 @@ package com.zp.dao;
 import com.zp.entity.Book;
 import com.zp.entity.BookExample;
 import java.util.List;
+
+import com.zp.entity.BookOrderOrderitem;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +21,9 @@ public interface BookMapper {
     int insertSelective(Book record);
 
     List<Book> selectByExample(BookExample example);
+
+    List<BookOrderOrderitem> selectByStatus(Integer ostatus);
+    Book selectByBname(Integer bId);
 
     Book selectByPrimaryKey(Integer bId);
 

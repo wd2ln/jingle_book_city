@@ -10,11 +10,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PageVo {
+public class PageVo<T> {
     private Integer pageSize;
     private Integer pageNumber;
     private Integer totalPage;
     private Integer totalCount;
-
-    private List<User> list;
+    private List<BookVo> itemList;
+    private List<T> list;
 }

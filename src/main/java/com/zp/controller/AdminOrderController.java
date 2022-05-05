@@ -1,0 +1,31 @@
+package com.zp.controller;
+
+import com.zp.entity.BookOrderOrderitem;
+import com.zp.service.AdminOrderService;
+import com.zp.vo.PageVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+@RestController
+@RequestMapping("admin")
+public class AdminOrderController {
+    @Autowired
+    private AdminOrderService adminOrderService;
+    @RequestMapping("order_list")
+    public ModelAndView orderlist(
+            HttpServletRequest request, Integer pageNumber, Integer oStatus	){
+        request.setAttribute("ostatus",oStatus);
+        ModelAndView modelAndView = new ModelAndView();
+        PageVo pageVo = adminOrderService.orderLists(pageNumber, oStatus);
+        request.setAttribute("p",pageVo);
+        if (false){
+            return null;
+        }
+        modelAndView.setViewName("forward:/admin/order_list.jsp");
+        //跳转操作order_list
+        return modelAndView;
+    }
+}

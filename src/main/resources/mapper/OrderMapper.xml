@@ -75,6 +75,18 @@
     o_id, o_total, o_amount, o_status, o_paytype, u_id, o_datetime, o_realname, o_phone, 
     o_address
   </sql>
+<!--  查询订单-->
+  <select id="selectByStatus" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT DISTINCT o.* FROM `order` o
+    INNER JOIN orderitem oi
+    ON o.o_id=oi.o_id
+    <if test="oStatus != 1">
+      AND o.o_status= #{oStatus,jdbcType=INTEGER}
+    </if>
+
+    INNER JOIN book b ON oi.b_id=b.b_id
+  </select>
+
   <select id="selectByExample" parameterType="com.zp.entity.OrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

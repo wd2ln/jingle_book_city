@@ -19,4 +19,5 @@ public interface AdminService {
     User show(Integer uId);
 
     Boolean updateInfo(User user);
+
 }
