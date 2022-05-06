@@ -23,56 +23,56 @@
 
     <br><br>
     <form class="form-horizontal" action="book_update.action" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="bid" value="${g.bid }"/>
-        <input type="hidden" name="bcover" value="${g.bcover }"/>
-        <input type="hidden" name="bimage1" value="${g.bimage1 }"/>
-        <input type="hidden" name="bimage2" value="${g.bimage2 }"/>
+        <input type="hidden" name="bId" value="${g.bId }"/>
+        <input type="hidden" name="bCover" value="${g.bCover }"/>
+        <input type="hidden" name="bImage1" value="${g.bImage1 }"/>
+        <input type="hidden" name="bimage2" value="${g.bImage2 }"/>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">名称</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bname" value="${g.bname}" required="required">
+                <input type="text" class="form-control" id="input_name" name="bname" value="${g.bName}" required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">ISBN编号</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bisbn"  value="${g.bisbn}" required="required">
+                <input type="text" class="form-control" id="input_name" name="bisbn"  value="${g.bIsbn}" required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">作者</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bauthor"  value="${g.bauthor}" required="required">
+                <input type="text" class="form-control" id="input_name" name="bauthor"  value="${g.bAuthor}" required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">出版社</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bpublisher"  value="${g.bpublisher}" required="required">
+                <input type="text" class="form-control" id="input_name" name="bpublisher"  value="${g.bPublisher}" required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_file" class="col-sm-1 control-label">封面图片</label>
-            <div class="col-sm-6"><img src="../${g.bcover }" width="100" height="100"/>
+            <div class="col-sm-6"><img src="../${g.bCover }" width="100" height="100"/>
                 <input type="file" name="bcover"  id="input_file" required="required">推荐尺寸: 500 * 500
             </div>
         </div>
         <div class="form-group">
             <label for="input_file" class="col-sm-1 control-label">详情图片1</label>
-            <div class="col-sm-6"><img src="../${g.bimage1 }" width="100" height="100"/>
+            <div class="col-sm-6"><img src="../${g.bImage1 }" width="100" height="100"/>
                 <input type="file" name="bimage1"  id="input_file" required="required">推荐尺寸: 500 * 500
             </div>
         </div>
         <div class="form-group">
             <label for="input_file" class="col-sm-1 control-label">详情图片2</label>
-            <div class="col-sm-6"><img src="../${g.bimage2 }" width="100" height="100"/>
+            <div class="col-sm-6"><img src="../${g.bImage2 }" width="100" height="100"/>
                 <input type="file" name="bimage2"  id="input_file" required="required">推荐尺寸: 500 * 500
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">价格</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bprice" value="${g.bprice}">
+                <input type="text" class="form-control" id="input_name" name="bprice" value="${g.bPrice}">
             </div>
         </div>
         <div class="form-group">
@@ -81,7 +81,7 @@
                 <select class="form-control" id="select_topic" name="btid">
 
                     <c:forEach items="${bookTypes }" var="t">
-                        <option <c:if test="${t.btid==g.btid }">selected="selected"</c:if> value="${t.btid }">${t.btname }</option>
+                        <option <c:if test="${t.btId==g.btId }">selected="selected"</c:if> value="${t.btId }">${t.btName }</option>
                     </c:forEach>
 
                 </select>
@@ -90,13 +90,13 @@
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">库存</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bstock" value="${g.bstock}">
+                <input type="text" class="form-control" id="input_name" name="bstock" value="${g.bStock}">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">介绍</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bmark" value="${g.bmark}">
+                <input type="text" class="form-control" id="input_name" name="bmark" value="${g.bMark}">
             </div>
         </div>
 

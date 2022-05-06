@@ -38,6 +38,28 @@ public class Book {
 
     private String bMark;
 
+    private boolean isScroll;
+    private boolean isHot;
+    private boolean isNew;
+
+    public boolean getIsScroll() {
+        return isScroll;
+    }
+    public void setScroll(boolean isScroll) {
+        this.isScroll = isScroll;
+    }
+    public boolean getIsHot() {
+        return isHot;
+    }
+    public void setHot(boolean isHot) {
+        this.isHot = isHot;
+    }
+    public boolean getIsNew() {
+        return isNew;
+    }
+    public void setNew(boolean isNew) {
+        this.isNew = isNew;
+    }
     public Integer getbId() {
         return bId;
     }
@@ -132,5 +154,23 @@ public class Book {
 
     public void setbMark(String bMark) {
         this.bMark = bMark == null ? null : bMark.trim();
+    }
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bid=" + bId +
+                ", bisbn='" + bIsbn + '\'' +
+                ", bname='" + bName + '\'' +
+                ", bauthor='" + bAuthor + '\'' +
+                ", bpublisher='" + bPublisher + '\'' +
+                ", bcover='" + bCover + '\'' +
+                ", bimage1='" + bImage1 + '\'' +
+                ", bimage2='" + bImage2 + '\'' +
+                ", bprice=" + bPrice +
+                ", btid=" + btId +
+                ", btname='" + btName + '\'' +
+                ", bstock=" + bStock +
+                ", bmark='" + bMark + '\'' +
+                '}';
     }
 }
