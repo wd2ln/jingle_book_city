@@ -26,10 +26,10 @@
     <br>
 
     <ul role="tablist" class="nav nav-tabs">
-        <li <c:if test="${rtype==0 }">class="active"</c:if> role="presentation"><a href="book_list.action?pageNumber=1&rtype=0">全部商品</a></li>
-        <li <c:if test="${rtype==1 }">class="active"</c:if> role="presentation"><a href="book_list.action?pageNumber=1&rtype=1">条幅推荐</a></li>
-        <li <c:if test="${rtype==2 }">class="active"</c:if> role="presentation"><a href="book_list.action?pageNumber=1&rtype=2">热销推荐</a></li>
-        <li <c:if test="${rtype==3 }">class="active"</c:if> role="presentation"><a href="book_list.action?pageNumber=1&rtype=3">新品推荐</a></li>
+        <li <c:if test="${rtype==0 }">class="active"</c:if> role="presentation"><a href="book_list?pageNumber=1&rtype=0">全部商品</a></li>
+        <li <c:if test="${rtype==1 }">class="active"</c:if> role="presentation"><a href="book_list?pageNumber=1&rtype=1">条幅推荐</a></li>
+        <li <c:if test="${rtype==2 }">class="active"</c:if> role="presentation"><a href="book_list?pageNumber=1&rtype=2">热销推荐</a></li>
+        <li <c:if test="${rtype==3 }">class="active"</c:if> role="presentation"><a href="book_list?pageNumber=1&rtype=3">新品推荐</a></li>
     </ul>
 
 
@@ -55,39 +55,39 @@
                 <td><p>${g.bId }</p></td>
                 <td><p><a href="#" target="_blank"><img src="../${g.bCover}" width="100px" height="100px"></a></p></td>
                 <td><p><a href="#" target="_blank">${g.bName}</a></p></td>
-                <td><p>${g.bmark}</p></td>
-                <td><p>${g.bprice}</p></td>
-                <td><p>${g.btname}</p></td>
+                <td><p>${g.bMark}</p></td>
+                <td><p>${g.bPrice}</p></td>
+                <td><p>${g.btName}</p></td>
                 <td>
                     <p>
                         <c:choose>
                             <c:when test="${g.isScroll }">
-                                <a class="btn btn-info" href="book_change.action?bid=${g.bId}&rtype=1&method=remove&page=${rtype}">移出条幅</a>
+                                <a class="btn btn-info" href="book_change?bid=${g.bId}&rtype=1&method=remove&page=${rtype}">移出条幅</a>
                             </c:when>
                             <c:otherwise>
-                                <a class="btn btn-primary" href="book_change.action?bid=${g.bId}&rtype=1&method=add&page=${rtype}">加入条幅</a>
+                                <a class="btn btn-primary" href="book_change?bid=${g.bId}&rtype=1&method=add&page=${rtype}">加入条幅</a>
                             </c:otherwise>
                         </c:choose>
                         <c:choose>
                             <c:when test="${g.isHot }">
-                                <a class="btn btn-info" href="book_change.action?bid=${g.bId}&rtype=2&method=remove&page=${rtype}">移出热销</a>
+                                <a class="btn btn-info" href="book_change?bid=${g.bId}&rtype=2&method=remove&page=${rtype}">移出热销</a>
                             </c:when>
                             <c:otherwise>
-                                <a class="btn btn-primary" href="book_change.action?bid=${g.bId}&rtype=2&method=add&page=${rtype}">加入热销</a>
+                                <a class="btn btn-primary" href="book_change?bid=${g.bId}&rtype=2&method=add&page=${rtype}">加入热销</a>
                             </c:otherwise>
                         </c:choose>
                         <c:choose>
                             <c:when test="${g.isNew }">
-                                <a class="btn btn-info" href="book_change.action?bid=${g.bId}&rtype=3&method=remove&page=${rtype}">移出新品</a>
+                                <a class="btn btn-info" href="book_change?bid=${g.bId}&rtype=3&method=remove&page=${rtype}">移出新品</a>
                             </c:when>
                             <c:otherwise>
-                                <a class="btn btn-primary" href="book_change.action?bid=${g.bId}&rtype=3&method=add&page=${rtype}">加入新品</a>
+                                <a class="btn btn-primary" href="book_change?bid=${g.bId}&rtype=3&method=add&page=${rtype}">加入新品</a>
                             </c:otherwise>
                         </c:choose>
 
                     </p>
-                    <a class="btn btn-success" href="book_edit_show.action?bid=${g.bId }">修改</a>
-                    <a class="btn btn-danger" href="book_delete.action?bid=${g.bId}&rtype=${rtype}">删除</a>
+                    <a class="btn btn-success" href="book_edit_show?bid=${g.bId }">修改</a>
+                    <a class="btn btn-danger" href="book_delete?bid=${g.bId}&rtype=${rtype}">删除</a>
                 </td>
             </tr>
         </c:forEach>
@@ -97,7 +97,7 @@
 
     <br>
     <jsp:include page="/page.jsp">
-        <jsp:param value="book_list.action" name="url"/>
+        <jsp:param value="book_list" name="url"/>
         <jsp:param value="&rtype=${rtype }" name="param"/>
     </jsp:include>
     <br>

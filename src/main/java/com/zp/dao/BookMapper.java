@@ -29,4 +29,8 @@ public interface BookMapper {
     int updateByPrimaryKeySelective(Book record);
 
     int updateByPrimaryKey(Book record);
+
+    int queryCountOfBooks();
+
+    List<Book> queryBooks(@Param("i") int i, @Param("i1") int i1);
 }
