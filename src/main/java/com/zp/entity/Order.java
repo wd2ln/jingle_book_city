@@ -1,5 +1,6 @@
 package com.zp.entity;
 
+import java.util.ArrayList;
 import com.zp.vo.BookVo;
 
 import java.util.Date;
@@ -143,6 +144,17 @@ public class Order {
         this.oAddress = oAddress == null ? null : oAddress.trim();
     }
 
+
+
+    private List<Orderitem> itemList = new ArrayList<Orderitem>();
+
+    public List<Orderitem> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Orderitem> itemList) {
+        this.itemList = itemList;
+    }
 
     public void addbooks(Book book) {
 

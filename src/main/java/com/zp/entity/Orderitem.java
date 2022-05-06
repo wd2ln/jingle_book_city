@@ -63,4 +63,15 @@ public class Orderitem {
     public void setoId(String oId) {
         this.oId = oId == null ? null : oId.trim();
     }
+
+
+    private Book book;
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 }

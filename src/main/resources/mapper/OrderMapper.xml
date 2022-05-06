@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zp.dao.OrderMapper">
+  <select id="queryordersByuId" parameterType="Integer" resultType="Order">
+    select o_id oId,o_total oTotal,o_amount oAmount,o_status oStatus,o_paytype oPaytype,u_id uId,
+           o_realname oRealname,o_phone oPhone,o_address oAddress,o_datetime oDatetime from `order`
+    where u_id=#{value}
+  </select>
+  <select id="queryOrderItemByUidAndOid" resultType="Orderitem" parameterType="String">
+    select oi_id oiId,oi_price oiPrice,oi_amount oiAmount,b_id bId,o_id oId
+    from orderitem where o_id=#{0}
+  </select>
+
   <resultMap id="BaseResultMap" type="com.zp.entity.Order">
     <id column="o_id" jdbcType="VARCHAR" property="oId" />
     <result column="o_total" jdbcType="REAL" property="oTotal" />

@@ -4,6 +4,8 @@ import com.zp.entity.BookOrderOrderitem;
 import com.zp.entity.Order;
 import com.zp.entity.OrderExample;
 import java.util.List;
+
+import com.zp.entity.Orderitem;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -30,5 +32,9 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    List<Order> queryordersByuId(Integer uId);
+
+    List<Orderitem> queryOrderItemByUidAndOid(String getoId);
     int updateByZi(String oId, Integer oStatus);
 }

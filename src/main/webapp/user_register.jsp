@@ -37,7 +37,7 @@
             <c:if test="${!empty msg }">
                 <div class="alert alert-danger">${msg }</div>
             </c:if>
-            <form action="register.action" method="post">
+            <form action="register" method="post">
                 <div class="register-top-grid">
                     <h3>注册新用户</h3>
                     <div class="input">

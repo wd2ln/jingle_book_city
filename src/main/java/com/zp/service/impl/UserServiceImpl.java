@@ -8,6 +8,7 @@ import com.zp.util.JasyptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -35,5 +36,47 @@ public class UserServiceImpl implements UserService {
             return null;
         }
         return null;
+    }
+
+    @Override
+    public boolean register(User user) {
+        user.setuPwd(JasyptUtil.jia(user.getuPwd()));
+        try {
+            int i = userMapper.find(user.getuName());
+            System.out.println(user.getuName());
+                    if (i>=1)
+                        return false;
+                    user.setuRedgt(new Date());
+                    userMapper.insert(user);
+                    return true;
+            }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+}
+
+    @Override
+    public boolean updatePwd(int uId, String olduPwd, String uPwd) {
+        try {
+            String s = userMapper.updatePwd(uId);
+            if (!s.equals(JasyptUtil.jia(uPwd))){
+            userMapper.updatePassword(uId,JasyptUtil.jia(uPwd));
+            return true;
+        }else {
+            return false;
+        }
+        }catch (Exception e){
+            return false;
+        }
+    }
+    @Override
+    public boolean updatePhoneandAddress(int uId, String uPhone, String uAddress) {
+        try {
+            userMapper.updatePhoneAndAddress(uId,uPhone,uAddress);
+            return true;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }
