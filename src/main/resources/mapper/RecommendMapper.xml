@@ -10,7 +10,7 @@
     where t.bt_id=b.bt_id and b.b_id=r.b_id and r_type=#{rType,jdbcType=INTEGER} order by b.b_id limit #{i,jdbcType=INTEGER},#{i1,jdbcType=INTEGER}
   </select>
   <select id="queryBookByRtypeAndBid" resultType="int">
-    select count(*) from recommend where r_type=#{0} and b_id =#{1};
+    select count(*) from recommend where r_type=#{i,jdbcType=INTEGER} and b_id =#{getbId,jdbcType=INTEGER};
   </select>
   <resultMap id="BaseResultMap" type="com.zp.entity.Recommend">
     <id column="r_id" jdbcType="INTEGER" property="rId" />
