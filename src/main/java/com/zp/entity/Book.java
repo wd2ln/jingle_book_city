@@ -10,6 +10,16 @@ public class Book {
 
     private String bName;
 
+    public String getBtName() {
+        return btName;
+    }
+
+    public void setBtName(String btName) {
+        this.btName = btName;
+    }
+
+    private String btName;
+
     private String bAuthor;
 
     private String bPublisher;

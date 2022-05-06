@@ -112,11 +112,21 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    u_id, u_name, u_pwd,
+      u_realname, u_redgt, u_role,
+      u_mark, u_phone, u_address
+      from user where u_id=#{uId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByExample" parameterType="com.zp.entity.UserExample">
     delete from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
+  </delete>
+  <delete id="deleteByUid" parameterType="java.lang.Integer">
+    delete from user where u_id=#{uId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zp.entity.User">
     insert into user (u_id, u_name, u_pwd, 

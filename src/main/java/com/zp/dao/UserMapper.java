@@ -12,12 +12,14 @@ public interface UserMapper {
     long countByExample(UserExample example);
 
     int deleteByExample(UserExample example);
+    int deleteByUid(Integer uId);
 
     int insert(User record);
 
     int insertSelective(User record);
 
     List<User> selectByExample(UserExample example);
+    User selectByKey(Integer uId);
 
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
