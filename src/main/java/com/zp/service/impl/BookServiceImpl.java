@@ -30,7 +30,10 @@ public class BookServiceImpl implements BookService {
    private OrderMapper orderMapper;
    @Autowired
    private UserMapper userMapper;
-   private static Integer hh;
+   @Autowired
+    private RecommendMapper recommendDao;
+
+    private static Integer hh;
     @Override
     public List<Book> sel(int rtype, Integer pageNumber, Integer pageSize) {
 
@@ -40,18 +43,9 @@ public class BookServiceImpl implements BookService {
         BookExample example = new BookExample();
 
         BookExample.Criteria criteria = example.createCriteria();
-=======
-   private RecommendMapper recommendDao;
 
-   @Override
-   public Object byId(Integer bId) {
-      Book g = bookDao.selectByPrimaryKey(bId);
->>>>>>> yu
 
-      return g;
-   }
 
-<<<<<<< HEAD
         List<Book> books = bookDao.selectByExample(example);
         // String bid = books.get(0).getBid();
         //System.out.printf();
@@ -70,7 +64,12 @@ public class BookServiceImpl implements BookService {
 
         return bookMapper.selectByPrimaryKey(bId);
     }
+    @Override
+    public Object byId(Integer bId) {
+        Book g = bookDao.selectByPrimaryKey(bId);
 
+        return g;
+    }
     @Override
     public User getUserInfo(Integer user) {
         User user1 = userMapper.selectByKey(user);
@@ -228,7 +227,6 @@ public class BookServiceImpl implements BookService {
         }
         return null;
     }
-=======
    @Override
    public Boolean addBook(Book b) {
       try {
@@ -272,5 +270,4 @@ public class BookServiceImpl implements BookService {
       p.setList((List)list);
       return p;
    }
->>>>>>> yu
 }
