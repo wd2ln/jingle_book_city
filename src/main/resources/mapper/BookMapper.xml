@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zp.dao.BookMapper">
+    <delete id="delBook">
+        delete from book where b_id=#{bid}
+    </delete>
     <insert id="addBook" parameterType="com.zp.entity.Book">
         insert into book( b_name,b_isbn, b_author, b_publisher, b_cover, b_image1, b_image2, b_price, bt_id,
                          b_stock, b_mark)

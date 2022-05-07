@@ -35,4 +35,6 @@ public interface BookMapper {
     List<Book> queryBooks(@Param("i") int i, @Param("i1") int i1);
 
     int addBook(Book book);
+
+    void delBook(Integer bid);
 }

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zp.dao.RecommendMapper">
+<!--  修改推荐图书-->
+  <insert id="addRecommendBook">
+    insert into recommend(r_type, b_id) VALUES (#{rtype},#{bid})
+  </insert>
+<!--  移出推荐图书-->
+  <delete id="delRecommendBook">
+    delete from recommend where b_id=#{bid} and r_type=#{rtype}
+  </delete>
   <select id="queryRecommendCountOfBooksByTypeID" resultType="int" parameterType="int">
     select count(*) from recommend where r_type=#{rType,jdbcType=INTEGER}
   </select>

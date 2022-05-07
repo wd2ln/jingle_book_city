@@ -171,4 +171,25 @@ if (aBoolean!=null){
 
         return "/admin/book_list";
     }
+
+    @RequestMapping("book_change")
+    public String book_change(Integer bid,
+                              Integer rtype,
+                              String method,
+                              Integer page){
+        if (method.equals("add")){
+            bookService.addRecommendBook(bid,rtype);
+        }else {
+            bookService.delRecommendBook(bid,rtype);
+        }
+
+        return "redirect:book_list?pageNumber=1&rtype="+page;
+    }
+    @RequestMapping("book_delete")
+    public String book_delete(Integer bid,
+                              Integer rtype){
+        bookService.delBook(bid);
+
+        return "redirect:book_list?pageNumber=1&rtype="+rtype;
+    }
 }

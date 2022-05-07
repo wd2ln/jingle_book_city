@@ -75,4 +75,43 @@ public class BookServiceImpl implements BookService {
         p.setList((List) list);
         return p;
     }
+
+    @Override
+    public ResultVO addRecommendBook(Integer bid, Integer rtype) {
+        int i = recommendDao.addRecommendBook(bid,rtype);
+        ResultVO vo;
+
+        if (i < 0) {
+            vo = new ResultVO(400, "添加失败", false, null);
+        } else {
+            vo = new ResultVO(200, "添加成功", true, null);
+        }
+
+        return vo;
+    }
+
+    @Override
+    public ResultVO delRecommendBook(Integer bid, Integer rtype) {
+        int i = recommendDao.delRecommendBook(bid,rtype);
+        ResultVO vo;
+
+        if (i < 0) {
+            vo = new ResultVO(400, "移出失败", false, null);
+        } else {
+            vo = new ResultVO(200, "移出成功", true, null);
+        }
+
+        return vo;
+    }
+
+    @Override
+    public Boolean delBook(Integer bid) {
+        try {
+            bookDao.delBook(bid);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
 }

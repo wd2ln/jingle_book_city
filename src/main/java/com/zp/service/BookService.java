@@ -14,4 +14,9 @@ public interface BookService {
 
     PageVO queryBook(Integer pageNumber, Integer rtyper);
 
+    ResultVO addRecommendBook(Integer bid, Integer rtype);
+
+    ResultVO delRecommendBook(Integer bid, Integer rtype);
+
+    Boolean delBook(Integer bid);
 }
