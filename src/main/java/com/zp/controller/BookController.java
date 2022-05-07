@@ -25,13 +25,13 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("admin")
+//@RequestMapping("admin")
 public class BookController {
 
     @Autowired
     private BookService bookService;
 
-    @RequestMapping("book_edit_show")
+    @RequestMapping("/admin/book_edit_show")
     public String book_edit_show(Integer bid,
                                  HttpServletRequest request) {
         request.setAttribute("g", bookService.byId(bid));
@@ -110,7 +110,7 @@ public class BookController {
 //
 //        return "redirect:book_list?pageNumber=1&rtype=1";
 //    }
-    @RequestMapping("book_add")
+    @RequestMapping("/admin/book_add")
     public String addBook(Books books,
                           @RequestPart("bCover") MultipartFile bCover,
                           @RequestPart("bImage1") MultipartFile bImage1,
@@ -151,7 +151,7 @@ if (aBoolean!=null){
         return "redirect:book_list?pageNumber=1&rtype=1";
     }
 
-    @RequestMapping("book_list")
+    @RequestMapping("/admin/book_list")
     public String book_list(Integer pageNumber,
                             Integer rtype,
                             HttpServletRequest request) {
@@ -172,7 +172,7 @@ if (aBoolean!=null){
         return "/admin/book_list";
     }
 
-    @RequestMapping("book_change")
+    @RequestMapping("/admin/book_change")
     public String book_change(Integer bid,
                               Integer rtype,
                               String method,
@@ -185,7 +185,7 @@ if (aBoolean!=null){
 
         return "redirect:book_list?pageNumber=1&rtype="+page;
     }
-    @RequestMapping("book_delete")
+    @RequestMapping("/admin/book_delete")
     public String book_delete(Integer bid,
                               Integer rtype){
         bookService.delBook(bid);
