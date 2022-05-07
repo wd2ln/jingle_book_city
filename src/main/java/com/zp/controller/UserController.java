@@ -64,7 +64,7 @@ public class UserController {
             cookie.setMaxAge(0);
             response.addCookie(cookie);
         }
-
+        System.out.println();
         if (session!=null){
             session.invalidate();
         }
