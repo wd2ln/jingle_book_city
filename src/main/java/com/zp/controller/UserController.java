@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import com.zp.util.JasyptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +57,18 @@ public class UserController {
         }
     }
     @RequestMapping("logout")
-    public ModelAndView logout(HttpServletRequest request){
-        request.getSession().removeAttribute("user");
+    public ModelAndView logout(HttpServletRequest request,HttpServletResponse response){
+        HttpSession session = request.getSession(false);
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
+        }
+
+        if (session!=null){
+            session.invalidate();
+        }
+
         return new ModelAndView("redirect:/user_login.jsp");
     }
     @RequestMapping("change_password")
