@@ -38,5 +38,10 @@ public interface BookMapper {
     int queryCountOfBooks();
 
     List<Book> queryBooks(@Param("i") int i, @Param("i1") int i1);
+<<<<<<< HEAD
     int searchBookKeyword(String keyword);
+=======
+
+    int addBook(Book book);
+>>>>>>> e5628ada48bd04d703bd5b8779b6ef79c5c44026
 }
