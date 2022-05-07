@@ -71,18 +71,24 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="select_topic" class="col-sm-1 control-label">类目</label>
+            <label for="input_name" class="col-sm-1 control-label">类别</label>
             <div class="col-sm-6">
-                <select class="form-control" id="select_topic" name="btid">
-
-                    <c:forEach items="${bookTypes }" var="t">
-                        <option value="${t.btId }">${t.btName }</option>
-                    </c:forEach>
-
-
-                </select>
+                <input type="text" class="form-control" id="input_name" name="btid" >
             </div>
         </div>
+<%--        <div class="form-group">--%>
+<%--            <label for="select_topic" class="col-sm-1 control-label">类目</label>--%>
+<%--            <div class="col-sm-6">--%>
+<%--                <select class="form-control" id="select_topic" name="btid">--%>
+
+<%--                    <c:forEach items="${bookTypes }" var="t">--%>
+<%--                        <option value="${t.btId }">${t.btName }</option>--%>
+<%--                    </c:forEach>--%>
+
+
+<%--                </select>--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">库存</label>
             <div class="col-sm-6">

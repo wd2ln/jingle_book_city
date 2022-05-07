@@ -49,7 +49,7 @@ public class BookController {
                             b.setBtName(item.getString("utf-8"));
 //                            System.out.println(b.getBtName());
                             break;
-                        case "bIsbn":
+                        case "bisbn":
                             b.setbIsbn(item.getString("utf-8"));
                             break;
                         case "bauthor":
@@ -103,7 +103,7 @@ public class BookController {
             System.out.println(e.getMessage());
         }
 
-        return "redirect:book_list?pageNumber=1&rtype=0";
+        return "redirect:book_list?pageNumber=1&rtype=1";
     }
 
     @RequestMapping("book_list")
