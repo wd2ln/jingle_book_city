@@ -9,6 +9,9 @@
            b_cover bcover,b_image1 bimage1,b_image2 bimage2,b_price bprice,b_stock bstock,b_mark bmark from booktype t,book b
     where t.bt_id=b.bt_id order by b_id limit #{i,jdbcType=INTEGER},#{i1,jdbcType=INTEGER}
   </select>
+<select id="searchBookKeyword" parameterType="String">
+  select * from book where b_name like #{bName,jdbcType=VARCHAR}
+</select>
   <resultMap id="BaseResultMap" type="com.zp.entity.Book">
     <id column="b_id" jdbcType="INTEGER" property="bId" />
     <result column="b_isbn" jdbcType="VARCHAR" property="bIsbn" />

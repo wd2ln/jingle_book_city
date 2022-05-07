@@ -11,6 +11,10 @@ import com.zp.entity.BookExample;
 import com.zp.service.BookService;
 import com.zp.vo.PageVO;
 import org.apache.ibatis.annotations.Param;
+import com.zp.entity.Book;
+import com.zp.entity.BookExample;
+import com.zp.service.BookService;
+import com.zp.vo.PageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -270,4 +274,16 @@ public class BookServiceImpl implements BookService {
       p.setList((List)list);
       return p;
    }
+    public Book find(int bId) {
+        return bookDao.selectByPrimaryKey(bId);
+    }
+
+    @Override
+    public PageVo searchBook(int pageNumber, String keyword) {
+        PageVo p = new PageVo();
+        p.setPageNumber(pageNumber);
+        int count=0;
+        count=bookDao.searchBookKeyword(keyword);
+        return null;
+    }
 }

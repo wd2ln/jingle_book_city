@@ -4,6 +4,8 @@ import com.zp.entity.Book;
 import com.zp.entity.Order;
 import com.zp.entity.User;
 import com.zp.vo.PageVO;
+import com.zp.vo.PageVo;
+
 
 import java.util.List;
 
@@ -22,4 +24,7 @@ public interface BookService {
     void insertOrder(Order order);
 
     Book sell(Integer bId);
+    Book find(int bId);
+
+    PageVo searchBook(int pageNumber, String keyword);
 }

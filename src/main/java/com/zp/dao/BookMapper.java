@@ -35,7 +35,11 @@ public interface BookMapper {
 
     int updateByPrimaryKey(Book record);
 
+<<<<<<< HEAD
     int queryCountOfBooks();
 
     List<Book> queryBooks(@Param("i") int i, @Param("i1") int i1);
+=======
+    int searchBookKeyword(String keyword);
+>>>>>>> zsj
 }

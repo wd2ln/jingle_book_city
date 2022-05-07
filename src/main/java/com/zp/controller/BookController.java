@@ -4,14 +4,19 @@ import com.zp.entity.Book;
 import com.zp.entity.Booktype;
 import com.zp.service.BookService;
 import com.zp.service.BookTypeService;
+<<<<<<< HEAD
 import com.zp.vo.PageVO;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+=======
+import com.zp.vo.PageVo;
+>>>>>>> zsj
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+<<<<<<< HEAD
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.FileOutputStream;
@@ -21,6 +26,14 @@ import java.util.List;
 
 @Controller
 @RequestMapping("admin")
+=======
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@RestController
+>>>>>>> zsj
 public class BookController {
     @Autowired
     private BookService bookService;
@@ -130,5 +143,29 @@ public class BookController {
 
 
         return "/admin/book_list";
+    }
+    @RequestMapping("book_detail")
+    public ModelAndView findBook(int bId,HttpServletRequest request){
+            Book f = bookService.find(bId);
+            request.setAttribute("f",f);
+            return new ModelAndView("forward:book_detail.jsp");
+    }
+    @RequestMapping("search_books")
+    public ModelAndView searchBook(int pageNumber,String keyword,HttpServletRequest request){
+        if (pageNumber<=0){
+                pageNumber=1;
+        }
+        PageVo p=bookService.searchBook(pageNumber,keyword);
+        if (p.getTotalPage()==0){
+            p.setTotalPage(1);
+            p.setPageNumber(1);
+        }else {
+            if (pageNumber>=p.getTotalPage()+1){
+                p=bookService.searchBook(p.getTotalPage(),keyword);
+            }
+        }
+        request.setAttribute("p",p);
+        request.setAttribute("keyword",keyword);
+        return new ModelAndView("forward:book_search.jsp");
     }
 }
