@@ -29,9 +29,9 @@
 
 
 <!--header-->
-<jsp:include page="header.jsp">
-    <jsp:param name="flag" value="9"></jsp:param>
-</jsp:include>
+<%--<jsp:include page="header.jsp">--%>
+<%--    <jsp:param name="flag" value="9"></jsp:param>--%>
+<%--</jsp:include>--%>
 <!--//header-->
 
 

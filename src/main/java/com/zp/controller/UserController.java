@@ -29,9 +29,15 @@ public class UserController {
         user.setuPwd(uPwd);
         User user1 = userService.login(user);
         if (user1!=null){
+            if (user1.getuRole()==0){
+                user1.setIsadmin(true);
+            }else {
+                user1.setIsadmin(false);
+
+            }
             session.setAttribute("user",user1);
             request.setAttribute("msg","登录成功");
-            return new ModelAndView("redirect:/index.jsp");
+            return new ModelAndView("redirect:/index");
         }else {
             request.setAttribute("failMsg","用户名不存在！");
             return new ModelAndView("forward:user_login.jsp");
