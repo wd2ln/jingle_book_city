@@ -48,7 +48,7 @@ public class OrderController {
 
 
     @RequestMapping("books_buy")
-    public void AddBookToCart(@RequestParam("bId") Integer bId,
+    public void AddBookToCart(Integer bId,
                               HttpServletRequest request,
                               HttpServletResponse response) throws IOException {
             Order order=null;
@@ -69,14 +69,16 @@ public class OrderController {
                 order.setoPhone(user.getuPhone());
                 order.setoAddress(user.getuAddress());
                 order.setoDatetime(new Date());
+                bookService.insertOrder(order);
                 request.getSession().setAttribute("order",order);
             }
 
-
-             Book book = bookService.selBookId(bId,order);
-
+//             Book book = bookService.selBookId(bId,order);
+             Book book = bookService.sell(bId);
+        System.out.println(book);
             if (book.getbStock()>0){
                     order.addbooks(book);
+                bookService.selBookId(bId,order);
                     response.getWriter().println("ok");
             }else{
                 response.getWriter().print("fail");

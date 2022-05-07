@@ -19,6 +19,15 @@ public class Order {
     }
 
     private Float oTotal;
+    private String itemMap;
+
+    public String getItemMap() {
+        return itemMap;
+    }
+
+    public void setItemMap(String itemMap) {
+        this.itemMap = itemMap;
+    }
 
     private Integer oAmount;
 //    private List<String> btName;
@@ -146,15 +155,6 @@ public class Order {
 
 
 
-    private List<Orderitem> itemList = new ArrayList<Orderitem>();
-
-    public List<Orderitem> getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(List<Orderitem> itemList) {
-        this.itemList = itemList;
-    }
 
     public void addbooks(Book book) {
 

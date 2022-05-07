@@ -18,4 +18,8 @@ public interface BookService {
     Boolean addBook(Book b);
 
     PageVO queryBook(Integer pageNumber, Integer rtyper);
+
+    void insertOrder(Order order);
+
+    Book sell(Integer bId);
 }

@@ -30,6 +30,7 @@ public class BookServiceImpl implements BookService {
    private OrderMapper orderMapper;
    @Autowired
    private UserMapper userMapper;
+   private static Integer hh;
     @Override
     public List<Book> sel(int rtype, Integer pageNumber, Integer pageSize) {
 
@@ -60,6 +61,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public void insertOrder(Order order) {
+        int i = orderMapper.insert(order);
+    }
+
+    @Override
+    public Book sell(Integer bId) {
+
+        return bookMapper.selectByPrimaryKey(bId);
+    }
+
+    @Override
     public User getUserInfo(Integer user) {
         User user1 = userMapper.selectByKey(user);
         if (user1!=null){
@@ -68,12 +80,21 @@ public class BookServiceImpl implements BookService {
         return null;
     }
 
+    /**
+     *
+     * @param bId 书id
+     * @param order 订单对象
+     * @return
+     */
     @Override
     public Book selBookId(Integer bId, Order order) {
         OrderitemExample orderitemExample = new OrderitemExample();
         orderitemExample.createCriteria()
-                .andBIdEqualTo(bId);
+                .andOIdEqualTo(order.getoId());
+        //获取指定订单号的所有订单
         List<Orderitem> orderitems = orderitemMapper.selectByExample(orderitemExample);
+        System.out.println("11111111111111111111111111111111111111111111111111111");
+        System.out.println(orderitems.size());
         //验证是否有订单
         if (orderitems.size()<1){
             //没有创建
@@ -83,64 +104,126 @@ public class BookServiceImpl implements BookService {
             bookExample.createCriteria()
                     .andBIdEqualTo(bId);
             List<Book> books = bookMapper.selectByExample(bookExample);
+            System.out.println("22222222222222222222222222222222222222222222222");
+
             //生成新订单
             orderitem.setOiAmount(1);
             orderitem.setbId(bId);
             orderitem.setOiPrice(books.get(0).getbPrice());
             orderitem.setoId(order.getoId());
             //生成订单号
-            orderitem.setoId(new SimpleDateFormat("YYYYMMDDHHmmss").format(new Date()));
-            int insert = orderitemMapper.insert(orderitem);
+            orderitem.setoId(order.getoId());
+            int insert = orderitemMapper.insertSelective(orderitem);
+            System.out.println("33333333333333333333333333333333333333333333333");
+
             //更新order
-            //增加数量
             //orderitem的数量
             Integer oiAmount = orderitem.getOiAmount();
-            //order的数量
-            Integer amount = order.getoAmount();
+
 
             //价格变化
             //orderitem的价格
             Float oiPrice = orderitem.getOiPrice();
-            //order的价格
-            Float oiPrice1 = order.getOiPrice();
-//执行更改order操作
             Order order1 = new Order();
-            order1.setoAmount(++oiAmount);
-            order1.setoTotal(oiPrice1+oiPrice);
+            order1.setoAmount(oiAmount);
+            order1.setOiPrice(oiPrice);
+            order1.setoTotal(oiPrice*oiAmount);
             OrderExample orderExample = new OrderExample();
             orderExample.createCriteria()
-                    .andOIdEqualTo(orderitem.getoId());
+                    .andOIdEqualTo(order.getoId());
             orderMapper.updateByExampleSelective(order1,orderExample);
-        }else {
-            //遍历查到的订单
-            for (int i = 0; i < orderitems.size(); i++) {
-                //增加数量
-                //orderitem的数量
-                Integer oiAmount = orderitems.get(i).getOiAmount();
-                //order的数量
-                Integer amount = order.getoAmount();
+            System.out.println("4444444444444444444444444444444444");
 
-                //价格变化
+        }else {
+             //hh=0;
+            Float oiPrice=null;
+            Integer oiAmount=null;
+            String oid=null;
+            Integer bid=null;
+            //同一个用户多个订单判断
+            for (int i = 0; i < orderitems.size(); i++) {
+
+                //获取订单的书名，订单号
+                 bid = orderitems.get(i).getbId();
+                 oid = orderitems.get(i).getoId();
+//                System.out.println(bid);
+//                System.out.println(bId);
+//                System.out.println(bid==bId);
+//                System.out.println("..............");
+                int k=bid;
+                int l=bId;
+//                System.out.println(k);
+//                System.out.println(l);
+//                System.out.println(l==k);
+                //同一订单，同一书名
+                if (l==k){
+                    System.out.println("找到了");
+                    hh=1;
+                    oiPrice = orderitems.get(i).getOiPrice();
+                    oiAmount = orderitems.get(i).getOiAmount();
+                    break;
+                }else {
+                    hh=0;
+                }
+
+            }
+            System.out.println("hh=="+hh);
+            if (hh==1){
+                System.out.println(hh+"pppppppppppppppppp");
                 //orderitem的价格
-                Float oiPrice = orderitems.get(i).getOiPrice();
+               // oiPrice = orderitems.get(i).getOiPrice();
                 //order的价格
                 Float oiPrice1 = order.getOiPrice();
-
-                //执行更改orderitem操作
+                if (oiPrice1==null){
+                    oiPrice1=0F;
+                }
+                if (oiPrice==null){
+                    oiPrice=0F;
+                }
+                //oiAmount = orderitems.get(i).getOiAmount();
+                //order的数量
+                Integer amount = order.getoAmount();
                 OrderitemExample orderitemExample1 = new OrderitemExample();
                 orderitemExample1.createCriteria()
-                        .andOIdEqualTo(orderitems.get(i).getoId());
+                        .andOIdEqualTo(oid)
+                .andBIdEqualTo(bId);
+                //通过循环得到每条记录的总价
+                float totle=0F;
+                for (Orderitem orderitem : orderitems) {
+                    totle += orderitem.getOiAmount() * orderitem.getOiPrice();
+                }
+                //获取书的价格
+                Book book = bookMapper.selectByPrimaryKey(bId);
+
                 Orderitem orderitem = new Orderitem();
                 orderitem.setOiAmount(++oiAmount);
                 orderitemMapper.updateByExampleSelective(orderitem,orderitemExample1);
-                //执行更改order操作
                 Order order1 = new Order();
                 order1.setoAmount(++oiAmount);
-                order1.setoTotal(oiPrice1+oiPrice);
+                order1.setoTotal(totle+book.getbPrice());
                 OrderExample orderExample = new OrderExample();
                 orderExample.createCriteria()
-                        .andOIdEqualTo(orderitems.get(i).getoId());
+                        .andOIdEqualTo(oid);
                 orderMapper.updateByExampleSelective(order1,orderExample);
+            }else {
+                //没有创建
+                Orderitem orderitem = new Orderitem();
+                //获取单价
+                BookExample bookExample = new BookExample();
+                bookExample.createCriteria()
+                        .andBIdEqualTo(bId);
+                List<Book> books = bookMapper.selectByExample(bookExample);
+                System.out.println("5555555555555555555555555555555555555");
+
+                //生成新订单
+                orderitem.setOiAmount(1);
+                orderitem.setbId(bId);
+                orderitem.setOiPrice(books.get(0).getbPrice());
+                orderitem.setoId(order.getoId());
+                //生成订单号
+//                    orderitem.setoId(order.getoId());
+                int insert = orderitemMapper.insertSelective(orderitem);
+                System.out.println("666666666666666666666666666666666666");
             }
         }
         return null;

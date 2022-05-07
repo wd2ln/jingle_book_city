@@ -30,11 +30,11 @@
 
 <div class="banner">
     <div class="container">
-        <h2 class="hdng"><a href="book_detail.action?bid=${scrollBook.bId}">${scrollBook.bName}</a><span></span></h2>
+        <h2 class="hdng"><a href="book_detail?bid=${scrollBook.bId}">${scrollBook.bName}</a><span></span></h2>
         <p>今日精选推荐</p>
         <a class="banner_a" href="javascript:;" onclick="buy(${scrollBook.bId})">立刻购买</a>
         <div class="banner-text">
-            <a href="book_detail.action?bid=${scrollBook.bId}">
+            <a href="book_detail?bid=${scrollBook.bId}">
                 <img src="${scrollBook.bCover}" alt="${scrollBook.bName}" width="350" height="350">
             </a>
         </div>

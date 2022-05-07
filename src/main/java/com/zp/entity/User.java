@@ -21,15 +21,15 @@ public class User {
 
     private String uAddress;
 
-    public String getIsadmin() {
+    public Boolean getIsadmin() {
         return isadmin;
     }
 
-    public void setIsadmin(String isadmin) {
+    public void setIsadmin(Boolean isadmin) {
         this.isadmin = isadmin;
     }
 
-    private String isadmin;
+    private Boolean isadmin;
 
     public Integer getuId() {
         return uId;

@@ -19,12 +19,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <h1 class="navbar-brand"><a href="index.action">叮当书城</a></h1>
+                <h1 class="navbar-brand"><a href="index">叮当书城</a></h1>
             </div>
             <!--navbar-header-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.action" <c:if test="${param.flag==1}">class="active"</c:if>>首页</a></li>
+                    <li><a href="index" <c:if test="${param.flag==1}">class="active"</c:if>>首页</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle <c:if test="${param.flag==2}">active</c:if>" data-toggle="dropdown">商品分类<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-2">
@@ -34,10 +34,10 @@
                                         <h4>商品分类</h4>
                                         <ul class="multi-column-dropdown">
 
-                                            <li><a class="list" href="booktypes_list.action?pageNumber=1&btId=-1">全部系列</a></li>
+                                            <li><a class="list" href="booktypes_list?pageNumber=1&btId=-1">全部系列</a></li>
 
                                             <c:forEach items="${bookTypes}" var="t">
-                                                <li><a class="list" href="booktypes_list.action?pageNumber=1&btId=${t.btId}">${t.btName}</a></li>
+                                                <li><a class="list" href="booktypes_list?pageNumber=1&btId=${t.btId}">${t.btName}</a></li>
                                             </c:forEach>
 
 
@@ -47,8 +47,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="recommend_books.action?rtype=2&pageNumber=1" <c:if test="${param.flag==3 && t==2}">class="active"</c:if>>热销</a></li>
-                    <li><a href="recommend_books.action?rtype=3&pageNumber=1" <c:if test="${param.flag==3 && t==3}">class="active"</c:if>>新品</a></li>
+                    <li><a href="recommend_books?rtype=2&pageNumber=1" <c:if test="${param.flag==3 && t==2}">class="active"</c:if>>热销</a></li>
+                    <li><a href="recommend_books?rtype=3&pageNumber=1" <c:if test="${param.flag==3 && t==3}">class="active"</c:if>>新品</a></li>
 
                     <c:choose>
                         <c:when test="${empty user }">
@@ -59,10 +59,11 @@
                         <c:otherwise>
                             <li><a href="order_list" <c:if test="${param.flag==5 }">class="active"</c:if>>我的订单</a></li>
                             <li><a href="user_center.jsp" <c:if test="${param.flag==4 }">class="active"</c:if>>个人中心</a></li>
+
                             <li><a href="logout" >退出</a></li>
-<%--                            <c:if test="${user.isadmin}">--%>
-<%--                                <li><a href="admin/index.jsp" target="_blank">后台管理</a></li>--%>
-<%--                            </c:if>--%>
+                            <c:if test="${user.isadmin==true}">
+                                <li><a href="admin/index.jsp" target="_blank">后台管理</a></li>
+                            </c:if>
                     </c:otherwise>
                     </c:choose>
 
@@ -75,7 +76,7 @@
             <div class="header-right search-box">
                 <a href="javascript:;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
                 <div class="search">
-                    <form class="navbar-form" action="search_books.action">
+                    <form class="navbar-form" action="search_books">
                         <input type="hidden" name="pageNumber" value="1"/>
                         <input type="text" class="form-control" name="keyword">
                         <button type="submit" class="btn btn-default <c:if test="${param.flag==7 }">active</c:if>" aria-label="Left Align">搜索</button>

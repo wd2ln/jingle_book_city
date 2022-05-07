@@ -128,17 +128,17 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.zp.entity.Order">
-    insert into order (o_id, o_total, o_amount, 
+    insert into `order` (o_id, o_total, o_amount,
       o_status, o_paytype, u_id, 
       o_datetime, o_realname, o_phone, 
       o_address)
-    values (#{oId,jdbcType=VARCHAR}, #{oTotal,jdbcType=REAL}, #{oAmount,jdbcType=INTEGER}, 
+    values (#{oId,jdbcType=VARCHAR}, #{oTotal,jdbcType=REAL}, #{oAmount,jdbcType=INTEGER},
       #{oStatus,jdbcType=INTEGER}, #{oPaytype,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, 
       #{oDatetime,jdbcType=TIMESTAMP}, #{oRealname,jdbcType=VARCHAR}, #{oPhone,jdbcType=VARCHAR}, 
       #{oAddress,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zp.entity.Order">
-    insert into order
+    insert into `order`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
         o_id,
@@ -211,7 +211,7 @@
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update order
+    update `order`
     <set>
       <if test="record.oId != null">
         o_id = #{record.oId,jdbcType=VARCHAR},
@@ -252,7 +252,7 @@
 UPDATE `order` set o_status=#{oStatus,jdbcType=INTEGER} WHERE o_id=#{oId,jdbcType=VARCHAR}
   </update>
   <update id="updateByExample" parameterType="map">
-    update order
+    update `order`
     set o_id = #{record.oId,jdbcType=VARCHAR},
       o_total = #{record.oTotal,jdbcType=REAL},
       o_amount = #{record.oAmount,jdbcType=INTEGER},

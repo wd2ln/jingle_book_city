@@ -36,6 +36,25 @@ public class Book {
 
     private Integer bStock;
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bId=" + bId +
+                ", bIsbn='" + bIsbn + '\'' +
+                ", bName='" + bName + '\'' +
+                ", btName='" + btName + '\'' +
+                ", bAuthor='" + bAuthor + '\'' +
+                ", bPublisher='" + bPublisher + '\'' +
+                ", bCover='" + bCover + '\'' +
+                ", bImage1='" + bImage1 + '\'' +
+                ", bImage2='" + bImage2 + '\'' +
+                ", bPrice=" + bPrice +
+                ", btId=" + btId +
+                ", bStock=" + bStock +
+                ", bMark='" + bMark + '\'' +
+                '}';
+    }
+
     private String bMark;
 
     private boolean isScroll;
