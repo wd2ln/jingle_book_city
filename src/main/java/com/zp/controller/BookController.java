@@ -1,12 +1,18 @@
 package com.zp.controller;
 
 import com.zp.entity.Book;
+import com.zp.entity.Booktype;
 import com.zp.service.BookService;
+import com.zp.service.BookTypeService;
+//<<<<<<< HEAD
 import com.zp.vo.PageVO;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+//=======
+//import com.zp.vo.PageVo;
+//>>>>>>> zsj
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,23 +25,28 @@ import java.util.Date;
 import java.util.List;
 
 
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 @Controller
 @RequestMapping("admin")
+//@RestController
 public class BookController {
-
     @Autowired
     private BookService bookService;
-
+    @Autowired
+    private BookTypeService bookTypeService;
     @RequestMapping("book_edit_show")
-    public String book_edit_show(Integer bid,
-                                 HttpServletRequest request) {
+    public String book_edit_show (Integer bid,
+                                  HttpServletRequest request){
         request.setAttribute("g", bookService.byId(bid));
 
         return "admin/book_edit";
     }
 
     @RequestMapping("book_add")
-    public String book_add(HttpServletRequest request) throws Exception {
+    public String book_add (HttpServletRequest request) throws Exception {
         DiskFileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
         try {
@@ -107,23 +118,52 @@ public class BookController {
     }
 
     @RequestMapping("book_list")
-    public String book_list(Integer pageNumber,
-                            Integer rtype,
-                            HttpServletRequest request) {
+    public String book_list (Integer pageNumber,
+                             Integer rtype,
+                             HttpServletRequest request) {
         if (pageNumber <= 0)
-            pageNumber=1;
-            PageVO p=bookService.queryBook(pageNumber,rtype);
+            pageNumber = 1;
+        PageVO p = bookService.queryBook(pageNumber, rtype);
+        if (p.getTotalPage() == 0) {
+            p.setTotalPage(1);
+            p.setPageNumber(1);
+        } else {
+            if (pageNumber >= p.getTotalPage() + 1) {
+                p = bookService.queryBook(rtype, p.getTotalPage());
+            }
+        }
+        request.setAttribute("p", p);
+        request.setAttribute("rtype", rtype);
+
+        //List<Booktype> booktypes = bookTypeService.select();
+
+        //request.getServletContext().setAttribute("bookTypes", booktypes);
+
+
+        return "/admin/book_list";
+    }
+    /*@RequestMapping("book_detail")
+    public ModelAndView findBook(int bId,HttpServletRequest request){
+            Book f = bookService.find(bId);
+            request.setAttribute("f",f);
+            return new ModelAndView("forward:book_detail.jsp");
+    }*/
+   /* @RequestMapping("search_books")
+    public ModelAndView searchBook(int pageNumber,String keyword,HttpServletRequest request){
+        if (pageNumber<=0){
+                pageNumber=1;
+        }
+        PageVo p=bookService.searchBook(pageNumber,keyword);
         if (p.getTotalPage()==0){
             p.setTotalPage(1);
             p.setPageNumber(1);
         }else {
             if (pageNumber>=p.getTotalPage()+1){
-                p=bookService.queryBook(rtype,p.getTotalPage());
+                p=bookService.searchBook(p.getTotalPage(),keyword);
             }
         }
         request.setAttribute("p",p);
-        request.setAttribute("rtype",rtype);
-
-            return "/admin/book_list";
-    }
+        request.setAttribute("keyword",keyword);
+        return new ModelAndView("forward:book_search.jsp");
+    }*/
 }
