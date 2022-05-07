@@ -25,55 +25,55 @@
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">名称</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bname"  required="required">
+                <input type="text" class="form-control" id="input_name" name="bName"  required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">ISBN编号</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bisbn"  required="required">
+                <input type="text" class="form-control" id="input_name" name="bIsbn"  required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">作者</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bauthor"  required="required">
+                <input type="text" class="form-control" id="input_name" name="bAuthor"  required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">出版社</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bpublisher"  required="required">
+                <input type="text" class="form-control" id="input_name" name="bPublisher"  required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_file" class="col-sm-1 control-label">封面图片</label>
             <div class="col-sm-6">
-                <input type="file" name="bcover"  id="input_file" required="required">推荐尺寸: 500 * 500
+                <input type="file" name="bCover"  id="input_file" required="required">推荐尺寸: 500 * 500
             </div>
         </div>
         <div class="form-group">
             <label for="input_file" class="col-sm-1 control-label">详情图片1</label>
             <div class="col-sm-6">
-                <input type="file" name="bimage1"  id="input_file" required="required">推荐尺寸: 500 * 500
+                <input type="file" name="bImage1"  id="input_file" required="required">推荐尺寸: 500 * 500
             </div>
         </div>
         <div class="form-group">
             <label for="input_file" class="col-sm-1 control-label">详情图片2</label>
             <div class="col-sm-6">
-                <input type="file" name="bimage2"  id="input_file" required="required">推荐尺寸: 500 * 500
+                <input type="file" name="bImage2"  id="input_file" required="required">推荐尺寸: 500 * 500
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">价格</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bprice" >
+                <input type="text" class="form-control" id="input_name" name="bPrice" >
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">类别</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="btid" >
+                <input type="text" class="form-control" id="input_name" name="btId" >
             </div>
         </div>
 <%--        <div class="form-group">--%>
@@ -92,13 +92,13 @@
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">库存</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bstock" >
+                <input type="text" class="form-control" id="input_name" name="bStock" >
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">介绍</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bmark" >
+                <input type="text" class="form-control" id="input_name" name="bMark" >
             </div>
         </div>
 
