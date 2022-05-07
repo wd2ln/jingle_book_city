@@ -50,11 +50,11 @@
                 <div class="cart-sec simpleCart_shelfItem">
                     <div class="cart-item cyc">
                         <a href="#">
-                            <img src="${item.value.book.bcover}" class="img-responsive">
+                            <img src="${item.value.book.bCover}" class="img-responsive">
                         </a>
                     </div>
                     <div class="cart-item-info">
-                        <h3><a href="#">${item.value.book.bname}</a></h3>
+                        <h3><a href="#">${item.value.book.bName}</a></h3>
                         <h3><span>单价: ¥ ${item.value.oiprice}</span></h3>
                         <h3><span>数量: ${item.value.oiamount}</span></h3>
                         <a class="btn btn-info" href="javascript:buy(${item.key});">增加</a>

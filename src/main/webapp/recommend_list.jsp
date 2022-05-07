@@ -38,22 +38,22 @@
 
             <c:forEach items="${p.list}" var="g">
                 <div class="product-grid">
-                    <a href="book_detail.action?bid=${g.bid}">
+                    <a href="book_detail?bId=${g.bId}">
                         <div class="more-product"><span> </span></div>
                         <div class="product-img b-link-stripe b-animate-go  thickbox">
-                            <img src="${g.bcover}" class="img-responsive" alt="${g.bname}" width="240" height="240">
+                            <img src="${g.bCover}" class="img-responsive" alt="${g.bName}" width="240" height="240">
                             <div class="b-wrapper">
                                 <h4 class="b-animate b-from-left  b-delay03">
-                                    <button href="book_detail.action?bid=${g.bid}">查看详情</button>
+                                    <button href="book_detail?bId=${g.bId}">查看详情</button>
                                 </h4>
                             </div>
                         </div>
                     </a>
                     <div class="product-info simpleCart_shelfItem">
                         <div class="product-info-cust prt_name">
-                            <h4>${g.bname}</h4>
-                            <span class="item_price">¥ ${g.bprice}</span>
-                            <input type="button" class="item_add items" value="加入购物车" onclick="buy(${g.bid})">
+                            <h4>${g.bName}</h4>
+                            <span class="item_price">¥ ${g.bPrice}</span>
+                            <input type="button" class="item_add items" value="加入购物车" onclick="buy(${g.bId})">
                             <div class="clearfix"> </div>
                         </div>
                     </div>

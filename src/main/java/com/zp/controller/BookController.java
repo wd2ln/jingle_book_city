@@ -4,17 +4,15 @@ import com.zp.entity.Book;
 import com.zp.entity.Booktype;
 import com.zp.service.BookService;
 import com.zp.service.BookTypeService;
+import com.zp.vo.PageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/")
 public class BookController {
 
     @Autowired
@@ -55,5 +53,29 @@ public class BookController {
 
             mv.setViewName("/index");
         return mv;
+    }
+    @RequestMapping("book_detail")
+    public ModelAndView findBook(int bId,HttpServletRequest request){
+            Book f = bookService.find(bId);
+            request.setAttribute("f",f);
+            return new ModelAndView("forward:book_detail.jsp");
+    }
+    @RequestMapping("search_books")
+    public ModelAndView searchBook(int pageNumber,String keyword,HttpServletRequest request){
+        if (pageNumber<=0){
+                pageNumber=1;
+        }
+        PageVo p=bookService.searchBook(pageNumber,keyword);
+        if (p.getTotalPage()==0){
+            p.setTotalPage(1);
+            p.setPageNumber(1);
+        }else {
+            if (pageNumber>=p.getTotalPage()+1){
+                p=bookService.searchBook(p.getTotalPage(),keyword);
+            }
+        }
+        request.setAttribute("p",p);
+        request.setAttribute("keyword",keyword);
+        return new ModelAndView("forward:book_search.jsp");
     }
 }

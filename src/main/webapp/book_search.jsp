@@ -39,10 +39,10 @@
 
             <c:forEach items="${p.list }" var="book">
                 <div class="product-grid">
-                    <a href="book_detail.action?bid=${book.bid}">
+                    <a href="book_detail?bId=${book.bId}">
                         <div class="more-product"><span> </span></div>
                         <div class="product-img b-link-stripe b-animate-go  thickbox">
-                            <img src="${book.bcover}" class="img-responsive" alt="${book.bname }" width="240" height="240">
+                            <img src="${book.bCover}" class="img-responsive" alt="${book.bName }" width="240" height="240">
                             <div class="b-wrapper">
                                 <h4 class="b-animate b-from-left  b-delay03">
                                     <button>查看详情</button>
@@ -52,9 +52,9 @@
                     </a>
                     <div class="product-info simpleCart_shelfItem">
                         <div class="product-info-cust prt_name">
-                            <h4>${book.bname }</h4>
-                            <span class="item_price">¥ ${book.bprice }</span>
-                            <input type="button" class="item_add items" value="加入购物车" onclick="buy(${book.bid})">
+                            <h4>${book.bName }</h4>
+                            <span class="item_price">¥ ${book.bPrice }</span>
+                            <input type="button" class="item_add items" value="加入购物车" onclick="buy(${book.bId})">
                             <div class="clearfix"> </div>
                         </div>
                     </div>

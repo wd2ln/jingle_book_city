@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zp.dao.BookMapper">
+<select id="searchBookKeyword" parameterType="String">
+  select * from book where b_name like #{bName,jdbcType=VARCHAR}
+</select>
   <resultMap id="BaseResultMap" type="com.zp.entity.Book">
     <id column="b_id" jdbcType="INTEGER" property="bId" />
     <result column="b_isbn" jdbcType="VARCHAR" property="bIsbn" />

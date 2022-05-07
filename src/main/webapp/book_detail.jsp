@@ -53,41 +53,41 @@
                 <div class="flexslider">
 
                     <ul class="slides">
-                        <li data-thumb="${book.bcover}">
-                            <div class="thumb-image"> <img src="${book.bcover}" data-imagezoom="true" class="img-responsive"> </div>
+                        <li data-thumb="${book.bCover}">
+                            <div class="thumb-image"> <img src="${book.bCover}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>
-                        <li data-thumb="${book.bimage1}">
-                            <div class="thumb-image"> <img src="${book.bimage1}" data-imagezoom="true" class="img-responsive"> </div>
+                        <li data-thumb="${book.bImage1}">
+                            <div class="thumb-image"> <img src="${book.bImage1}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>
-                        <li data-thumb="${book.bimage2}">
-                            <div class="thumb-image"> <img src="${book.bimage2}" data-imagezoom="true" class="img-responsive"> </div>
+                        <li data-thumb="${book.bImage2}">
+                            <div class="thumb-image"> <img src="${book.bImage2}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-4 single-grid simpleCart_shelfItem">
-                <h3>${book.bname}</h3>
+                <h3>${book.bName}</h3>
                 <div class="tag">
-                    <p>分类 : <a href="goods.action?typeid=5">${book.btname}</a></p>
+                    <p>分类 : <a href="goods.action?typeid=5">${book.btName}</a></p>
                 </div>
-                <p>${book.bmark}</p>
+                <p>${book.bMark}</p>
                 <div class="galry">
                     <div class="prices">
-                        <h5 class="item_price">¥ ${book.bprice}</h5>
+                        <h5 class="item_price">¥ ${book.bPrice}</h5>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="btn_form">
-                    <a href="javascript:;" class="add-cart item_add" onclick="buy(${book.bid})">加入购物车</a>
+                    <a href="javascript:;" class="add-cart item_add" onclick="buy(${book.bId})">加入购物车</a>
                 </div>
             </div>
             <div class="col-md-4 single-grid1">
                 <!-- <h2>商品分类</h2> -->
                 <ul>
-                    <li><a  href="booktypes_list.action?pageNumber=1&btid=-1">全部系列</a></li>
+                    <li><a  href="booktypes_list.action?pageNumber=1&btId=-1">全部系列</a></li>
 
                     <c:forEach items="${bookTypes}" var="t">
-                        <li><a href="booktypes_list.action?pageNumber=1&btid=${t.btid}">${t.btname}</a></li>
+                        <li><a href="booktypes_list.action?pageNumber=1&btId=${t.btId}">${t.btName}</a></li>
                     </c:forEach>
                 </ul>
             </div>
