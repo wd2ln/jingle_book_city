@@ -37,4 +37,6 @@ public interface OrderMapper {
 
     List<Orderitem> queryOrderItemByUidAndOid(String getoId);
     int updateByZi(String oId, Integer oStatus);
+
+    void addOrderitem(Orderitem value);
 }

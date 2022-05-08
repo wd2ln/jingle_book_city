@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface OrderService {
+    public boolean addOrder(Order order);
+
     List<Order> queryOrdersByuId(Integer uId);
 }

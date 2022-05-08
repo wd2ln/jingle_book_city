@@ -12,6 +12,7 @@ import java.util.List;
 public interface BookService {
     List<Book> sel(int rtype, Integer pageNumber, Integer pageSize);
 
+//<<<<<<< HEAD
     Book selBookId(Integer bId, Order order);
 
     User getUserInfo(Integer user);
@@ -27,4 +28,8 @@ public interface BookService {
     Book find(int bId);
 
     PageVo searchBook(int pageNumber, String keyword);
+//=======
+
+    Book queryBookByID(Integer bId);
+//>>>>>>> ssj
 }

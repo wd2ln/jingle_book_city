@@ -5,6 +5,7 @@ import com.zp.entity.Booktype;
 import com.zp.service.BookService;
 import com.zp.service.BookTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,8 +22,8 @@ public class IndexController {
     private BookTypeService bookTypeService;
 
     @RequestMapping("index")
-    public ModelAndView index1(ModelAndView mv,
-                               HttpServletRequest request) {
+    public ModelAndView Init(ModelAndView mv,
+                              HttpServletRequest request){
 
 
         Integer pageNumber = 1;

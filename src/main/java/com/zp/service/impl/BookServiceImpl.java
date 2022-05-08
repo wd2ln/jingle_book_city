@@ -25,6 +25,7 @@ import java.util.List;
 @Service
 public class BookServiceImpl implements BookService {
    @Autowired
+<<<<<<< HEAD
    private BookMapper bookDao;
    @Autowired
    private OrderitemMapper orderitemMapper;
@@ -36,6 +37,9 @@ public class BookServiceImpl implements BookService {
    private UserMapper userMapper;
    @Autowired
     private RecommendMapper recommendDao;
+=======
+   private BookMapper bookMapper;
+>>>>>>> ssj
 
     private static Integer hh;
     @Override
@@ -50,7 +54,7 @@ public class BookServiceImpl implements BookService {
 
 
 
-        List<Book> books = bookDao.selectByExample(example);
+        List<Book> books = bookMapper.selectByExample(example);
         // String bid = books.get(0).getBid();
         //System.out.printf();
         PageInfo<Book> info = new PageInfo<>(books);
@@ -59,6 +63,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+<<<<<<< HEAD
     public void insertOrder(Order order) {
         int i = orderMapper.insert(order);
     }
@@ -285,5 +290,11 @@ public class BookServiceImpl implements BookService {
         int count=0;
         count=bookDao.searchBookKeyword(keyword);
         return null;
+=======
+    public Book queryBookByID(Integer bId) {
+        return bookMapper.selectByPrimaryKey(bId);
+>>>>>>> ssj
     }
+
+
 }

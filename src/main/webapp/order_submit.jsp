@@ -36,7 +36,7 @@
 <div class="cart-items">
     <div class="container">
         <h2>确认收货信息</h2>
-        <form class="form-horizontal" action="order_confirm.action" method="post" id="payform">
+        <form class="form-horizontal" action="order_confirm" method="post" id="payform">
             <div class="row">
                 <label class="control-label col-md-1">收货人</label>
                 <div class="col-md-6">
@@ -65,7 +65,7 @@
             <div class="col-sm-6 col-md-4 col-lg-3 ">
                 <label>
                     <div class="thumbnail">
-                        <input type="radio" name="opaytype" value="1" checked="checked" />
+                        <input type="radio" name="oPaytype" value="1" checked="checked" />
                         <img src="images/wechat.jpg" alt="微信支付">
                     </div>
                 </label>
@@ -73,7 +73,7 @@
             <div class="col-sm-6 col-md-4 col-lg-3 ">
                 <label>
                     <div class="thumbnail">
-                        <input type="radio" name="opaytype" value="2"  />
+                        <input type="radio" name="oPaytype" value="2"  />
                         <img src="images/alipay.jpg" alt="支付宝支付">
                     </div>
                 </label>
@@ -81,7 +81,7 @@
             <div class="col-sm-6 col-md-4 col-lg-3 ">
                 <label>
                     <div class="thumbnail">
-                        <input type="radio" name="opaytype" value="3"  />
+                        <input type="radio" name="oPaytype" value="3"  />
                         <img src="images/offline.jpg" alt="货到付款">
                     </div>
                 </label>
@@ -105,8 +105,8 @@
 
 
 <script type="text/javascript">
-    function dopay(paytype){
-        $("#paytype").val(paytype);
+    function dopay(opaytype){
+        $("#opaytype").val(opaytype);
         $("#payform").submit();
     }
 </script>

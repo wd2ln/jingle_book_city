@@ -18,9 +18,9 @@ public class Orderitem {
         return book;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
-    }
+//    public void setBook(Book book) {
+//        this.book = book;
+//    }
 
     private String oId;
 
@@ -67,4 +67,20 @@ public class Orderitem {
 
 
 
+//<<<<<<< HEAD
+//=======
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    private Order order;
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+//>>>>>>> ssj
 }
