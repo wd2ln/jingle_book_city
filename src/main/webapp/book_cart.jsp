@@ -45,21 +45,21 @@
         <h2>我的购物车</h2>
 
 
-        <c:forEach items="${order.itemMap }" var="item">
+        <c:forEach items="${order.itemMap }" var="orderitem">
             <div class="cart-header col-md-6">
                 <div class="cart-sec simpleCart_shelfItem">
-                    <div class="cart-item cyc">
+                    <div class="cart-orderitem cyc">
                         <a href="#">
-                            <img src="${item.value.book.bcover}" class="img-responsive">
+                            <img src="${orderitem.value.book.bCover}" class="img-responsive">
                         </a>
                     </div>
-                    <div class="cart-item-info">
-                        <h3><a href="#">${item.value.book.bname}</a></h3>
-                        <h3><span>单价: ¥ ${item.value.oiprice}</span></h3>
-                        <h3><span>数量: ${item.value.oiamount}</span></h3>
-                        <a class="btn btn-info" href="javascript:buy(${item.key});">增加</a>
-                        <a class="btn btn-warning" href="javascript:lessen(${item.key});">减少</a>
-                        <a class="btn btn-danger" href="javascript:deletes(${item.key});">删除</a>
+                    <div class="cart-orderitem-info">
+                        <h3><a href="#">${orderitem.value.book.bName}</a></h3>
+                        <h3><span>单价: ¥ ${orderitem.value.oiPrice}</span></h3>
+                        <h3><span>数量: ${orderitem.value.oiAmount}</span></h3>
+                        <a class="btn btn-info" href="javascript:buy(${orderitem.key});">增加</a>
+                        <a class="btn btn-warning" href="javascript:lessen(${orderitem.key});">减少</a>
+                        <a class="btn btn-danger" href="javascript:deletes(${orderitem.key});">删除</a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -68,8 +68,8 @@
 
         <div class="cart-header col-md-12">
             <hr>
-            <h3>订单总金额: ¥ ${order.ototal}</h3>
-            <a class="btn btn-success btn-lg" style="margin-left:74%" href="order_submit.action">提交订单</a>
+            <h3>订单总金额: ¥ ${order.oTotal}</h3>
+            <a class="btn btn-success btn-lg" style="margin-left:74%" href="order_submit">提交订单</a>
         </div>
 
 

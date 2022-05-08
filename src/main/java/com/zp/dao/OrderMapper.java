@@ -35,4 +35,6 @@ public interface OrderMapper {
     List<Order> queryordersByuId(Integer uId);
 
     List<Orderitem> queryOrderItemByUidAndOid(String getoId);
+
+    void addOrderitem(Orderitem value);
 }

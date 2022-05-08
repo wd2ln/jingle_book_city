@@ -75,6 +75,7 @@
                     </td>
                     <td>
                         <p>
+                            <c:if test="${order.oStatus==1 }"><span style="color:red;">未付款</span></c:if>
                             <c:if test="${order.oStatus==2 }"><span style="color:red;">已付款</span></c:if>
                             <c:if test="${order.oStatus==3 }"><span style="color:green;">已发货</span></c:if>
                             <c:if test="${order.oStatus==4 }"><span style="color:black;">已完成</span></c:if>

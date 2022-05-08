@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class BookServiceImpl implements BookService {
    @Autowired
-   private BookMapper bookDao;
+   private BookMapper bookMapper;
 
     @Override
     public List<Book> sel(int rtype, Integer pageNumber, Integer pageSize) {
@@ -29,7 +29,7 @@ public class BookServiceImpl implements BookService {
 
         criteria.andBtIdEqualTo(rtype);
 
-        List<Book> books = bookDao.selectByExample(example);
+        List<Book> books = bookMapper.selectByExample(example);
         // String bid = books.get(0).getBid();
         //System.out.printf();
         PageInfo<Book> info = new PageInfo<>(books);
@@ -38,8 +38,9 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book selBookId(String bId) {
-
-        return null;
+    public Book queryBookByID(Integer bId) {
+        return bookMapper.selectByPrimaryKey(bId);
     }
+
+
 }

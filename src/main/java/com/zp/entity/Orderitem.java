@@ -61,4 +61,14 @@ public class Orderitem {
     public void setBook(Book book) {
         this.book = book;
     }
+
+    private Order order;
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }

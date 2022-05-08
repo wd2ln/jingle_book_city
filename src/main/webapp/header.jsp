@@ -24,7 +24,7 @@
             <!--navbar-header-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.action" <c:if test="${param.flag==1}">class="active"</c:if>>首页</a></li>
+                    <li><a href="index" <c:if test="${param.flag==1}">class="active"</c:if>>首页</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle <c:if test="${param.flag==2}">active</c:if>" data-toggle="dropdown">商品分类<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-2">
@@ -34,10 +34,10 @@
                                         <h4>商品分类</h4>
                                         <ul class="multi-column-dropdown">
 
-                                            <li><a class="list" href="booktypes_list.action?pageNumber=1&btId=-1">全部系列</a></li>
+                                            <li><a class="list" href="booktypes_list?pageNumber=1&btId=-1">全部系列</a></li>
 
                                             <c:forEach items="${bookTypes}" var="t">
-                                                <li><a class="list" href="booktypes_list.action?pageNumber=1&btId=${t.btId}">${t.btName}</a></li>
+                                                <li><a class="list" href="booktypes_list?pageNumber=1&btId=${t.btId}">${t.btName}</a></li>
                                             </c:forEach>
 
 

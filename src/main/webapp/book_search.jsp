@@ -39,7 +39,7 @@
 
             <c:forEach items="${p.list }" var="book">
                 <div class="product-grid">
-                    <a href="book_detail.action?bid=${book.bid}">
+                    <a href="book_detail.action?=${book.bid}">
                         <div class="more-product"><span> </span></div>
                         <div class="product-img b-link-stripe b-animate-go  thickbox">
                             <img src="${book.bcover}" class="img-responsive" alt="${book.bname }" width="240" height="240">
