@@ -54,6 +54,7 @@ public class BookController {
             Book b = new Book();
 
             for (FileItem item : list) {
+                System.out.println(item.getName());
                 if (item.isFormField()) {
                     switch (item.getFieldName()) {
                         case "bname":
@@ -109,6 +110,7 @@ public class BookController {
                     }
                 }
             }
+            System.out.println(b);
             bookService.addBook(b);
         } catch (FileUploadException e) {
             System.out.println(e.getMessage());

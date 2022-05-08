@@ -34,6 +34,28 @@ public class Book {
 
     private Integer btId;
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bId=" + bId +
+                ", bIsbn='" + bIsbn + '\'' +
+                ", bName='" + bName + '\'' +
+                ", btName='" + btName + '\'' +
+                ", bAuthor='" + bAuthor + '\'' +
+                ", bPublisher='" + bPublisher + '\'' +
+                ", bCover='" + bCover + '\'' +
+                ", bImage1='" + bImage1 + '\'' +
+                ", bImage2='" + bImage2 + '\'' +
+                ", bPrice=" + bPrice +
+                ", btId=" + btId +
+                ", bStock=" + bStock +
+                ", bMark='" + bMark + '\'' +
+                ", isScroll=" + isScroll +
+                ", isHot=" + isHot +
+                ", isNew=" + isNew +
+                '}';
+    }
+
     private Integer bStock;
 
     private String bMark;
@@ -154,23 +176,5 @@ public class Book {
 
     public void setbMark(String bMark) {
         this.bMark = bMark == null ? null : bMark.trim();
-    }
-    @Override
-    public String toString() {
-        return "Book{" +
-                "bid=" + bId +
-                ", bisbn='" + bIsbn + '\'' +
-                ", bname='" + bName + '\'' +
-                ", bauthor='" + bAuthor + '\'' +
-                ", bpublisher='" + bPublisher + '\'' +
-                ", bcover='" + bCover + '\'' +
-                ", bimage1='" + bImage1 + '\'' +
-                ", bimage2='" + bImage2 + '\'' +
-                ", bprice=" + bPrice +
-                ", btid=" + btId +
-                ", btname='" + btName + '\'' +
-                ", bstock=" + bStock +
-                ", bmark='" + bMark + '\'' +
-                '}';
     }
 }

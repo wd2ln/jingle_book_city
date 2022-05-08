@@ -25,25 +25,25 @@
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">名称</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bname"  required="required">
+                <input type="text" class="form-control" id="input_name" name="bName"  required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">ISBN编号</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bisbn"  required="required">
+                <input type="text" class="form-control" id="input_name" name="bIsbn"  required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">作者</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bauthor"  required="required">
+                <input type="text" class="form-control" id="input_name" name="bAuthor"  required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">出版社</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bpublisher"  required="required">
+                <input type="text" class="form-control" id="input_name" name="bPublisher"  required="required">
             </div>
         </div>
         <div class="form-group">
