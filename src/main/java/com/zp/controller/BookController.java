@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.Date;
@@ -39,85 +40,14 @@ public class BookController {
         return "admin/book_edit";
     }
 
-    //    @RequestMapping("book_add")
-//    public String book_add(HttpServletRequest request) throws Exception {
-//        DiskFileItemFactory factory = new DiskFileItemFactory();
-//        ServletFileUpload upload = new ServletFileUpload(factory);
-//        try {
-//            List<FileItem> list = upload.parseRequest(request);
-//            Book b = new Book();
-//
-//            for (FileItem item : list) {
-//                if (item.isFormField()) {
-//                    switch (item.getFieldName()) {
-//                        case "bname":
-//                            b.setBtName(item.getString("utf-8"));
-////                            System.out.println(b.getBtName());
-//                            break;
-//                        case "bisbn":
-//                            b.setbIsbn(item.getString("utf-8"));
-//                            break;
-//                        case "bauthor":
-//                            b.setbAuthor(item.getString("utf_8"));
-//                            break;
-//                        case "bpublisher":
-//                            b.setbPublisher(item.getString("utf-8"));
-//                        case "bprice":
-//                            b.setbPrice(Float.parseFloat(item.getString("utf-8")));
-//                            break;
-//                        case "btid":
-//                            b.setBtId(Integer.parseInt(item.getString("utf-8")));
-//                            break;
-//                        case "bstock":
-//                            b.setbStock(Integer.parseInt(item.getString("utf-8")));
-//                        case "bmark":
-//                            b.setbMark(item.getString("utf-8"));
-//                            break;
-//                    }
-//                } else {
-//                    if (item.getInputStream().available() <= 0) continue;
-//                    String fileName = item.getName();
-//                    fileName = fileName.substring(fileName.lastIndexOf("."));
-//                    fileName = "/" + new Date().getTime() + fileName;
-//                    String path = request.getServletContext().getRealPath("/images") + fileName;
-//                    InputStream in = item.getInputStream();
-//                    FileOutputStream out = new FileOutputStream(path);
-//                    byte[] buffer = new byte[1024];
-//                    int len = 0;
-//                    while ((len = in.read(buffer)) > 0) {
-//                        out.write(buffer);
-//                    }
-//                    in.close();
-//                    out.close();
-//                    item.delete();
-//                    switch (item.getFieldName()) {
-//                        case "bcover":
-//                            b.setbCover("images" + fileName);
-//                            break;
-//                        case "bimage1":
-//                            b.setbImage1("images" + fileName);
-//                            break;
-//                        case "bimage2":
-//                            b.setbImage2("images" + fileName);
-//                            break;
-//                    }
-//                }
-//            }
-//            bookService.addBook(b);
-//        } catch (FileUploadException e) {
-//            System.out.println(e.getMessage());
-//        }
-//
-//        return "redirect:book_list?pageNumber=1&rtype=1";
-//    }
     @RequestMapping("/admin/book_add")
     public String addBook(Books books,
                           @RequestPart("bCover") MultipartFile bCover,
                           @RequestPart("bImage1") MultipartFile bImage1,
                           @RequestPart("bImage2") MultipartFile bImage2) {
-        String aBoolean=null;
-        String s1=null;
-        String s=null;
+        String s2 = null;
+        String s1 = null;
+        String s = null;
         System.out.println(books);
         String filename1 = bCover.getOriginalFilename();
         String filename2 = bImage1.getOriginalFilename();
@@ -128,26 +58,26 @@ public class BookController {
         System.out.println(bCover.isEmpty());
         if (!(bCover.isEmpty() && bImage1.isEmpty() && bImage2.isEmpty())) {
             System.out.println("文件不为空");
-             s = FileUploadUtil.fileUpload(bCover);
-            if (s!=null){
+            s = FileUploadUtil.fileUpload(bCover);
+            if (s != null) {
                 System.out.println("文件一上传那个成功");
-                 s1 = FileUploadUtil.fileUpload(bImage1);
-                if ( s1!=null){
+                s1 = FileUploadUtil.fileUpload(bImage1);
+                if (s1 != null) {
                     System.out.println("文件2上传那个成功");
-                     aBoolean = FileUploadUtil.fileUpload(bImage2);
-                     if (aBoolean!=null){
-                         System.out.println("文件3上传那个成功");
-                     }
+                    s2 = FileUploadUtil.fileUpload(bImage2);
+                    if (s2 != null) {
+                        System.out.println("文件3上传那个成功");
+                    }
                 }
             }
         }
-if (aBoolean!=null){
-    System.out.println("开始插入数据");
-    ResultVO vo = bookService.addBook(new Book(0, books.getBIsbn(), books.getBName(), books.getBAuthor(), books.getBPublisher(), s, s1, aBoolean, books.getBPrice(), books.getBtId(), books.getBStock(), books.getBMark(), false, false, false));
-    if (vo!=null){
-        System.out.println("添加成功");
-    }
-}
+        if (s2 != null) {
+            System.out.println("开始插入数据");
+            ResultVO vo = bookService.addBook(new Book(0, books.getBIsbn(), books.getBName(), books.getBAuthor(), books.getBPublisher(), s, s1, s2, books.getBPrice(), books.getBtId(), books.getBStock(), books.getBMark(), false, false, false));
+            if (vo != null) {
+                System.out.println("添加成功");
+            }
+        }
         return "redirect:book_list?pageNumber=1&rtype=1";
     }
 
@@ -176,20 +106,85 @@ if (aBoolean!=null){
     public String book_change(Integer bid,
                               Integer rtype,
                               String method,
-                              Integer page){
-        if (method.equals("add")){
-            bookService.addRecommendBook(bid,rtype);
-        }else {
-            bookService.delRecommendBook(bid,rtype);
+                              Integer page) {
+        if (method.equals("add")) {
+            bookService.addRecommendBook(bid, rtype);
+        } else {
+            bookService.delRecommendBook(bid, rtype);
         }
 
-        return "redirect:book_list?pageNumber=1&rtype="+page;
+        return "redirect:book_list?pageNumber=1&rtype=" + page;
     }
+
     @RequestMapping("/admin/book_delete")
     public String book_delete(Integer bid,
-                              Integer rtype){
+                              Integer rtype) {
+        Book book = (Book) bookService.byId(bid);
+        String path = "D:/DingBook/jingle_book_city/src/main/webapp/";
+
+        String s3 = path + book.getbCover();
+        System.out.println(s3);
+        String s1 = path + book.getbImage1();
+        String s2 = path + book.getbImage2();
+        File file = new File(s1);
+        File file1 = new File(s2);
+        File file2 = new File(s3);
+        if (file.exists() && file1.exists() && file2.exists()) {
+            System.out.println("文件存在");
+            if (file.delete() && file1.delete() && file2.delete()) {
+                System.out.println("文件删除成功");
+            }
+
+        } else {
+            System.out.println("文件不存在");
+        }
+
+
         bookService.delBook(bid);
 
-        return "redirect:book_list?pageNumber=1&rtype="+rtype;
+        return "redirect:book_list?pageNumber=1&rtype=" + rtype;
+    }
+
+    @RequestMapping("/admin/book_update")
+    public String book_update(Books books,
+                              Integer bid,
+                              @RequestPart("bCover") MultipartFile bCover,
+                              @RequestPart("bImage1") MultipartFile bImage1,
+                              @RequestPart("bImage2") MultipartFile bImage2) {
+        String s2 = null;
+        String s1 = null;
+        String s = null;
+        System.out.println(books);
+        String filename1 = bCover.getOriginalFilename();
+        String filename2 = bImage1.getOriginalFilename();
+        String filename3 = bImage2.getOriginalFilename();
+        System.out.println(filename1);
+        System.out.println(filename2);
+        System.out.println(filename3);
+        System.out.println(bCover.isEmpty());
+        if (!(bCover.isEmpty() && bImage1.isEmpty() && bImage2.isEmpty())) {
+            System.out.println("文件不为空");
+            s = FileUploadUtil.fileUpload(bCover);
+            if (s != null) {
+                System.out.println("文件1上传成功");
+                s1 = FileUploadUtil.fileUpload(bImage1);
+                if (s1 != null) {
+                    System.out.println("文件2上传成功");
+                    s2 = FileUploadUtil.fileUpload(bImage2);
+                    if (s2 != null) {
+                        System.out.println("文件3上传成功");
+                    }
+                }
+            }
+        }
+        if (s2 != null) {
+            System.out.println("开始修改数据");
+            ResultVO vo = bookService.updateBook(new Book(books.getBId(), books.getBIsbn(), books.getBName(), books.getBAuthor(), books.getBPublisher(), s, s1, s2, books.getBPrice(), books.getBtId(), books.getBStock(), books.getBMark(), false, false, false));
+            if (vo != null) {
+                System.out.println("修改成功");
+            }
+        }
+
+        return "redirect:book_list?pageNumber=1&rtype=0";
     }
 }

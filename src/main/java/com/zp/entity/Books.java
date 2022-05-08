@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Books {
+    private Integer bId;
+
     private String bName;
 
     private String bIsbn;
@@ -27,7 +29,8 @@ public class Books {
     private boolean isHot;
     private boolean isNew;
 
-    public Books(String bName, String bIsbn, String bAuthor, String bPublisher, Float bPrice, Integer btId, Integer bStock, String bMark) {
+    public Books(Integer bId,String bName, String bIsbn, String bAuthor, String bPublisher, Float bPrice, Integer btId, Integer bStock, String bMark) {
+        this.bId = bId;
         this.bName = bName;
         this.bIsbn = bIsbn;
         this.bAuthor = bAuthor;

@@ -19,4 +19,6 @@ public interface BookService {
     ResultVO delRecommendBook(Integer bid, Integer rtype);
 
     Boolean delBook(Integer bid);
+
+    ResultVO updateBook(Book book);
 }

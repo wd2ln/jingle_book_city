@@ -40,4 +40,5 @@ public interface RecommendMapper {
     int addRecommendBook(Integer bid, Integer rtype);
 
     int delRecommendBook(Integer bid, Integer rtype);
+
 }

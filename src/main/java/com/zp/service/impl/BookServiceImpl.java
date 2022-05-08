@@ -114,4 +114,18 @@ public class BookServiceImpl implements BookService {
             return false;
         }
     }
+
+    @Override
+    public ResultVO updateBook(Book book) {
+        int i = bookDao.updateBook(book);
+        ResultVO vo;
+
+        if (i < 0) {
+            vo = new ResultVO(400, "添加失败", false, null);
+        } else {
+            vo = new ResultVO(200, "添加成功", true, null);
+        }
+
+        return vo;
+    }
 }

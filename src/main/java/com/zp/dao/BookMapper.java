@@ -37,4 +37,6 @@ public interface BookMapper {
     int addBook(Book book);
 
     void delBook(Integer bid);
+
+    int updateBook(Book book);
 }
