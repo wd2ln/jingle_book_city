@@ -53,6 +53,7 @@
                 <div class="flexslider">
 
                     <ul class="slides">
+                        <c:forEach items="${p.list}" var="book">
                         <li data-thumb="${book.bCover}">
                             <div class="thumb-image"> <img src="${book.bCover}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>
@@ -62,13 +63,14 @@
                         <li data-thumb="${book.bImage2}">
                             <div class="thumb-image"> <img src="${book.bImage2}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
             <div class="col-md-4 single-grid simpleCart_shelfItem">
                 <h3>${book.bName}</h3>
                 <div class="tag">
-                    <p>分类 : <a href="goods.action?typeid=5">${book.btName}</a></p>
+                    <p>分类 : <a href="goods?typeid=5">${book.btName}</a></p>
                 </div>
                 <p>${book.bMark}</p>
                 <div class="galry">
@@ -84,10 +86,10 @@
             <div class="col-md-4 single-grid1">
                 <!-- <h2>商品分类</h2> -->
                 <ul>
-                    <li><a  href="booktypes_list.action?pageNumber=1&btId=-1">全部系列</a></li>
+                    <li><a  href="booktypes_list?pageNumber=1&btId=-1">全部系列</a></li>
 
                     <c:forEach items="${bookTypes}" var="t">
-                        <li><a href="booktypes_list.action?pageNumber=1&btId=${t.btId}">${t.btName}</a></li>
+                        <li><a href="booktypes_list?pageNumber=1&btId=${t.btId}">${t.btName}</a></li>
                     </c:forEach>
                 </ul>
             </div>

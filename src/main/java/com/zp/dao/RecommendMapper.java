@@ -1,10 +1,13 @@
 package com.zp.dao;
 
+import com.zp.entity.Book;
 import com.zp.entity.Recommend;
 import com.zp.entity.RecommendExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface RecommendMapper {
     long countByExample(RecommendExample example);
 
@@ -27,4 +30,10 @@ public interface RecommendMapper {
     int updateByPrimaryKeySelective(Recommend record);
 
     int updateByPrimaryKey(Recommend record);
+
+    int findRecommendcountBooksByrType(int rType);
+
+    List<Book> searchBookByRecommendType(int rType, int pageIndex, int pageSize);
+
+    int findBookByRtypeAndBid(int i, Integer getbId);
 }

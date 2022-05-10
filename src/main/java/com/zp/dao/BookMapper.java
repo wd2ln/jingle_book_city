@@ -31,4 +31,12 @@ public interface BookMapper {
     int updateByPrimaryKey(Book record);
 
     int searchBookKeyword(String keyword);
+
+    List<Book> searchBookByKeyword(@Param("keyword") String keyword,@Param("pageIndex") int pageIndex,@Param("pageSize") int pageSize);
+
+    int findCountBooks();
+
+    List<Book> findBooks(int pageIndex, int pageSize);
+
+    int findBooksById();
 }

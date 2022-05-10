@@ -4,6 +4,17 @@
   <select id="select" resultType="Booktype">
     select bt_id btid,bt_name btname from booktype order by bt_id;
   </select>
+  <select id="findBookTypeById" resultType="String" parameterType="int">
+    select bt_name from booktype where bt_id=#{btId,jdbcType=INTEGER}
+  </select>
+  <select id="findCountBookById" resultType="int" parameterType="int">
+    select count(*) from booktype where bt_id=#{btId,jdbcType=INTEGER}
+  </select>
+  <select id="findBooksByBtid" resultType="Book">
+    select b_id bid,b_isbn bisbn,b_name bname,b_author bauthor,b_publisher bpublisher,
+           b_cover bcover,b_image1 bimage1,b_image2 bimage2,b_price bprice,b_stock bstock,b_mark bmark
+    from book where bt_id=#{btId,jdbcType=INTEGER} limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
   <resultMap id="BaseResultMap" type="com.zp.entity.Booktype">
     <id column="bt_id" jdbcType="INTEGER" property="btId" />
     <result column="bt_name" jdbcType="VARCHAR" property="btName" />

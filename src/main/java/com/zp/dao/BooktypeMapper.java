@@ -4,7 +4,9 @@ import com.zp.entity.Booktype;
 import com.zp.entity.BooktypeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface BooktypeMapper {
     long countByExample(BooktypeExample example);
 
@@ -29,4 +31,10 @@ public interface BooktypeMapper {
     int updateByPrimaryKey(Booktype record);
 
     List<Booktype> select();
+
+    String findBookTypeById(int btId);
+
+    int findCountBookById(int btId);
+
+    List findBooksByBtid(int btId, int pageIndex, int pageSize);
 }

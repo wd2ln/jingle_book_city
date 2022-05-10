@@ -10,4 +10,5 @@ public interface BookTypeService {
     ResultVO typeList();
 
     List<Booktype> select();
+
 }

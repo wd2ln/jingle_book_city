@@ -11,4 +11,6 @@ public interface BookService {
     Book find(int bId);
 
     PageVo searchBook(int pageNumber, String keyword);
+
+    PageVo recommendBook(Integer rType, int pageNumber);
 }

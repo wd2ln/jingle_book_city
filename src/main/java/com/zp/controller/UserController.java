@@ -23,7 +23,7 @@ public class UserController {
         if (user1!=null){
             session.setAttribute("user",user1);
             request.setAttribute("msg","登录成功");
-            return new ModelAndView("redirect:/index.jsp");
+            return new ModelAndView("redirect:/index");
         }else {
             request.setAttribute("failMsg","用户名不存在！");
             return new ModelAndView("forward:user_login.jsp");
