@@ -291,6 +291,7 @@ public class BookController {
         }
         return "redirect:book_list?pageNumber=1&rtype=1";
     }
+//<<<<<<< HEAD
 
 //<<<<<<< HEAD
 //    @RequestMapping("book_list")
@@ -547,4 +548,7 @@ public class BookController {
 //>>>>>>> yu
     }
 //>>>>>>> b33d465a0fad53ce5f46954ff41799045ff1cac1
+//=======
+//
+//>>>>>>> zsj
 }
