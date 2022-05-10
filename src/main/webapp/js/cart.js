@@ -4,11 +4,11 @@
  */
 function buy(bId){
 	$.get("books_buy", {bId:bId}, function(data){
-<<<<<<< HEAD
-		if(data=="ok")
-=======
+// <<<<<<< HEAD
+// 		if(data=="ok")
+// =======
 		if(data==="ok")
->>>>>>> ssj
+// >>>>>>> ssj
 		{
 			layer.msg("添加到购物车!", {time:800}, function(){
                location.reload();

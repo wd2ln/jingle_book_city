@@ -50,18 +50,18 @@
                 <div class="cart-sec simpleCart_shelfItem">
                     <div class="cart-orderitem cyc">
                         <a href="#">
-<<<<<<< HEAD
-                            <img src="${item.value.book.bCover}" class="img-responsive">
-                        </a>
-                    </div>
-                    <div class="cart-item-info">
-                        <h3><a href="#">${item.value.book.bName}</a></h3>
-                        <h3><span>单价: ¥ ${item.value.oiprice}</span></h3>
-                        <h3><span>数量: ${item.value.oiamount}</span></h3>
-                        <a class="btn btn-info" href="javascript:buy(${item.key});">增加</a>
-                        <a class="btn btn-warning" href="javascript:lessen(${item.key});">减少</a>
-                        <a class="btn btn-danger" href="javascript:deletes(${item.key});">删除</a>
-=======
+<%--<<<<<<< HEAD--%>
+<%--                            <img src="${item.value.book.bCover}" class="img-responsive">--%>
+<%--                        </a>--%>
+<%--                    </div>--%>
+<%--                    <div class="cart-item-info">--%>
+<%--                        <h3><a href="#">${item.value.book.bName}</a></h3>--%>
+<%--                        <h3><span>单价: ¥ ${item.value.oiprice}</span></h3>--%>
+<%--                        <h3><span>数量: ${item.value.oiamount}</span></h3>--%>
+<%--                        <a class="btn btn-info" href="javascript:buy(${item.key});">增加</a>--%>
+<%--                        <a class="btn btn-warning" href="javascript:lessen(${item.key});">减少</a>--%>
+<%--                        <a class="btn btn-danger" href="javascript:deletes(${item.key});">删除</a>--%>
+<%--=======--%>
                             <img src="${orderitem.value.book.bCover}" class="img-responsive">
                         </a>
                     </div>
@@ -72,7 +72,7 @@
                         <a class="btn btn-info" href="javascript:buy(${orderitem.key});">增加</a>
                         <a class="btn btn-warning" href="javascript:lessen(${orderitem.key});">减少</a>
                         <a class="btn btn-danger" href="javascript:deletes(${orderitem.key});">删除</a>
->>>>>>> ssj
+<%-->>>>>>> ssj--%>
                     </div>
                     <div class="clearfix"></div>
                 </div>

@@ -39,11 +39,11 @@
 
             <c:forEach items="${p.list }" var="book">
                 <div class="product-grid">
-<<<<<<< HEAD
-                    <a href="book_detail?bId=${book.bId}">
-=======
+<%--<<<<<<< HEAD--%>
+<%--                    <a href="book_detail?bId=${book.bId}">--%>
+<%--=======--%>
                     <a href="book_detail.action?=${book.bid}">
->>>>>>> ssj
+<%-->>>>>>> ssj--%>
                         <div class="more-product"><span> </span></div>
                         <div class="product-img b-link-stripe b-animate-go  thickbox">
                             <img src="${book.bCover}" class="img-responsive" alt="${book.bName }" width="240" height="240">

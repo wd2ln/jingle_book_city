@@ -13,7 +13,7 @@ public interface BookService {
     List<Book> sel(int rtype, Integer pageNumber, Integer pageSize);
 
 //<<<<<<< HEAD
-    Book selBookId(Integer bId, Order order);
+//    Book selBookId(Integer bId, Order order);
 
     User getUserInfo(Integer user);
     Object byId(Integer bId);
