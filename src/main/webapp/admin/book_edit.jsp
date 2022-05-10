@@ -22,81 +22,87 @@
     <jsp:include page="/admin/header.jsp"></jsp:include>
 
     <br><br>
-    <form class="form-horizontal" action="book_update.action" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="bId" value="${g.bId }"/>
+    <form class="form-horizontal" action="book_update" method="post" enctype="multipart/form-data">
+        <input type="text" name="bId" value="${g.bId }"/>
         <input type="hidden" name="bCover" value="${g.bCover }"/>
         <input type="hidden" name="bImage1" value="${g.bImage1 }"/>
         <input type="hidden" name="bimage2" value="${g.bImage2 }"/>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">名称</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bname" value="${g.bName}" required="required">
+                <input type="text" class="form-control" id="input_name" name="bName" value="${g.bName}" required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">ISBN编号</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bisbn"  value="${g.bIsbn}" required="required">
+                <input type="text" class="form-control" id="input_name" name="bIsbn"  value="${g.bIsbn}" required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">作者</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bauthor"  value="${g.bAuthor}" required="required">
+                <input type="text" class="form-control" id="input_name" name="bAuthor"  value="${g.bAuthor}" required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">出版社</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bpublisher"  value="${g.bPublisher}" required="required">
+                <input type="text" class="form-control" id="input_name" name="bPublisher"  value="${g.bPublisher}" required="required">
             </div>
         </div>
         <div class="form-group">
             <label for="input_file" class="col-sm-1 control-label">封面图片</label>
             <div class="col-sm-6"><img src="../${g.bCover }" width="100" height="100"/>
-                <input type="file" name="bcover"  id="input_file" required="required">推荐尺寸: 500 * 500
+                <input type="file" name="bCover"  id="input_file" required="required">推荐尺寸: 500 * 500
             </div>
         </div>
         <div class="form-group">
             <label for="input_file" class="col-sm-1 control-label">详情图片1</label>
             <div class="col-sm-6"><img src="../${g.bImage1 }" width="100" height="100"/>
-                <input type="file" name="bimage1"  id="input_file" required="required">推荐尺寸: 500 * 500
+                <input type="file" name="bImage1"  id="input_file" required="required">推荐尺寸: 500 * 500
             </div>
         </div>
         <div class="form-group">
             <label for="input_file" class="col-sm-1 control-label">详情图片2</label>
             <div class="col-sm-6"><img src="../${g.bImage2 }" width="100" height="100"/>
-                <input type="file" name="bimage2"  id="input_file" required="required">推荐尺寸: 500 * 500
+                <input type="file" name="bImage2"  id="input_file" required="required">推荐尺寸: 500 * 500
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">价格</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bprice" value="${g.bPrice}">
+                <input type="text" class="form-control" id="input_name" name="bPrice" value="${g.bPrice}">
             </div>
         </div>
         <div class="form-group">
-            <label for="select_topic" class="col-sm-1 control-label">类目</label>
+            <label for="input_name" class="col-sm-1 control-label">类别</label>
             <div class="col-sm-6">
-                <select class="form-control" id="select_topic" name="btid">
-
-                    <c:forEach items="${bookTypes }" var="t">
-                        <option <c:if test="${t.btId==g.btId }">selected="selected"</c:if> value="${t.btId }">${t.btName }</option>
-                    </c:forEach>
-
-                </select>
+                <input type="text" class="form-control" id="input_name" name="btId" >
             </div>
         </div>
+<%--        <div class="form-group">--%>
+<%--            <label for="select_topic" class="col-sm-1 control-label">类目</label>--%>
+<%--            <div class="col-sm-6">--%>
+<%--                <select class="form-control" id="select_topic" name="btId">--%>
+
+<%--                    <c:forEach items="${bookTypes }" var="t">--%>
+<%--                        <option <c:if test="${t.btId==g.btId }">selected="selected"</c:if> value="${t.btId }">${t.btName }</option>--%>
+<%--                    </c:forEach>--%>
+
+<%--                </select>--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">库存</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bstock" value="${g.bStock}">
+                <input type="text" class="form-control" id="input_name" name="bStock" value="${g.bStock}">
             </div>
         </div>
         <div class="form-group">
             <label for="input_name" class="col-sm-1 control-label">介绍</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="input_name" name="bmark" value="${g.bMark}">
+                <input type="text" class="form-control" id="input_name" name="bMark" value="${g.bMark}">
             </div>
         </div>
 

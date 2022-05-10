@@ -11,6 +11,7 @@ import com.zp.entity.Book;
 import com.zp.entity.BookExample;
 import com.zp.service.BookService;
 import com.zp.vo.PageVO;
+import com.zp.vo.ResultVO;
 import org.apache.ibatis.annotations.Param;
 //=======
 //>>>>>>> zsj
@@ -27,6 +28,7 @@ import java.util.List;
 
 @Service
 public class BookServiceImpl implements BookService {
+//<<<<<<< HEAD
    @Autowired
 //<<<<<<< HEAD
    private BookMapper bookDao;
@@ -81,12 +83,20 @@ public class BookServiceImpl implements BookService {
 
         return bookMapper.selectByPrimaryKey(bId);
     }
+//=======
+//    @Autowired
+//    private BookMapper bookDao;
+//    @Autowired
+//    private RecommendMapper recommendDao;
+
+//>>>>>>> yu
     @Override
     public Object byId(Integer bId) {
         Book g = bookDao.selectByPrimaryKey(bId);
 
         return g;
     }
+//<<<<<<< HEAD
     @Override
     public User getUserInfo(Integer user) {
         User user1 = userMapper.selectByKey(user);
@@ -244,81 +254,129 @@ public class BookServiceImpl implements BookService {
 //        }
 //        return null;
 //    }
-   @Override
-   public Boolean addBook(Book b) {
-      try {
-         bookDao.insert(b);
-         return true;
-      }catch (Exception e){
-         System.out.println(e.getMessage());
-         return false;
-      }
-   }
+//   @Override
+//   public Boolean addBook(Book b) {
+//      try {
+//         bookDao.insert(b);
+//         return true;
+//      }catch (Exception e){
+//         System.out.println(e.getMessage());
+//         return false;
+//      }
+//   }
+//
+//   @Override
+//   public PageVO queryBook(Integer pageNumber, Integer rtype) {
+//      PageVO p =new PageVO();
+//      p.setPageNumber(pageNumber);
+//      int totalCount=0;
+//      try {
+//         if (rtype==0)
+//            totalCount =bookDao.queryCountOfBooks();
+//         else
+//            totalCount=recommendDao.queryRecommendCountOfBooksByTypeID(rtype);
+//      }catch (Exception e){
+//         System.out.println(e.getMessage());
+//      }
+//      p.SetPageSizeAndTotalCount(8, totalCount);
+//      List<Book> list = null;
+//      try {
+//         if (rtype==0)
+//            list = bookDao.queryBooks((pageNumber-1)*8,8);
+//         else
+//            list = recommendDao.queryBookByRecommendType(rtype,(pageNumber-1)*8,8);
+//         for(int i=0;i< list.size();i++){
+//            Book book=list.get(i);
+//            book.setScroll(recommendDao.queryBookByRtypeAndBid(1,book.getbId()) >= 1);
+//            book.setHot(recommendDao.queryBookByRtypeAndBid(2,book.getbId())>=1);
+//            book.setNew(recommendDao.queryBookByRtypeAndBid(3,book.getbId())>=1);
+//         }
+//      }catch (Exception e){
+//         System.out.println(e.getMessage());
+//      }
+//      p.setList((List)list);
+//      return p;
+//   }
+//    public Book find(int bId) {
+//        return bookDao.selectByPrimaryKey(bId);
+//    }
+//
+//    @Override
+//    public PageVo searchBook(int pageNumber, String keyword) {
+//        PageVo p = new PageVo();
+//        p.setPageNumber(pageNumber);
+////<<<<<<< HEAD
+////        int count = 0;
+////        count = bookDao.searchBookKeyword(keyword);
+////        return null;
+//////=======
+////=======
+//        int count=0;
+//        try {
+//            count=bookDao.searchBookKeyword(keyword);
+//        }catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
+//        p.setPageSizeAndTotalCount(8,count);
+//        List l=null;
+//        try {
+//            l=bookDao.searchBookByKeyword("%"+keyword+"%",(pageNumber-1)*8,8);
+//        }catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
+//        p.setList(l);
+//=======
 
-   @Override
-   public PageVO queryBook(Integer pageNumber, Integer rtype) {
-      PageVO p =new PageVO();
-      p.setPageNumber(pageNumber);
-      int totalCount=0;
-      try {
-         if (rtype==0)
-            totalCount =bookDao.queryCountOfBooks();
-         else
-            totalCount=recommendDao.queryRecommendCountOfBooksByTypeID(rtype);
-      }catch (Exception e){
-         System.out.println(e.getMessage());
-      }
-      p.SetPageSizeAndTotalCount(8, totalCount);
-      List<Book> list = null;
-      try {
-         if (rtype==0)
-            list = bookDao.queryBooks((pageNumber-1)*8,8);
-         else
-            list = recommendDao.queryBookByRecommendType(rtype,(pageNumber-1)*8,8);
-         for(int i=0;i< list.size();i++){
-            Book book=list.get(i);
-            book.setScroll(recommendDao.queryBookByRtypeAndBid(1,book.getbId()) >= 1);
-            book.setHot(recommendDao.queryBookByRtypeAndBid(2,book.getbId())>=1);
-            book.setNew(recommendDao.queryBookByRtypeAndBid(3,book.getbId())>=1);
-         }
-      }catch (Exception e){
-         System.out.println(e.getMessage());
-      }
-      p.setList((List)list);
-      return p;
-   }
-    public Book find(int bId) {
-        return bookDao.selectByPrimaryKey(bId);
+    @Override
+    public ResultVO addBook(Book book) {
+        int i = bookDao.addBook(book);
+        ResultVO vo;
+
+        if (i < 0) {
+            vo = new ResultVO(400, "添加失败", false, null);
+        } else {
+            vo = new ResultVO(200, "添加成功", true, null);
+        }
+
+        return vo;
     }
 
     @Override
-    public PageVo searchBook(int pageNumber, String keyword) {
-        PageVo p = new PageVo();
+    public PageVO queryBook(Integer pageNumber, Integer rtype) {
+        PageVO p = new PageVO();
         p.setPageNumber(pageNumber);
-//<<<<<<< HEAD
-//        int count = 0;
-//        count = bookDao.searchBookKeyword(keyword);
-//        return null;
-////=======
-//=======
-        int count=0;
+        int totalCount = 0;
         try {
-            count=bookDao.searchBookKeyword(keyword);
-        }catch (Exception e){
+            if (rtype == 0)
+                totalCount = bookDao.queryCountOfBooks();
+            else
+                totalCount = recommendDao.queryRecommendCountOfBooksByTypeID(rtype);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        p.setPageSizeAndTotalCount(8,count);
-        List l=null;
+        p.SetPageSizeAndTotalCount(8, totalCount);
+        List<Book> list = null;
         try {
-            l=bookDao.searchBookByKeyword("%"+keyword+"%",(pageNumber-1)*8,8);
-        }catch (Exception e){
+            if (rtype == 0)
+                list = bookDao.queryBooks((pageNumber - 1) * 8, 8);
+            else
+                list = recommendDao.queryBookByRecommendType(rtype, (pageNumber - 1) * 8, 8);
+            for (int i = 0; i < list.size(); i++) {
+                Book book = list.get(i);
+                book.setScroll(recommendDao.queryBookByRtypeAndBid(1, book.getbId()) >= 1);
+                book.setHot(recommendDao.queryBookByRtypeAndBid(2, book.getbId()) >= 1);
+                book.setNew(recommendDao.queryBookByRtypeAndBid(3, book.getbId()) >= 1);
+            }
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        p.setList(l);
+        p.setList((List) list);
+//>>>>>>> yu
         return p;
     }
 
     @Override
+//<<<<<<< HEAD
     public PageVo recommendBook(Integer rType, int pageNumber) {
         PageVo p = new PageVo();
         p.setPageNumber(pageNumber);
@@ -359,4 +417,57 @@ public class BookServiceImpl implements BookService {
 //>>>>>>> ssj
     }
 
+//=======
+    public ResultVO addRecommendBook(Integer bid, Integer rtype) {
+        int i = recommendDao.addRecommendBook(bid,rtype);
+        ResultVO vo;
+
+        if (i < 0) {
+            vo = new ResultVO(400, "添加失败", false, null);
+        } else {
+            vo = new ResultVO(200, "添加成功", true, null);
+        }
+
+        return vo;
+    }
+
+    @Override
+    public ResultVO delRecommendBook(Integer bid, Integer rtype) {
+        int i = recommendDao.delRecommendBook(bid,rtype);
+        ResultVO vo;
+
+        if (i < 0) {
+            vo = new ResultVO(400, "移出失败", false, null);
+        } else {
+            vo = new ResultVO(200, "移出成功", true, null);
+        }
+
+        return vo;
+    }
+
+    @Override
+    public Boolean delBook(Integer bid) {
+        try {
+            bookDao.delBook(bid);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    @Override
+    public ResultVO updateBook(Book book) {
+        int i = bookDao.updateBook(book);
+        ResultVO vo;
+
+        if (i < 0) {
+            vo = new ResultVO(400, "添加失败", false, null);
+        } else {
+            vo = new ResultVO(200, "添加成功", true, null);
+        }
+
+        return vo;
+    }
+//>>>>>>> yu
 }

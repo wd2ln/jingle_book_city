@@ -15,7 +15,11 @@
             <ul class="nav navbar-nav">
                 <li ><a href="/admin/order_list?pageNumber=1&oStatus=2">订单管理</a></li>
                 <li ><a href="/admin/user_list?pageNumber=1">客户管理</a></li>
-                <li ><a href="book_list.action?pageNumber=1&rtype=0">商品管理</a></li>
+<%--<<<<<<< HEAD--%>
+<%--                <li ><a href="book_list.action?pageNumber=1&rtype=0">商品管理</a></li>--%>
+<%--=======--%>
+                <li ><a href="book_list?pageNumber=1&rtype=0">商品管理</a></li>
+<%-->>>>>>> yu--%>
                 <li ><a href="/admin/type_list">类目管理</a></li>
                 <li><a href="/admin/logout">退出</a></li>
             </ul>

@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
             }
         }catch (Exception e){
             System.out.println("失败了！");
+            System.out.println(e.getMessage());
             return null;
         }
         return null;
