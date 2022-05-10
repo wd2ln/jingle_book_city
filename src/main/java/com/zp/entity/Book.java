@@ -8,6 +8,27 @@ public class Book {
 
     private String bIsbn;
 
+    public Book( Integer bId,String bIsbn, String bName,  String bAuthor, String bPublisher, String bCover, String bImage1, String bImage2, Float bPrice, Integer btId, Integer bStock, String bMark, boolean isScroll, boolean isHot, boolean isNew) {
+        this.bId=bId;
+        this.bIsbn = bIsbn;
+        this.bName = bName;
+        this.bAuthor = bAuthor;
+        this.bPublisher = bPublisher;
+        this.bCover = bCover;
+        this.bImage1 = bImage1;
+        this.bImage2 = bImage2;
+        this.bPrice = bPrice;
+        this.btId = btId;
+        this.bStock = bStock;
+        this.bMark = bMark;
+        this.isScroll = isScroll;
+        this.isHot = isHot;
+        this.isNew = isNew;
+    }
+
+    public Book() {
+    }
+
     private String bName;
 
     public String getBtName() {
@@ -59,6 +80,28 @@ public class Book {
     private Integer bStock;
 
     private String bMark;
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bId=" + bId +
+                ", bIsbn='" + bIsbn + '\'' +
+                ", bName='" + bName + '\'' +
+                ", btName='" + btName + '\'' +
+                ", bAuthor='" + bAuthor + '\'' +
+                ", bPublisher='" + bPublisher + '\'' +
+                ", bCover='" + bCover + '\'' +
+                ", bImage1='" + bImage1 + '\'' +
+                ", bImage2='" + bImage2 + '\'' +
+                ", bPrice=" + bPrice +
+                ", btId=" + btId +
+                ", bStock=" + bStock +
+                ", bMark='" + bMark + '\'' +
+                ", isScroll=" + isScroll +
+                ", isHot=" + isHot +
+                ", isNew=" + isNew +
+                '}';
+    }
 
     private boolean isScroll;
     private boolean isHot;

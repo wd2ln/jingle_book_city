@@ -37,4 +37,8 @@ public interface RecommendMapper {
 
     int queryBookByRtypeAndBid(@Param("i") int i,@Param("getbId") Integer getbId);
 
+    int addRecommendBook(Integer bid, Integer rtype);
+
+    int delRecommendBook(Integer bid, Integer rtype);
+
 }

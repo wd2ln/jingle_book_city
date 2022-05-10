@@ -41,4 +41,8 @@ public interface BookMapper {
     int searchBookKeyword(String keyword);
 
     int addBook(Book book);
+
+    void delBook(Integer bid);
+
+    int updateBook(Book book);
 }

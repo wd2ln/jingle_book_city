@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zp.dao.BookMapper">
+    <update id="updateBook" parameterType="com.zp.entity.Book">
+        update book
+        <set>
+            b_isbn=#{bIsbn},b_name=#{bName},b_author=#{bAuthor},b_publisher=#{bPublisher},
+            b_cover=#{bCover},b_image1=#{bImage1},b_image2=#{bImage2},b_price=#{bPrice},bt_id=#{btId},
+            b_stock=#{bStock},b_mark=#{bMark}
+        </set>
+        <where>
+            b_id=#{bId}
+        </where>
+    </update>
+    <delete id="delBook">
+        delete
+        from book
+        where b_id = #{bid}
+    </delete>
     <insert id="addBook" parameterType="com.zp.entity.Book">
-        insert into book( b_name,b_isbn, b_author, b_publisher, b_cover, b_image1, b_image2, b_price, bt_id,
+        insert into book(b_name, b_isbn, b_author, b_publisher, b_cover, b_image1, b_image2, b_price, bt_id,
                          b_stock, b_mark)
-        values ( #{bName}, #{bIsbn}, #{bAuthor}, #{bPublisher}, #{bCover}, #{bImage1}, #{bImage2},
+        values (#{bName}, #{bIsbn}, #{bAuthor}, #{bPublisher}, #{bCover}, #{bImage1}, #{bImage2},
                 #{bPrice}, #{btId}, #{bStock}, #{bMark})
     </insert>
     <select id="queryCountOfBooks" resultType="int">
