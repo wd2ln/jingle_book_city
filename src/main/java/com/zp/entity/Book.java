@@ -62,6 +62,10 @@ public class Book {
     public void setNew(boolean isNew) {
         this.isNew = isNew;
     }
+//<<<<<<< HEAD
+//=======
+//
+//>>>>>>> zsj
     public Integer getbId() {
         return bId;
     }

@@ -87,6 +87,7 @@
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                             <a href="book_detail?bId=${book.bId}">查看详情</a>
                         </p>
+                        </p>
                         <a class="shop" href="javascript:;" onclick="buy(${book.bId})">立刻购买</a>
                         <div class="clearfix"> </div>
                     </div>

@@ -47,8 +47,13 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="recommend_books?rtype=2&pageNumber=1" <c:if test="${param.flag==3 && t==2}">class="active"</c:if>>热销</a></li>
-                    <li><a href="recommend_books?rtype=3&pageNumber=1" <c:if test="${param.flag==3 && t==3}">class="active"</c:if>>新品</a></li>
+<%--<<<<<<< HEAD--%>
+<%--                    <li><a href="recommend_books?rtype=2&pageNumber=1" <c:if test="${param.flag==3 && t==2}">class="active"</c:if>>热销</a></li>--%>
+<%--                    <li><a href="recommend_books?rtype=3&pageNumber=1" <c:if test="${param.flag==3 && t==3}">class="active"</c:if>>新品</a></li>--%>
+<%--=======--%>
+                    <li><a href="recommend_books?rType=2&pageNumber=1" <c:if test="${param.flag==3 && t==2}">class="active"</c:if>>热销</a></li>
+                    <li><a href="recommend_books?rType=3&pageNumber=1" <c:if test="${param.flag==3 && t==3}">class="active"</c:if>>新品</a></li>
+<%-->>>>>>> zsj--%>
 
                     <c:choose>
                         <c:when test="${empty user }">

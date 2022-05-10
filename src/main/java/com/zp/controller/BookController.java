@@ -1,9 +1,11 @@
 package com.zp.controller;
 
+import com.zp.dao.BookMapper;
 import com.zp.entity.Book;
 import com.zp.entity.Booktype;
 import com.zp.service.BookService;
 import com.zp.service.BookTypeService;
+//<<<<<<< HEAD
 //<<<<<<< HEAD
 import com.zp.vo.PageVO;
 import org.apache.commons.fileupload.FileItem;
@@ -11,6 +13,10 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 //=======
+//=======
+import com.zp.service.FBookService;
+import com.zp.vo.PageInfoVO;
+//>>>>>>> zsj
 import com.zp.vo.PageVo;
 //>>>>>>> zsj
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +47,16 @@ public class BookController {
     private BookService bookService;
     @Autowired
     private BookTypeService bookTypeService;
+    @Autowired
+    private FBookService fBookService;
+//<<<<<<< HEAD
     @RequestMapping("book_edit_show")
     public String book_edit_show (Integer bid,
                                   HttpServletRequest request){
         request.setAttribute("g", bookService.byId(bid));
+//=======
+//
+//>>>>>>> zsj
 
         return "admin/book_edit";
     }
@@ -145,6 +157,53 @@ public class BookController {
 
 
         return "/admin/book_list";
+    }
+    @RequestMapping("recommend_books")
+    public ModelAndView recommend(Integer rType,int pageNumber,HttpServletRequest request){
+        if (pageNumber<=0){
+            pageNumber=1;
+        }
+        PageVo p=bookService.recommendBook(rType,pageNumber);
+        if (p.getTotalPage()==0){
+            p.setTotalPage(1);
+            p.setPageNumber(1);
+        }else {
+            if(pageNumber>=p.getTotalPage()+1)
+            {
+                p = bookService.recommendBook(rType,p.getTotalPage());
+            }
+        }
+        request.setAttribute("p",p);
+        request.setAttribute("t",rType);
+        return new ModelAndView("forward:booktypes_list.jsp");
+    }
+    @RequestMapping("booktypes_list")
+    public ModelAndView BookType(int pageNumber,Integer btId,HttpServletRequest request){
+        System.out.println(btId+"ppp"+pageNumber);
+        String btname=null;
+        if (btId!=0){
+            btname= fBookService.findBookTypeById(btId);
+        }
+        request.setAttribute("btname",btname);
+        if (pageNumber<=0){
+            pageNumber=1;
+        }
+        PageInfoVO p=fBookService.findBookTypeId(btId,pageNumber);
+        System.out.println(p.getList().size());
+        if (p.getTotalPage()==0){
+            p.setTotalPage(1);
+            p.setPageNumber(1);
+        }else {
+            if(pageNumber>=p.getTotalPage()+1) {
+                p=fBookService.findBookTypeId(btId,p.getTotalPage());
+                System.out.println(p.getList().size());
+
+            }
+        }
+        request.setAttribute("p",p);
+        request.setAttribute("btId",btId);
+        request.setAttribute("t",btname);
+        return new ModelAndView("forward:book_detail.jsp");
     }
     @RequestMapping("book_detail")
     public ModelAndView findBook(int bId, HttpServletRequest request){

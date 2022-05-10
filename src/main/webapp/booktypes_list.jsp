@@ -72,7 +72,7 @@
         </div>
 
         <jsp:include page="page.jsp">
-            <jsp:param name="url" value="booktypes_list.action"></jsp:param>
+            <jsp:param name="url" value="booktypes_list"></jsp:param>
             <jsp:param name="param" value="&btId=${btId}"></jsp:param>
         </jsp:include>
     </div>

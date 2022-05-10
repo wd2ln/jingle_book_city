@@ -41,5 +41,16 @@ public interface BookMapper {
     List<Book> queryBooks(@Param("i") int i, @Param("i1") int i1);
 //=======
     int searchBookKeyword(String keyword);
+//<<<<<<< HEAD
+////>>>>>>> zsj
+//=======
+
+    List<Book> searchBookByKeyword(@Param("keyword") String keyword,@Param("pageIndex") int pageIndex,@Param("pageSize") int pageSize);
+
+    int findCountBooks();
+
+    List<Book> findBooks(int pageIndex, int pageSize);
+
+    int findBooksById();
 //>>>>>>> zsj
 }

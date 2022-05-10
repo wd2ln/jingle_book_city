@@ -69,7 +69,7 @@
         </div>
         <div>
             <jsp:include page="page.jsp">
-                <jsp:param name="url" value="search_books.action"></jsp:param>
+                <jsp:param name="url" value="search_books"></jsp:param>
                 <jsp:param name="param" value="&keyword=${keyword}"></jsp:param>
             </jsp:include>
         </div>

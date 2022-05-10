@@ -65,8 +65,8 @@
 </div>
 <!--//products-->
 <jsp:include page="page.jsp">
-    <jsp:param name="url" value="recommend_books.action"></jsp:param>
-    <jsp:param name="param" value="&rtype=${t}"></jsp:param>
+    <jsp:param name="url" value="recommend_books"></jsp:param>
+    <jsp:param name="param" value="&rType=${t}"></jsp:param>
 </jsp:include>
 <!--footer-->
 <jsp:include page="footer.jsp"></jsp:include>

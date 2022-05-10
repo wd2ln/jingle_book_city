@@ -6,11 +6,14 @@ import com.zp.dao.*;
 import com.zp.entity.*;
 import com.zp.dao.BookMapper;
 import com.zp.dao.RecommendMapper;
+//<<<<<<< HEAD
 import com.zp.entity.Book;
 import com.zp.entity.BookExample;
 import com.zp.service.BookService;
 import com.zp.vo.PageVO;
 import org.apache.ibatis.annotations.Param;
+//=======
+//>>>>>>> zsj
 import com.zp.entity.Book;
 import com.zp.entity.BookExample;
 import com.zp.service.BookService;
@@ -28,6 +31,7 @@ public class BookServiceImpl implements BookService {
 //<<<<<<< HEAD
    private BookMapper bookDao;
    @Autowired
+//<<<<<<< HEAD
    private OrderitemMapper orderitemMapper;
    @Autowired
    private BookMapper bookMapper;
@@ -40,6 +44,10 @@ public class BookServiceImpl implements BookService {
 //=======
 //   private BookMapper bookMapper;
 //>>>>>>> ssj
+//=======
+    @Autowired
+   private RecommendMapper recommendMapper;
+//>>>>>>> zsj
 
     private static Integer hh;
     @Override
@@ -287,10 +295,63 @@ public class BookServiceImpl implements BookService {
     public PageVo searchBook(int pageNumber, String keyword) {
         PageVo p = new PageVo();
         p.setPageNumber(pageNumber);
-        int count = 0;
-        count = bookDao.searchBookKeyword(keyword);
-        return null;
+//<<<<<<< HEAD
+//        int count = 0;
+//        count = bookDao.searchBookKeyword(keyword);
+//        return null;
+////=======
 //=======
+        int count=0;
+        try {
+            count=bookDao.searchBookKeyword(keyword);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        p.setPageSizeAndTotalCount(8,count);
+        List l=null;
+        try {
+            l=bookDao.searchBookByKeyword("%"+keyword+"%",(pageNumber-1)*8,8);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        p.setList(l);
+        return p;
+    }
+
+    @Override
+    public PageVo recommendBook(Integer rType, int pageNumber) {
+        PageVo p = new PageVo();
+        p.setPageNumber(pageNumber);
+        int count=0;
+        try {
+            if (rType==0) {
+                count = bookDao.findCountBooks();
+            }else {
+                count=recommendMapper.findRecommendcountBooksByrType(rType);
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        p.setPageSizeAndTotalCount(8,count);
+        List<Book> l=null;
+        try {
+            if (rType==0) {
+                l=bookDao.findBooks((pageNumber - 1) * 8, 8);
+            }else {
+                l = recommendMapper.searchBookByRecommendType(rType, (pageNumber - 1) * 8, 8);
+            }
+            for(int i=0;i<l.size();i++) {
+                Book book=l.get(i);
+                book.setScroll(recommendMapper.findBookByRtypeAndBid(1,book.getbId())>=1);
+                book.setHot(recommendMapper.findBookByRtypeAndBid(2,book.getbId())>=1);
+                book.setNew(recommendMapper.findBookByRtypeAndBid(3,book.getbId())>=1);
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        p.setList((List)l);
+        return p;
+//>>>>>>> zsj
     }
     @Override
     public Book queryBookByID(Integer bId) {

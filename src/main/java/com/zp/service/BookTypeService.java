@@ -12,10 +12,12 @@ public interface BookTypeService {
 
     List<Booktype> select();
 
+//<<<<<<< HEAD
     ResultVO typeAdd(String tbname);
 
     ResultVO typeDel(Integer btid);
 
     ResultVO typeUpdate(Integer btid, String btname);
-
+//=======
+//>>>>>>> zsj
 }
