@@ -17,8 +17,6 @@ public class FBookController {
     @Autowired
     private BookService bookService;
     @Autowired
-    private BookTypeService bookTypeService;
-    @Autowired
     private FBookService fBookService;
 
     @RequestMapping("recommend_books")

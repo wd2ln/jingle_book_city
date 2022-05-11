@@ -18,7 +18,7 @@
 <%--<<<<<<< HEAD--%>
 <%--                <li ><a href="book_list.action?pageNumber=1&rtype=0">商品管理</a></li>--%>
 <%--=======--%>
-                <li ><a href="book_list?pageNumber=1&rtype=0">商品管理</a></li>
+                <li ><a href="/admin/book_list?pageNumber=1&rtype=0">商品管理</a></li>
 <%-->>>>>>> yu--%>
                 <li ><a href="/admin/type_list">类目管理</a></li>
                 <li><a href="/admin/logout">退出</a></li>

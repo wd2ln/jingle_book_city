@@ -15,7 +15,6 @@ public class PageVo<T> {
     private Integer pageNumber;
     private Integer totalPage;
     private Integer totalCount;
-//<<<<<<< HEAD
     private List<BookVo> itemList;
     private List<T> list;
 
@@ -34,9 +33,6 @@ public class PageVo<T> {
     public void setList(List<T> list) {
         this.list = list;
     }
-//=======
-
-//    private List<User> list;
 
     public Integer getPageSize() {
         return pageSize;
@@ -70,18 +66,9 @@ public class PageVo<T> {
         this.totalCount = totalCount;
     }
 
-//    public List<User> getList() {
-//        return list;
-//    }
-//
-//    public void setList(List<User> list) {
-//        this.list = list;
-//    }
-
     public void setPageSizeAndTotalCount(int pageSize,int totalCount) {
         this.pageSize=pageSize;
         this.totalCount=totalCount;
         totalPage= (int)Math.ceil((double)totalCount/pageSize);
     }
-//>>>>>>> zsj
 }

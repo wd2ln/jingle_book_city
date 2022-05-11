@@ -1,6 +1,5 @@
 package com.zp.controller;
 
-//import com.sun.org.apache.xpath.internal.operations.Or;
 import com.zp.entity.Book;
 import com.zp.entity.Order;
 import com.zp.entity.User;
@@ -9,18 +8,14 @@ import com.zp.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @RestController
 public class OrderController {
@@ -49,44 +44,6 @@ public class OrderController {
     }
 
 
-//<<<<<<< HEAD
-//    @RequestMapping("books_buy")
-//    public void AddBookToCart(Integer bId,
-//                              HttpServletRequest request,
-//                              HttpServletResponse response) throws IOException {
-//            Order order=null;
-//
-//            if (request.getSession(false).getAttribute("order")!=null){
-//                order= (Order) request.getSession().getAttribute("order");
-//            }else {
-//                order=new Order();
-//                order.setoAmount(0);
-//                order.setoTotal(0.0F);
-//                order.setoId(new SimpleDateFormat("YYYYMMDDHHmmss").format(new Date()));
-//                order.setoPaytype(1);
-//                order.setoStatus(2);
-//                //获取用户信息
-//                User user=bookService.getUserInfo(((User)(request.getSession(false).getAttribute("user"))).getuId());
-//                order.setuId(user.getuId());
-//                order.setoRealname(user.getuRealname());
-//                order.setoPhone(user.getuPhone());
-//                order.setoAddress(user.getuAddress());
-//                order.setoDatetime(new Date());
-//                bookService.insertOrder(order);
-//                request.getSession().setAttribute("order",order);
-//            }
-//
-////             Book book = bookService.selBookId(bId,order);
-//             Book book = bookService.sell(bId);
-//        System.out.println(book);
-//            if (book.getbStock()>0){
-//                    order.addbooks(book);
-//                bookService.selBookId(bId,order);
-//                    response.getWriter().println("ok");
-//            }else{
-//                response.getWriter().print("fail");
-//            }
-//=======
         @RequestMapping("books_buy")
         public ModelAndView AddBookToCart(ModelAndView mv,
                                         @RequestParam("bId") Integer bId,
@@ -110,8 +67,6 @@ public class OrderController {
                         order.addbooks(book);
 
                         response.getWriter().println("ok");
-                    //mv.setViewName("forward:/book_cart.jsp");
-                   // mv.setViewName("redirect:/book_cart.jsp");
                 }else{
                     response.getWriter().print("fail");
                 }
@@ -125,7 +80,6 @@ public class OrderController {
             Order order= (Order) request.getSession().getAttribute("order");
             order.lessen(bId);
             response.getWriter().println("ok");
-            // mv.setViewName("redirect:/book_cart.jsp");
         return mv;
     }
 
@@ -153,8 +107,6 @@ public class OrderController {
 
             return mv;
         }
-
-//>>>>>>> ssj
 
 
         @RequestMapping("order_confirm")

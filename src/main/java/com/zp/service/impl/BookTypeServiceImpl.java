@@ -1,10 +1,7 @@
 package com.zp.service.impl;
 
-import com.zp.dao.BookMapper;
 import com.zp.dao.BooktypeMapper;
-import com.zp.entity.Book;
 import com.zp.entity.Booktype;
-import com.zp.service.BookService;
 import com.zp.service.BookTypeService;
 import com.zp.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;

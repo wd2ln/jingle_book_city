@@ -1,15 +1,10 @@
 package com.zp.controller;
 
-import com.zp.entity.Booktype;
 import com.zp.service.BookTypeService;
 import com.zp.vo.ResultVO;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController

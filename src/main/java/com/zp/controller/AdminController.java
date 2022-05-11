@@ -4,22 +4,17 @@ import com.zp.entity.User;
 import com.zp.service.AdminService;
 import com.zp.util.JasyptUtil;
 import com.zp.vo.PageVo;
-import com.zp.vo.UpdateVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @RestController
 @RequestMapping("admin")
-//@ResponseBody
 public class AdminController {
     @Autowired
     private AdminService adminService;
@@ -27,8 +22,6 @@ public class AdminController {
     public ModelAndView add1( User user,
                             HttpServletResponse response,
                             HttpServletRequest request){
-        System.out.println("start");
-        System.out.println(user.getuName());
         ModelAndView modelAndView = new ModelAndView();
         //添加用户
         String status = adminService.addUser(user);
@@ -113,14 +106,10 @@ public class AdminController {
         User user=adminService.show(uId);
         System.out.println(user==null);
         if (user!=null){
-            System.out.println("==========");
             request.setAttribute("u",user);
             modelAndView.setViewName("forward:/admin/user_edit.jsp");
         }else {
-            System.out.println("------------");
-
             modelAndView.setViewName("redirect:user_list?pageNumber=1");
-
         }
         //跳转操作user_update
         return modelAndView;

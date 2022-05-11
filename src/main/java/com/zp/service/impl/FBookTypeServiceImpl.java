@@ -2,10 +2,8 @@ package com.zp.service.impl;
 
 import com.zp.dao.BookMapper;
 import com.zp.dao.BooktypeMapper;
-import com.zp.service.BookTypeService;
 import com.zp.service.FBookService;
 import com.zp.vo.PageInfoVO;
-import com.zp.vo.PageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,8 +47,6 @@ public class FBookTypeServiceImpl implements FBookService {
             System.out.println(e.getMessage());
         }
         p.setList(l);
-        System.out.println("============================");
-        System.out.println(p.getList().get(0).getbName());
         return p;
     }
 }

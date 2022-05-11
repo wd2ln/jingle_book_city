@@ -30,19 +30,15 @@ public interface BooktypeMapper {
 
     int updateByPrimaryKey(Booktype record);
 
-
     List<Booktype> select();
 
-//<<<<<<< HEAD
     int insertType(String tbname);
 
     int updateType(Integer btid, String btname);
 
-//=======
     String findBookTypeById(int btId);
 
     int findCountBookById(int btId);
 
     List findBooksByBtid(int btId, int pageIndex, int pageSize);
-//>>>>>>> zsj
 }
