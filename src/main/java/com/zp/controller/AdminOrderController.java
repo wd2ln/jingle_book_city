@@ -1,8 +1,7 @@
 package com.zp.controller;
 
-import com.zp.entity.BookOrderOrderitem;
 import com.zp.service.AdminOrderService;
-import com.zp.vo.PageVo;
+import com.zp.vo.Page1Vo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +18,8 @@ public class AdminOrderController {
             HttpServletRequest request, Integer pageNumber, Integer oStatus	){
         request.setAttribute("ostatus",oStatus);
         ModelAndView modelAndView = new ModelAndView();
-        PageVo pageVo = adminOrderService.orderLists(pageNumber, oStatus);
-        request.setAttribute("p",pageVo);
+        Page1Vo page1Vo = adminOrderService.orderLists(pageNumber, oStatus);
+        request.setAttribute("p", page1Vo);
         if (false){
             return null;
         }

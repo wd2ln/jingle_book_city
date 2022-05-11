@@ -4,7 +4,7 @@ import com.zp.entity.Book;
 import com.zp.entity.Order;
 import com.zp.entity.User;
 import com.zp.vo.PageVO;
-import com.zp.vo.PageVo;
+import com.zp.vo.Page1Vo;
 import com.zp.vo.ResultVO;
 
 import java.util.List;
@@ -25,11 +25,11 @@ public interface BookService {
 
     Book find(int bId);
 
-    PageVo searchBook(int pageNumber, String keyword);
+    Page1Vo searchBook(int pageNumber, String keyword);
 
     Book queryBookByID(Integer bId);
 
-    PageVo recommendBook(Integer rType, int pageNumber);
+    Page1Vo recommendBook(Integer rType, int pageNumber);
 
     ResultVO addRecommendBook(Integer bid, Integer rtype);
 

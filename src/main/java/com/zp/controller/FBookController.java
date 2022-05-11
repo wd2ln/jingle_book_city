@@ -2,10 +2,9 @@ package com.zp.controller;
 
 import com.zp.entity.Book;
 import com.zp.service.BookService;
-import com.zp.service.BookTypeService;
 import com.zp.service.FBookService;
 import com.zp.vo.PageInfoVO;
-import com.zp.vo.PageVo;
+import com.zp.vo.Page1Vo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +23,7 @@ public class FBookController {
         if (pageNumber<=0){
             pageNumber=1;
         }
-        PageVo p=bookService.recommendBook(rType,pageNumber);
+        Page1Vo p=bookService.recommendBook(rType,pageNumber);
         if (p.getTotalPage()==0){
             p.setTotalPage(1);
             p.setPageNumber(1);
@@ -77,7 +76,7 @@ public class FBookController {
         if (pageNumber<=0){
             pageNumber=1;
         }
-        PageVo p=bookService.searchBook(pageNumber,keyword);
+        Page1Vo p=bookService.searchBook(pageNumber,keyword);
         if (p.getTotalPage()==0){
             p.setTotalPage(1);
             p.setPageNumber(1);

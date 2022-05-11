@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PageVo<T> {
+public class Page1Vo<T> {
     private Integer pageSize;
     private Integer pageNumber;
     private Integer totalPage;

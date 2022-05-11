@@ -1,14 +1,14 @@
 package com.zp.service;
 
 import com.zp.entity.User;
-import com.zp.vo.PageVo;
+import com.zp.vo.Page1Vo;
 
 public interface AdminService {
     String addUser(User user);
 
     User updatePwd(Integer uId, String uPwd);
 
-    PageVo findAlls(Integer pageNumber);
+    Page1Vo findAlls(Integer pageNumber);
 
     Boolean del(Integer uId);
 

@@ -7,7 +7,7 @@ import com.zp.dao.OrderMapper;
 import com.zp.dao.OrderitemMapper;
 import com.zp.entity.*;
 import com.zp.service.AdminOrderService;
-import com.zp.vo.PageVo;
+import com.zp.vo.Page1Vo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -54,12 +54,12 @@ public class AdminOrderServiceImpl implements AdminOrderService {
     }
 
     @Override
-    public PageVo orderLists(Integer pageNumber, Integer oStatus) {
+    public Page1Vo orderLists(Integer pageNumber, Integer oStatus) {
         //设置参数
         Integer pageSize=8;
         //设置分页
         PageHelper.startPage(pageNumber,pageSize);
-        PageVo pageVo = new PageVo();
+        Page1Vo page1Vo = new Page1Vo();
 
 //        List<BookOrderOrderitem> books = bookMapper.selectByStatus(oStatus);
         List<Order> orders = orderMapper.selectByStatus(oStatus);
@@ -84,13 +84,13 @@ public class AdminOrderServiceImpl implements AdminOrderService {
             int i1 = total.intValue();
             //同一订单则拿取关键字段
 
-            pageVo.setList(bookPageInfo.getList());
-            pageVo.setPageNumber(bookPageInfo.getPageNum());
-            pageVo.setPageSize(bookPageInfo.getPageSize());
+            page1Vo.setList(bookPageInfo.getList());
+            page1Vo.setPageNumber(bookPageInfo.getPageNum());
+            page1Vo.setPageSize(bookPageInfo.getPageSize());
             //数据总量
-            pageVo.setTotalCount(orders.size());
-            pageVo.setTotalPage(i1%pageSize==0?i1/pageSize:i1/pageSize+1);
+            page1Vo.setTotalCount(orders.size());
+            page1Vo.setTotalPage(i1%pageSize==0?i1/pageSize:i1/pageSize+1);
         }
-        return pageVo;
+        return page1Vo;
     }
 }
