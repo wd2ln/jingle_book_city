@@ -55,62 +55,40 @@ public class Book {
 
     private Integer btId;
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "bId=" + bId +
-                ", bIsbn='" + bIsbn + '\'' +
-                ", bName='" + bName + '\'' +
-                ", btName='" + btName + '\'' +
-                ", bAuthor='" + bAuthor + '\'' +
-                ", bPublisher='" + bPublisher + '\'' +
-                ", bCover='" + bCover + '\'' +
-                ", bImage1='" + bImage1 + '\'' +
-                ", bImage2='" + bImage2 + '\'' +
-                ", bPrice=" + bPrice +
-                ", btId=" + btId +
-                ", bStock=" + bStock +
-                ", bMark='" + bMark + '\'' +
-                ", isScroll=" + isScroll +
-                ", isHot=" + isHot +
-                ", isNew=" + isNew +
-                '}';
-    }
-
     private Integer bStock;
-
-
 
     private String bMark;
 
-
-
     private boolean isScroll;
+
     private boolean isHot;
+
     private boolean isNew;
 
     public boolean getIsScroll() {
         return isScroll;
     }
+
     public void setScroll(boolean isScroll) {
         this.isScroll = isScroll;
     }
+
     public boolean getIsHot() {
         return isHot;
     }
+
     public void setHot(boolean isHot) {
         this.isHot = isHot;
     }
+
     public boolean getIsNew() {
         return isNew;
     }
+
     public void setNew(boolean isNew) {
         this.isNew = isNew;
     }
-//<<<<<<< HEAD
-//=======
-//
-//>>>>>>> zsj
+
     public Integer getbId() {
         return bId;
     }

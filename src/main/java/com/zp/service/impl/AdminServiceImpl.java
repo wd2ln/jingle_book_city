@@ -6,14 +6,9 @@ import com.zp.dao.UserMapper;
 import com.zp.entity.User;
 import com.zp.entity.UserExample;
 import com.zp.service.AdminService;
-import com.zp.util.JasyptUtil;
 import com.zp.vo.PageVo;
-import com.zp.vo.UpdateVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.LocaleResolver;
-
-import java.sql.SQLException;
 import java.util.List;
 
 
@@ -27,7 +22,6 @@ public class AdminServiceImpl implements AdminService {
         user.setuMark("普通用户");
         user.setuRole(1);
         //加密密码
-        //user.setuPwd(JasyptUtil.jia(user.getuPwd()));
         //插入
         int i;
         try {
@@ -60,13 +54,6 @@ public class AdminServiceImpl implements AdminService {
             pageVo.setPageSize(userPageInfo.getPageSize());
             //数据总量
             pageVo.setTotalCount(users.size());
-
-           // System.out.println(i);
-            //System.out.println(userPageInfo.getTotal());
-            //System.out.println(total);
-            //System.out.println(i1);
-            //总页数
-           // if ()
             pageVo.setTotalPage(i1%pageSize==0?i1/pageSize:i1/pageSize+1);
         }
         return pageVo;

@@ -31,25 +31,20 @@ public interface RecommendMapper {
 
     int updateByPrimaryKey(Recommend record);
 
-//<<<<<<< HEAD
     int queryRecommendCountOfBooksByTypeID(@Param("rType") Integer rtype);
 
     List<Book> queryBookByRecommendType(@Param("rType")Integer rtype,@Param("i") int i,@Param("i1") int i1);
 
     int queryBookByRtypeAndBid(@Param("i") int i,@Param("getbId") Integer getbId);
 
-//<<<<<<< HEAD
-//=======
     int findRecommendcountBooksByrType(int rType);
 
     List<Book> searchBookByRecommendType(int rType, int pageIndex, int pageSize);
 
     int findBookByRtypeAndBid(int i, Integer getbId);
-//>>>>>>> zsj
-//=======zsj
+
     int addRecommendBook(Integer bid, Integer rtype);
 
     int delRecommendBook(Integer bid, Integer rtype);
 
-//>>>>>>> yu
 }

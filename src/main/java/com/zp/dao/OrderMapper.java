@@ -1,6 +1,5 @@
 package com.zp.dao;
 
-import com.zp.entity.BookOrderOrderitem;
 import com.zp.entity.Order;
 import com.zp.entity.OrderExample;
 import java.util.List;

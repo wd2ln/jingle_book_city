@@ -1,18 +1,11 @@
 package com.zp.entity;
 
-//<<<<<<< HEAD
 import java.util.ArrayList;
-import com.zp.vo.BookVo;
-
 import java.util.Date;
 import java.util.List;
-//=======
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.zp.util.PriceUtil;
-
-
 import java.util.*;
-//>>>>>>> ssj
 
 public class Order {
     private String oId;
@@ -27,35 +20,8 @@ public class Order {
     }
 
     private Float oTotal;
-//    private String itemMap;
-
-//    public String getItemMap() {
-//        return itemMap;
-//    }
-
-//    public void setItemMap(String itemMap) {
-//        this.itemMap = itemMap;
-//    }
 
     private Integer oAmount;
-//    private List<String> btName;
-//    private List<Orderitem> itemList;
-
-//    public List<Orderitem> getItemList() {
-//        return itemList;
-//    }
-//
-//    public void setItemList(List<Orderitem> itemList) {
-//        this.itemList = itemList;
-//    }
-
-//    public List<String>  getBtName() {
-//        return btName;
-//    }
-//
-//    public void setBtName(List<String>  btName) {
-//        this.btName = btName;
-//    }
 
     public Float getOiPrice() {
         return oiPrice;
@@ -161,10 +127,6 @@ public class Order {
         this.oAddress = oAddress == null ? null : oAddress.trim();
     }
 
-
-
-//<<<<<<< HEAD
-//=======
     private List<Orderitem> itemList = new ArrayList<Orderitem>();
 
     public List<Orderitem> getItemList() {
@@ -175,7 +137,6 @@ public class Order {
         this.itemList = itemList;
     }
     private Map<Integer,Orderitem> itemMap = new HashMap<Integer,Orderitem>();
-//>>>>>>> ssj
 
     public Map<Integer, Orderitem> getItemMap() {
         return itemMap;

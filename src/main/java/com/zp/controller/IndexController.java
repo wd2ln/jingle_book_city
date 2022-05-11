@@ -5,7 +5,6 @@ import com.zp.entity.Booktype;
 import com.zp.service.BookService;
 import com.zp.service.BookTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/")
 public class IndexController {
 
     @Autowired
@@ -45,7 +43,6 @@ public class IndexController {
             if(rtype==3){
                 request.setAttribute("newList",list);
             }
-            System.out.println("=====================");
         }
 
         List<Booktype> booktypes= bookTypeService.select();

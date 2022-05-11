@@ -1,7 +1,5 @@
 package com.zp.entity;
 
-import org.springframework.stereotype.Repository;
-
 
 public class Booktype {
     private Integer btId;
