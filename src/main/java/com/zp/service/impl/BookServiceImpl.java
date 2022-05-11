@@ -11,7 +11,7 @@ import com.zp.entity.BookExample;
 import com.zp.service.BookService;
 import com.zp.vo.PageVO;
 import com.zp.vo.ResultVO;
-import com.zp.vo.PageVo;
+import com.zp.vo.Page1Vo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -84,8 +84,8 @@ public class BookServiceImpl implements BookService {
 
 
     @Override
-    public PageVo searchBook(int pageNumber, String keyword) {
-        PageVo p = new PageVo();
+    public Page1Vo searchBook(int pageNumber, String keyword) {
+        Page1Vo p = new Page1Vo();
         p.setPageNumber(pageNumber);
         int count = 0;
         try {
@@ -152,8 +152,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public PageVo recommendBook(Integer rType, int pageNumber) {
-        PageVo p = new PageVo();
+    public Page1Vo recommendBook(Integer rType, int pageNumber) {
+        Page1Vo p = new Page1Vo();
         p.setPageNumber(pageNumber);
         int count=0;
         try {

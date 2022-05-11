@@ -3,7 +3,7 @@ package com.zp.controller;
 import com.zp.entity.User;
 import com.zp.service.AdminService;
 import com.zp.util.JasyptUtil;
-import com.zp.vo.PageVo;
+import com.zp.vo.Page1Vo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -80,7 +80,7 @@ public class AdminController {
         //判断传入的页数合法性
         pageNumber=pageNumber>0 ? pageNumber : 1;
 
-        PageVo alls = adminService.findAlls(pageNumber);
+        Page1Vo alls = adminService.findAlls(pageNumber);
 
         //获取的数据放入request中
         request.setAttribute("p",alls);
