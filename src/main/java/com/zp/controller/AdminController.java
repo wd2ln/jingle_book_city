@@ -42,10 +42,10 @@ public class AdminController {
                               HttpSession session,
                               HttpServletRequest request){
         //销毁session
-        session.removeAttribute("user");
+//        session.removeAttribute("user");
         session.invalidate();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:http://localhost:8080/index");
+        modelAndView.setViewName("redirect:/index");
         //跳转操作
         return modelAndView;
     }
