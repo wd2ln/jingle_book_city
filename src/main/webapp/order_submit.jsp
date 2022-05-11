@@ -105,8 +105,8 @@
 
 
 <script type="text/javascript">
-    function dopay(opaytype){
-        $("#opaytype").val(opaytype);
+    function dopay(oPaytype){
+        $("#oPaytype").val(oPaytype);
         $("#payform").submit();
     }
 </script>

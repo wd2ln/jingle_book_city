@@ -118,19 +118,19 @@ public class OrderController {
 
         @RequestMapping("order_confirm")
         public ModelAndView ConfirmOrder(ModelAndView mv,
-                                         int opaytype,
+                                         int oPaytype,
                                          HttpServletRequest request){
 
         //获取订单信息，order属性
         Order order= (Order) request.getSession().getAttribute("order");
 
        //设置订单状态，支付方式
-        if (opaytype==3){
+        if (oPaytype==3){
             order.setoStatus(1);
             }else {
             order.setoStatus(2);
         }
-       order.setoPaytype(opaytype);
+       order.setoPaytype(oPaytype);
 
        //获取user信息,user属性
        User user= (User) request.getSession().getAttribute("user");
